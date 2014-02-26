@@ -1,0 +1,11 @@
+\i ./v272/migrate-db-postgres.sql
+\i ./v272/migrate-default.sql
+\i ./v273/migrate-default.sql
+\i ./v290/migrate-db-postgres.sql
+\i ./v290/migrate-default.sql
+\i ./v2100/migrate-default.sql
+\i ./v2110/1-migrate-db-postgres.sql
+\i ./v2110/2-migrate-default.sql
+\i ./v2110/3-create-tmp-tables-postgres.sql
+\i ./v2110/4-copy-to-tmp-default.sql
+\i ./v2110/5-recreate-old-tables-postgres.sql
