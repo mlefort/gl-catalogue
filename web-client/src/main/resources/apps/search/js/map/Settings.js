@@ -32,19 +32,19 @@ Proj4js.defs["EPSG:2154"] = "+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 
 GeoNetwork.map.printCapabilities = "../../pdf";
 
 // Config for WGS84 based maps
-GeoNetwork.map.PROJECTION = "EPSG:4326";
-GeoNetwork.map.EXTENT = new OpenLayers.Bounds(-180, -90, 180, 90);
-//GeoNetwork.map.EXTENT = new OpenLayers.Bounds(-5.1,41,9.7,51);
-
-GeoNetwork.map.BACKGROUND_LAYERS = [
-    new OpenLayers.Layer.WMS("Background layer", "/geoserver/wms", {layers: 'gn:world,gn:ne_50m_boundary_da,gn:ne_50m_boundary_lines_land,gn:ne_50m_coastline', format: 'image/jpeg'}, {isBaseLayer: true})
-    //new OpenLayers.Layer.WMS("Background layer", "http://www2.demis.nl/mapserver/wms.asp?", {layers: 'Countries', format: 'image/jpeg'}, {isBaseLayer: true})
-];
+//GeoNetwork.map.PROJECTION = "EPSG:4326";
+//GeoNetwork.map.EXTENT = new OpenLayers.Bounds(-180, -90, 180, 90);
+////GeoNetwork.map.EXTENT = new OpenLayers.Bounds(-5.1,41,9.7,51);
+//
+//GeoNetwork.map.BACKGROUND_LAYERS = [
+//    new OpenLayers.Layer.WMS("Background layer", "/geoserver/wms", {layers: 'gn:world,gn:ne_50m_boundary_da,gn:ne_50m_boundary_lines_land,gn:ne_50m_coastline', format: 'image/jpeg'}, {isBaseLayer: true})
+//    //new OpenLayers.Layer.WMS("Background layer", "http://www2.demis.nl/mapserver/wms.asp?", {layers: 'Countries', format: 'image/jpeg'}, {isBaseLayer: true})
+//];
 
 //// Config for OSM based maps
 GeoNetwork.map.PROJECTION = "EPSG:900913";
-//GeoNetwork.map.EXTENT = new OpenLayers.Bounds(-550000, 5000000, 1200000, 7000000);
-GeoNetwork.map.EXTENT = new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34);
+GeoNetwork.map.EXTENT = new OpenLayers.Bounds(-550000, 5000000, 1200000, 7000000);
+//GeoNetwork.map.EXTENT = new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34);
 GeoNetwork.map.BACKGROUND_LAYERS = [
     new OpenLayers.Layer.OSM()
     //new OpenLayers.Layer.Google("Google Streets");
