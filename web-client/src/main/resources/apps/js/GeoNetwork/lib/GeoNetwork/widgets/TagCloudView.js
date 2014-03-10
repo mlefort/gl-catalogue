@@ -107,7 +107,7 @@ GeoNetwork.TagCloudView = Ext.extend(Ext.DataView, {
                         '<a href="#" onclick="javascript:catalogue.kvpSearch(\'fast=' + this.catalogue.metadataStore.fast + '&summaryOnly=0&from=1&to=20&hitsPerPage=20&' + 
                              this.searchField + 
                             '={value}\', ' + this.onSuccess + ',' + this.onFailure + 
-                            ', null);" alt="{value}" title="{count} records">{value}</a>', 
+                            ', null);" alt="{value}" title="{count} enregistrements">{value}</a>', 
                     '</li>', 
                 '</tpl>', 
             '</ul>');
