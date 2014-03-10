@@ -41,6 +41,8 @@
 			            <link rel="stylesheet" type="text/css" href="../../static/geonetwork-client_css.css"/>
 			        </xsl:otherwise>
 			    </xsl:choose>
+                                <link rel="stylesheet" type="text/css"
+                                        href="../../apps/css/grandlyon.css"/>
 			</head>
 			<body>
 				<div id="loading-mask"></div>

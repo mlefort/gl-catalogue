@@ -112,14 +112,15 @@ x-layout-cmini-east {
 }
 .latest {
   clear: both;
-  float: right;
+  float: left;
   width: 80%;
   height: 250px;
 }
 .latest * span.checkbox {
   display: none;
 }
-
+/*Reprise style .info pour GRANDLYON*/
+/*
 .info {
   float : right;
   width : 28%;
@@ -129,10 +130,24 @@ x-layout-cmini-east {
   border-radius : 0px 0px 54px 0px;
   background-color : rgba(217, 210, 123, 0.85);
   box-shadow: 2px 0px 10px 0px #777777;
- /* border : 1px solid rgba(0, 51, 102, 0.25);*/
+      //border : 1px solid rgba(0, 51, 102, 0.25);
   padding : 3px;
   margin : 13px;
 }
+*/
+.info {
+  float : left;
+  width : 60%;
+/*  height : 40%;*/
+  -moz-border-radius : 0px 0px 54px 0px;
+  -webkit-border-radius : 0px 0px 54px 0px;
+  border-radius : 0px 0px 54px 0px;
+  background-color : #ff2600;
+  border : 1px solid rgba(255, 50, 0, 0.25);
+  padding : 1px;
+  margin : 0px;
+}
+
 
 .info h3, .latest h3 {
   border-bottom : 2px solid #003366;
@@ -233,6 +248,7 @@ table.map {
   display : inline;
   height: 33px;
   vertical-align: middle;
+  float:left;
 }
 
 #footer {

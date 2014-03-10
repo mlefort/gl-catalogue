@@ -1,0 +1,15 @@
+#header {
+    #background-image : url(../img/gl_bandeau.png);
+    #background-repeat : repeat-y;
+    border-bottom : 1px solid;
+}
+#title {
+    font-size : 2em;
+    color : #3e23d40;
+    font-weight : bold;
+    padding-top : 3px;
+    padding-left : 10px;
+}
+#mn-top * .x-panel-body {
+    background-color : transparent;
+}
