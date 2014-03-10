@@ -295,6 +295,7 @@ for long description */
   padding : 0px;
   margin : 0px;
   width : 100%;
+  font-size : 11px;
 }
 .metadata * table.gn > tbody > tr {
 
@@ -323,6 +324,7 @@ table.related {
   border-collapse: collapse;
   border-spacing: 0px;
   width: 100%;
+  font-size : 11px;
 }
 table.related > tbody > tr {
   height : 30px;
@@ -362,6 +364,7 @@ table.gn > tbody > tr > th.main {
 
 table.map > tbody > tr > td {
   text-align : center;
+  font-size : 11px;
 }
 table.map > tbody > tr > td > input,
 table.map > tbody > tr > td > label {
