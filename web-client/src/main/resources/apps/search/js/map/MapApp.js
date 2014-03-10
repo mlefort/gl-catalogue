@@ -1098,7 +1098,7 @@ GeoNetwork.mapApp = function() {
                 labelCls: 'mylabel',
                 style: 'padding:5px'
             },
-            title: 'Legend',
+            title: 'Légende',
             height:200,
             autoScroll: true,
             split: true,

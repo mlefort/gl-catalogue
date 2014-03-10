@@ -126,6 +126,8 @@ GeoNetwork.Lang.fr = {
     'metadataButtonText': "Metadonnées",
     'removeButtonText': "Supprimer",
     'addWMSButtonText': "Ajouter WMS",
+    'chooseLayerStyle': "Définir le style",
+    'wmsTime': "WMS Time",
     'addWMSWindowTitle': "Ajouter WMS",
     'layerInfoPanel.windowTitle': "Couche metadata",
     'layerInfoPanel.titleField': "Titre",
