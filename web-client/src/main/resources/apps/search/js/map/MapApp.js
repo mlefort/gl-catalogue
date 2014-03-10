@@ -440,9 +440,8 @@ GeoNetwork.mapApp = function() {
         action = new GeoExt.Action({
             control: new OpenLayers.Control.ZoomToMaxExtent(),
             map: map,
-            iconCls: 'zoomfull'
-            	//,
-            //tooltip: {title: OpenLayers.i18n("zoomToMaxExtentTooltipTitle"), text: OpenLayers.i18n("zoomToMaxExtentTooltipText")}
+            iconCls: 'zoomfull',
+            tooltip: {title: OpenLayers.i18n("zoomToMaxExtentTooltipTitle"), text: OpenLayers.i18n("zoomToMaxExtentTooltipText")}
         });
 
         toolbar.push(action);
@@ -452,7 +451,7 @@ GeoNetwork.mapApp = function() {
         action = new GeoExt.Action({
             iconCls: 'zoomlayer',
             id: 'btnZoomToExtent',
-            //tooltip: {title: OpenLayers.i18n("zoomlayerTooltipTitle"), text: OpenLayers.i18n("zoomlayerTooltipText")},
+            tooltip: {title: OpenLayers.i18n("zoomlayerTooltipTitle"), text: OpenLayers.i18n("zoomlayerTooltipText")},
             handler: function() {
                 var node = activeNode;
                 var layer;
@@ -501,8 +500,8 @@ GeoNetwork.mapApp = function() {
             map: map,
             toggleGroup: "move",
             allowDepress: false,
-            iconCls: 'zoomin'
-            //tooltip: {title: OpenLayers.i18n("zoominTooltipTitle"), text: OpenLayers.i18n("zoominTooltipText")}
+            iconCls: 'zoomin',
+            tooltip: {title: OpenLayers.i18n("zoominTooltipTitle"), text: OpenLayers.i18n("zoominTooltipText")}
         });
 
         toolbar.push(action);
@@ -515,8 +514,8 @@ GeoNetwork.mapApp = function() {
             toggleGroup: "move",
             allowDepress: false,
             map: map,
-            iconCls: 'zoomout'
-            //tooltip:  {title: OpenLayers.i18n("zoomoutTooltipTitle"), text: OpenLayers.i18n("zoomoutTooltipText")}
+            iconCls: 'zoomout',
+            tooltip:  {title: OpenLayers.i18n("zoomoutTooltipTitle"), text: OpenLayers.i18n("zoomoutTooltipText")}
         });
 
         toolbar.push(action);
@@ -529,8 +528,8 @@ GeoNetwork.mapApp = function() {
             allowDepress: false,
             pressed: true,
             map: map,
-            iconCls: 'pan'
-            //tooltip:  {title: OpenLayers.i18n("dragTooltipTitle"), text: OpenLayers.i18n("dragTooltipText")}
+            iconCls: 'pan',
+            tooltip:  {title: OpenLayers.i18n("dragTooltipTitle"), text: OpenLayers.i18n("dragTooltipText")}
         });
 
         toolbar.push(action);
@@ -584,8 +583,8 @@ GeoNetwork.mapApp = function() {
             allowDepress: false,
             pressed: false,
             map: map,
-            iconCls: 'query'
-            //tooltip: {title: OpenLayers.i18n('featureInfoTooltipTitle'), text: OpenLayers.i18n('featureInfoTooltipText') }
+            iconCls: 'query',
+            tooltip: {title: OpenLayers.i18n('featureInfoTooltipTitle'), text: OpenLayers.i18n('featureInfoTooltipText') }
         });
         
         toolbar.push(action);
@@ -600,8 +599,8 @@ GeoNetwork.mapApp = function() {
             control: ctrl.previous,
             disabled: true,
             map: map,
-            iconCls: 'back'
-            //tooltip: {title: OpenLayers.i18n("previousTooltipTitle"), text: OpenLayers.i18n("previosTooltipText")}
+            iconCls: 'back',
+            tooltip: {title: OpenLayers.i18n("previousTooltipTitle"), text: OpenLayers.i18n("previosTooltipText")}
         });
         toolbar.push(action);
 
@@ -609,8 +608,8 @@ GeoNetwork.mapApp = function() {
             control: ctrl.next,
             disabled: true,
             map: map,
-            iconCls: 'next'
-            //tooltip: {title: OpenLayers.i18n("nextTooltipTitle"), text: OpenLayers.i18n("nextTooltipText")}
+            iconCls: 'next',
+            tooltip: {title: OpenLayers.i18n("nextTooltipTitle"), text: OpenLayers.i18n("nextTooltipText")}
         });
         toolbar.push(action);
 
@@ -618,7 +617,7 @@ GeoNetwork.mapApp = function() {
         
         action = new GeoExt.Action({
             iconCls: 'savewmc',
-            //tooltip: {title: OpenLayers.i18n("savewmcTooltipTitle"), text: OpenLayers.i18n("savewmcTooltipText")},
+            tooltip: {title: OpenLayers.i18n("savewmcTooltipTitle"), text: OpenLayers.i18n("savewmcTooltipText")},
             handler: function() {
                 GeoNetwork.WMCManager.saveContext(map);
             }
@@ -628,7 +627,7 @@ GeoNetwork.mapApp = function() {
         
         action = new GeoExt.Action({
             iconCls: 'loadwmc',
-            //tooltip: {title: OpenLayers.i18n("loadwmcTooltipTitle"), text: OpenLayers.i18n("loadwmcTooltipText")},
+            tooltip: {title: OpenLayers.i18n("loadwmcTooltipTitle"), text: OpenLayers.i18n("loadwmcTooltipText")},
             handler: function() {
                 GeoNetwork.WindowManager.showWindow("loadwmc");
             }

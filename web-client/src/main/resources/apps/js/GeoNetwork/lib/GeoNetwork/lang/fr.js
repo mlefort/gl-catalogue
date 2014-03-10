@@ -62,7 +62,7 @@ GeoNetwork.Lang.fr = {
     'enableTooltip': 'Activer les info-bulles pour obtenir une description complète de chaque champs.',
     'connectIssue': "Échec de connexion au catalogue",
     'connectIssueMsg': "Erreur 404. Impossible de se connecter à l'URL ",
-    'featureInfoTooltipTitle': "caractéristique",
+    'featureInfoTooltipTitle': "Informations",
     'featureInfoTooltipText': "Cliquer sur la carte pour obtenir des informations sur les données affichees.",
     'zoomToMaxExtentTooltipTitle': "Zoom optimal",
     'zoomToMaxExtentTooltipText': "Utiliser ce bouton pour tout afficher.",
