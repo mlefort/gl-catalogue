@@ -63,7 +63,15 @@
                                         <Field name="updateFrequency" string="other" store="true" index="true"/>
                                 </xsl:otherwise>
                         </xsl:choose>
-			
+                       
+                        <xsl:for-each select="/simpledc/dc:publisher">
+                          <Field name="publisher" string="{string(.)}" store="true" index="true"/>
+                        </xsl:for-each>
+                        <xsl:for-each select="/simpledc/dc:rights">
+                          <Field name="rights" string="{string(.)}" store="true" index="true"/>
+                        </xsl:for-each>
+
+                        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
                         <xsl:for-each select="/simpledc/dct:abstract|/simpledc/dc:description">
 				<Field name="abstract" string="{string(.)}" store="true" index="true"/>
