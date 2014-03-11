@@ -49,7 +49,23 @@
 				<Field name="identifier" string="{string(.)}" store="false" index="true"/>
 			</xsl:for-each>
 	
-			<xsl:for-each select="/simpledc/dct:abstract|/simpledc/dc:description">
+                        <!-- - - NEOGEO 2013 - - - - - - - - - - - - - - - - - - - - - - - - - -->
+                        <xsl:for-each select="/simpledc/dc:creator">
+                                <Field name="siren" string="{string(.)}" store="true" index="true"/>
+                        </xsl:for-each>
+                        <xsl:choose>
+                                <xsl:when test="/simpledc/dct:accrualPeriodicity">
+                                        <xsl:for-each select="/simpledc/dct:accrualPeriodicity">
+                                                <Field name="updateFrequency" string="{string(.)}" store="true" index="true"/>
+                                        </xsl:for-each>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                        <Field name="updateFrequency" string="other" store="true" index="true"/>
+                                </xsl:otherwise>
+                        </xsl:choose>
+			
+
+                        <xsl:for-each select="/simpledc/dct:abstract|/simpledc/dc:description">
 				<Field name="abstract" string="{string(.)}" store="true" index="true"/>
 			</xsl:for-each>
 
