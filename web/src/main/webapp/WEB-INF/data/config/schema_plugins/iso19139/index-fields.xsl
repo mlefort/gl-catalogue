@@ -117,6 +117,7 @@
 			<xsl:for-each select="gmd:citation/gmd:CI_Citation">
 				<xsl:for-each select="gmd:identifier/gmd:MD_Identifier/gmd:code/gco:CharacterString">
 					<Field name="identifier" string="{string(.)}" store="true" index="true"/>
+                                        <Field name="siren" string="{substring-before(substring-after(.,'-'),'-')}" store="true" index="true"/>
 				</xsl:for-each>
 
                 <xsl:for-each select="gmd:identifier/gmd:RS_Identifier/gmd:code/gco:CharacterString">
@@ -186,10 +187,22 @@
 				<Field name="abstract" string="{string(.)}" store="true" index="true"/>
 			</xsl:for-each>
 			
+                        <!-- - - NEOGEO 2013 - - - - - - - - - - - - - - - - - - - - - - - - - -->
+                        <xsl:choose>
+                                <xsl:when test="gmd:resourceMaintenance">
+                                        <xsl:for-each select="gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode/@codeListValue">
+                                                <Field name="updateFrequency" string="{string(.)}" store="true" index="true"/>
+                                        </xsl:for-each>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                        <Field name="updateFrequency" string="other" store="true" index="true"/>
+                                </xsl:otherwise>
+                        </xsl:choose>
+                        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
 			<xsl:for-each select="gmd:credit/gco:CharacterString">
 				<Field name="credit" string="{string(.)}" store="true" index="true"/>
 			</xsl:for-each>
-			
 			
 			<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->		
 
