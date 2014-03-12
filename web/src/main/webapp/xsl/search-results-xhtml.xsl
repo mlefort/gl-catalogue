@@ -590,8 +590,8 @@
 								<xsl:with-param name="metadata" select="$metadata"/>
 								<xsl:with-param name="remote" select="$remote"/>
 							</xsl:call-template>
-							<!-- notify whether additional downloads would be available if logged in -->
-							<xsl:if test="$metadata/geonet:info/guestdownload='true' and 
+				-->			<!-- notify whether additional downloads would be available if logged in -->
+				<!--			<xsl:if test="$metadata/geonet:info/guestdownload='true' and 
 													/root/gui/session/userId='' and
 													count($metadata/link[@type='download'])>0">
 								&#160;
