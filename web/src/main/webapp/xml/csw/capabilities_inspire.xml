@@ -244,6 +244,66 @@
 
                 <inspire_com:KeywordValue>Orthoimagery</inspire_com:KeywordValue>
             </inspire_com:Keyword>
+            <inspire_com:Keyword xsi:type="inspire_com:inspireTheme_eng">
+                <inspire_com:OriginatingControlledVocabulary>
+                    <inspire_com:Title>GEMET - INSPIRE themes</inspire_com:Title>
+                    <inspire_com:DateOfPublication>2008-06-01</inspire_com:DateOfPublication>
+                </inspire_com:OriginatingControlledVocabulary>
+
+                <inspire_com:KeywordValue>Elevation</inspire_com:KeywordValue>
+            </inspire_com:Keyword>
+
+            <inspire_com:Keyword xsi:type="inspire_com:inspireTheme_eng">
+                <inspire_com:OriginatingControlledVocabulary>
+                    <inspire_com:Title>GEMET - INSPIRE themes</inspire_com:Title>
+                    <inspire_com:DateOfPublication>2008-06-01</inspire_com:DateOfPublication>
+                </inspire_com:OriginatingControlledVocabulary>
+
+                <inspire_com:KeywordValue>Transport networks</inspire_com:KeywordValue>
+            </inspire_com:Keyword>
+
+            <inspire_com:Keyword xsi:type="inspire_com:inspireTheme_eng">
+                <inspire_com:OriginatingControlledVocabulary>
+                    <inspire_com:Title>GEMET - INSPIRE themes</inspire_com:Title>
+                    <inspire_com:DateOfPublication>2008-06-01</inspire_com:DateOfPublication>
+                </inspire_com:OriginatingControlledVocabulary>
+
+                <inspire_com:KeywordValue>Human health and safety</inspire_com:KeywordValue>
+            </inspire_com:Keyword>
+
+            <inspire_com:Keyword xsi:type="inspire_com:inspireTheme_eng">
+                <inspire_com:OriginatingControlledVocabulary>
+                    <inspire_com:Title>GEMET - INSPIRE themes</inspire_com:Title>
+                    <inspire_com:DateOfPublication>2008-06-01</inspire_com:DateOfPublication>
+                </inspire_com:OriginatingControlledVocabulary>
+
+                <inspire_com:KeywordValue>Cadastral parcels</inspire_com:KeywordValue>
+            </inspire_com:Keyword>
+            <inspire_com:Keyword xsi:type="inspire_com:inspireTheme_eng">
+                <inspire_com:OriginatingControlledVocabulary>
+                    <inspire_com:Title>GEMET - INSPIRE themes</inspire_com:Title>
+                    <inspire_com:DateOfPublication>2008-06-01</inspire_com:DateOfPublication>
+                </inspire_com:OriginatingControlledVocabulary>
+
+                <inspire_com:KeywordValue>Buildings</inspire_com:KeywordValue>
+            </inspire_com:Keyword>
+            <inspire_com:Keyword xsi:type="inspire_com:inspireTheme_eng">
+                <inspire_com:OriginatingControlledVocabulary>
+                    <inspire_com:Title>GEMET - INSPIRE themes</inspire_com:Title>
+                    <inspire_com:DateOfPublication>2008-06-01</inspire_com:DateOfPublication>
+                </inspire_com:OriginatingControlledVocabulary>
+
+                <inspire_com:KeywordValue>Area management/restriction/regulation zones and reporting units</inspire_com:KeywordValue>
+            </inspire_com:Keyword>
+
+            <inspire_com:Keyword xsi:type="inspire_com:inspireTheme_eng">
+                <inspire_com:OriginatingControlledVocabulary>
+                    <inspire_com:Title>GEMET - INSPIRE themes</inspire_com:Title>
+                    <inspire_com:DateOfPublication>2008-06-01</inspire_com:DateOfPublication>
+                </inspire_com:OriginatingControlledVocabulary>
+
+                <inspire_com:KeywordValue>Environmental monitoring facilities</inspire_com:KeywordValue>
+            </inspire_com:Keyword>
 
 			<inspire_com:SupportedLanguages>
             <!--
