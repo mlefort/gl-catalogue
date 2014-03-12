@@ -268,7 +268,7 @@ GeoNetwork.FacetsPanel = Ext.extend(Ext.Panel, {
         var data = {
             facet : node.nodeName,
             node : node.getAttribute('name'),
-            label : node.getAttribute('label'),
+            label : node.getAttribute('label') || OpenLayers.i18n(node.getAttribute('name')),
             count : node.getAttribute('count')
         };
         // Only display a facet if it's not part of current filter
