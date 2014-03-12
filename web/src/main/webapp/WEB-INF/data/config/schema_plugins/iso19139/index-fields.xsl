@@ -484,17 +484,34 @@
 			  	</xsl:if>
 
                 <!-- ignore WMS links without protocol (are indexed below with mimetype application/vnd.ogc.wms_xml) -->
-                <xsl:if test="not($wmsLinkNoProtocol)">
+                <xsl:if test="not($wmsLinkNoProtocol) and not(contains($protocol, 'WFS')) and not(contains($protocol, 'WCS')) and not(contains($protocol, 'DB:POSTGIS'))">
                     <Field name="link" string="{concat($title, '|', $desc, '|', $linkage, '|', $protocol, '|', $mimetype)}" store="true" index="false"/>
                 </xsl:if>
 
 				<!-- Add KML link if WMS -->
+<!--
 				<xsl:if test="starts-with($protocol,'OGC:WMS-') and contains($protocol,'-get-map') and string($linkage)!='' and string($title)!=''">
-					<!-- FIXME : relative path -->
 					<Field name="link" string="{concat($title, '|', $desc, '|', 
 						'../../srv/en/google.kml?uuid=', /gmd:MD_Metadata/gmd:fileIdentifier/gco:CharacterString, '&amp;layers=', $title, 
 						'|application/vnd.google-earth.kml+xml|application/vnd.google-earth.kml+xml')}" store="true" index="false"/>					
 				</xsl:if>
+-->
+                               <!-- Generate a KML output link for a WFS service -->
+                               <xsl:variable name="database">
+                                        <xsl:choose>
+                                                <xsl:when test="contains(string($linkage),'smartdata')">smartdata</xsl:when>
+                                                <xsl:otherwise>grandlyon</xsl:otherwise>
+                                        </xsl:choose>
+                               </xsl:variable>
+                               <xsl:if test="starts-with($protocol,'OGC:WFS') and contains(string($desc),'shape-zip') and string($linkage)!='' and string($title)!=''">
+                                       <Field name="link" string="{concat($title, '|', $desc, '|', $linkage ,
+                                               '|application/zip|application/zip')}" store="true" index="false"/>
+                               </xsl:if>
+                               <xsl:if test="starts-with($protocol,'OGC:WFS') and not(contains(string($desc),'shape-zip')) and string($linkage)!='' and string($title)!=''">
+                                        <Field name="link" string="{concat($title, '|', $desc, '|',
+                                               'https','://','download.data.grandlyon.com/kml/',$database,'/?request=list&amp;typename=',$title,
+                                               '|application/vnd.google-earth.kml+xml|application/vnd.google-earth.kml+xml')}" store="true" index="false"/>
+                               </xsl:if>
 				
 				<!-- Try to detect Web Map Context by checking protocol or file extension -->
 				<xsl:if test="starts-with($protocol,'OGC:WMC') or contains($linkage,'.wmc')">

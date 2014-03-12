@@ -577,14 +577,15 @@
 					<!-- download data button -->
 					<xsl:choose>
 						<!-- add download button if have download privilege and downloads are available -->
-						<xsl:when test="$metadata/geonet:info/download='true' and count($metadata/link[@type='download'])>0">
+				<!--		<xsl:when test="$metadata/geonet:info/download='true' and count($metadata/link[@type='download'])>0">
 							<xsl:call-template name="download-button">
 								<xsl:with-param name="metadata" select="$metadata"/>
 								<xsl:with-param name="remote" select="$remote"/>
 							</xsl:call-template>
 						</xsl:when>
-						<!-- or when the metadata has associated data url's -->
-						<xsl:when test="count($metadata/link[@type='dataurl'])>0">
+				-->
+                                  		<!-- or when the metadata has associated data url's -->
+				<!--		<xsl:when test="count($metadata/link[@type='dataurl'])>0">
 							<xsl:call-template name="download-button">
 								<xsl:with-param name="metadata" select="$metadata"/>
 								<xsl:with-param name="remote" select="$remote"/>
@@ -597,14 +598,15 @@
 								<xsl:copy-of select="/root/gui/strings/guestDownloadExtra/node()"/>
 							</xsl:if>
 						</xsl:when>
-						
+				-->		
 						<!-- or notify that downloads would be available if logged in when downloads available to GUEST -->
-						<xsl:when test="$metadata/geonet:info/guestdownload='true' and 
+				<!--		<xsl:when test="$metadata/geonet:info/guestdownload='true' and 
 													/root/gui/session/userId='' and
 													count($metadata/link[@type='download'])>0">
 							&#160;
 							<xsl:copy-of select="/root/gui/strings/guestDownload/node()"/>
 						</xsl:when>
+				-->
 					</xsl:choose>
 
 					<!-- dynamic map button -->

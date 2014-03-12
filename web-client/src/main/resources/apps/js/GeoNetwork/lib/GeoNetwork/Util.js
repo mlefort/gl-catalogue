@@ -156,6 +156,7 @@ GeoNetwork.Util = {
         'OGC:WMS': 'addLayer',
         'application/vnd.google-earth.kml+xml': 'md-mn-kml',
         'application/zip': 'md-mn-zip',
+        'application/json': 'md-mn-json',
         'WWW:DOWNLOAD-1.0-http--download': 'md-mn-zip',
         'application/x-compressed': 'md-mn-zip',
         'text/html': 'md-mn-www',
