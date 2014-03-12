@@ -157,6 +157,7 @@ GeoNetwork.Util = {
         'application/vnd.google-earth.kml+xml': 'md-mn-kml',
         'application/zip': 'md-mn-zip',
         'application/json': 'md-mn-json',
+        'application/pdf': 'md-mn-pdf',
         'WWW:DOWNLOAD-1.0-http--download': 'md-mn-zip',
         'application/x-compressed': 'md-mn-zip',
         'text/html': 'md-mn-www',
