@@ -10,7 +10,7 @@
   goog.require('gn_importxsl');
 
   var module = angular.module('gn_harvest_controller',
-      ['gn_harvester', 'gn_category']);
+      ['gn_harvester', 'gn_category', 'gn_importxsl']);
 
 
   /**
@@ -61,7 +61,8 @@
       }
 
       function loadHarvesterTypes() {
-        $http.get('admin.harvester.info@json?type=harvesterTypes', {cache: true})
+        $http.get('admin.harvester.info@json?type=harvesterTypes',
+            {cache: true})
         .success(function(data) {
               angular.forEach(data[0], function(value) {
                 $scope.harvesterTypes[value] = {

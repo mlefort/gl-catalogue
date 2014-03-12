@@ -80,12 +80,12 @@ GeoNetwork.Settings.tagCloud = {
 };
 
 // List of facet to display. If none, the server configuration is use.
-GeoNetwork.Settings.facetListConfig = [{name: 'orgNames'}, 
+GeoNetwork.Settings.facetListConfig = [{name: 'categories'},
+                                       {name: 'createDateYears'},
+                                       {name: 'denominators'},
+                                       {name: 'orgNames'},
                                        {name: 'types'},  
-                                       {name: 'serviceTypes'}, 
-                                       {name: 'denominators'}, 
-                                       {name: 'keywords'}, 
-                                       {name: 'createDateYears'}];
+                                       {name: 'serviceTypes'}];
 GeoNetwork.Settings.facetMaxItems = 7;
 
 // Latest update info query
