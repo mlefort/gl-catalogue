@@ -182,14 +182,14 @@ Ext.extend(GeoNetwork.wms.BrowserPanel, Ext.Panel, {
         this.typeRadio = new Ext.form.RadioGroup({
             items : [ {
                 name : 'addWmsType',
-                fieldLabel : 'Search WMS', // TODO : translate
+                fieldLabel : 'Rechercher un WMS', // TODO : translate
                 labelSeparator: '',
                 inputValue : 0,
                 checked : true
             }, {
                 name : 'addWmsType',
                 labelSeparator: '',
-                fieldLabel : ' or add by URL',  // TODO : translate
+                fieldLabel : ' ou ajouter une URL',  // TODO : translate
                 inputValue : 1
             }],
             listeners : {
@@ -209,7 +209,7 @@ Ext.extend(GeoNetwork.wms.BrowserPanel, Ext.Panel, {
             name: 'wmsurl',
             hideLabel : true,
             hidden : true,
-            emptyText : 'WMS server URL ...',   // TODO translate
+            emptyText : 'URL du serveur WMS',   // TODO translate
             width: 250, autoHeight: true
         });
         this.form.add(this.urlField);
@@ -238,7 +238,7 @@ Ext.extend(GeoNetwork.wms.BrowserPanel, Ext.Panel, {
             store: mdStore,
             columns: [
                 checkboxSM,
-                {id: 'title', header: 'Title', dataIndex: 'title'}
+                {id: 'title', header: 'Titre', dataIndex: 'title'}
             ],
             sm: checkboxSM,
             autoExpandColumn: 'title',

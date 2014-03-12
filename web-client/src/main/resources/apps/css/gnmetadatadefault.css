@@ -157,7 +157,7 @@ label + span {
 .metadata * legend {
   font-size : 110%;
   font-weight : bold;
-  color : #016599;
+  color : #3e3d40;
   padding : 5px 0px 4px 0px;
 }
 
@@ -295,6 +295,7 @@ for long description */
   padding : 0px;
   margin : 0px;
   width : 100%;
+  font-size : 11px;
 }
 .metadata * table.gn > tbody > tr {
 
@@ -323,12 +324,13 @@ table.related {
   border-collapse: collapse;
   border-spacing: 0px;
   width: 100%;
+  font-size : 11px;
 }
 table.related > tbody > tr {
   height : 30px;
 }
 table.related > tbody > tr > td {
-  color : #069;
+  color : #87888a;
   border-top : 1px solid #D9AF71;
   border-bottom : 1px solid #D9AF71;
 }
@@ -347,7 +349,7 @@ table.gn {
 table.gn > tbody > tr > td,
 table.gn > tbody > tr > th {
   border-bottom : 1px solid #B3D4E6;
-  color : #069;
+  color : #3e3d40;
 }
 
 table.gn > tbody > tr > th.complex,
@@ -362,6 +364,7 @@ table.gn > tbody > tr > th.main {
 
 table.map > tbody > tr > td {
   text-align : center;
+  font-size : 11px;
 }
 table.map > tbody > tr > td > input,
 table.map > tbody > tr > td > label {

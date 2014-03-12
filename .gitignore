@@ -52,3 +52,4 @@ e2e-tests/node
 e2e-tests/node_modules
 web-ui-docs/node
 web-ui-docs/node_modules
+web/src/main/webapp/WEB-INF/classes/setup/sql-grandlyon/migrate/*.log

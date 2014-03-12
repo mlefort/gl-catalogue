@@ -16,9 +16,16 @@
 }
 */
 .md-view ul li * h1 {
-  color : #0076A1;
+  color : #3e23d40;
   font-size : small;
   margin-bottom : 5px;
+}
+
+.md-view * a {
+  color : #3e3d40 !important;
+}
+.md-view * a:hover {
+  color : #e2001a !important;
 }
 
 .md-view div.relation {
@@ -207,7 +214,7 @@ span.md-action-menu {
   padding-left : 0px !important;
 }*/
 .md-view * p {
-  color : #444;
+  color : #3e3d40;
 }
 
 .md-view * .md-links {
@@ -239,9 +246,10 @@ Display hyperlink as text next to element
 }*/
 
 .md-view * p.abstract {
+  font-size : 80%;
 }
 .md-view * .subject {
-  font-size : 80%;
+  font-size : 65%;
   text-transform : uppercase;
 }
 .md-view ul li.md-full div,

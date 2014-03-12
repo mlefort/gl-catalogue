@@ -443,10 +443,15 @@ GeoNetwork.MetadataResultsToolbar = Ext.extend(Ext.Toolbar, {
         var tpls = this.metadataResultsView.getTemplates();
         var data = [];
         var t;
+        var tooltip;
         for (t in tpls) {
+            if(t=="FULL")tooltip="Affichage en mode Complet";
+            if(t=="SIMPLE")tooltip="Affichage en mode Liste";
+            if(t=="THUMBNAIL")tooltip="Affichage en mode Aperçu";
             if (tpls.hasOwnProperty(t)) {
                 var tg = new Ext.Button({
                     text: '',
+                    tooltip: tooltip,
                     enableToggle: true,
                     toggleGroup: 'tpl',
                     id: t,

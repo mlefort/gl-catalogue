@@ -18,13 +18,15 @@
       <channel>
 
         <title>
-          <xsl:value-of select="concat($env/system/site/name, ' (', $env/system/site/organization, ')')"/>
+          <!--<xsl:value-of select="concat($env/system/site/name, ' (', $env/system/site/organization, ')')"/>-->
+          SmartData : accès aux données publiques du territoire du Grand Lyon
         </title>
         <link>
           <xsl:value-of select="$baseURL"/>
         </link>
         <description>
           <!-- TODO : use CSW abstract here or a new setting -->
+          Pour soutenir l'innovation, le développement économique, la création de nouveaux services et encourager la participation citoyenne, le Grand Lyon et ses partenaires mettent à disposition sur la plateforme Grand Lyon SmartData une partie de leurs données de référence et de gestion. Cette plateforme est compatible avec les exigences de la directive Inspire.
         </description>
         <language>
           <xsl:value-of select="$lang"/>
