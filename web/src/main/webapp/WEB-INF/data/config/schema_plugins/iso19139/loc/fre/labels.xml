@@ -2871,7 +2871,7 @@ période de temps couverte par le service.
     <condition>Condition</condition>
     <!--
       Only relevant for France-->
-      <helper editorMode="radio_withdesc">
+      <helper editorMode="radio">
       <option value="Pas de restriction d’accès public selon INSPIRE" title="Aucun des articles de la loi ne peut être invoqué pour justifier d’une restriction d’accès public.">Pas de restriction d’accès public selon INSPIRE</option>
       <option value="L124-4-I-1 du code de l’environnement (Directive 2007/2/CE (INSPIRE), Article 13.1.a)" 
         title="La confidentialité des travaux des autorités publiques, lorsque cette confidentialité est prévue par la loi.">Confidentialité des travaux des autorités publiques</option>
