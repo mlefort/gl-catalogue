@@ -485,7 +485,6 @@
               gmd:date[gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'creation']"
               if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification) > 0">
               <template>
-                <!-- TODO: support datetime-->
                 <values>
                   <key label="date" xpath="gmd:CI_Date/gmd:date/*" use="gn-date-picker"/>
                 </values>
@@ -625,10 +624,15 @@
                 <!-- -Need a * for gml:TimePeriodTypeCHOICE_ELEMENT2 added by editor enumerated tree -->
                 <key label="beginPosition"
                   xpath="gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/*/gml:beginPosition"
-                  use="date"/>
+                  use="gn-date-picker">
+                  <directiveAttributes data-tag-name=""/>
+                </key>
                 <key label="endPosition"
-                  xpath="gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/*/gml:endPosition" use="date"
-                />
+                  xpath="gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/*/gml:endPosition"
+                  use="gn-date-picker"
+                >
+                  <directiveAttributes data-tag-name=""/>
+                </key>
                 <key label="indeterminatePosition"
                      xpath="gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/*/gml:endPosition/@indeterminatePosition">
                   <codelist name="indeterminatePosition"/>
@@ -656,9 +660,10 @@
               <values>
                 <key label="beginPosition"
                      xpath="gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/*/gml:beginPosition"
-                     use="date"/>
+                     use="gn-date-picker"/>
                 <key label="endPosition"
-                     xpath="gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/*/gml:endPosition" use="date"
+                     xpath="gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/*/gml:endPosition"
+                     use="gn-date-picker"
                     />
                 <key label="indeterminatePosition"
                      xpath="gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/*/gml:endPosition/@indeterminatePosition"
@@ -687,10 +692,10 @@
             or="spatialResolution" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
           </field>-->
           <field
-            xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialResolution"> </field>
+              xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialResolution[gmd:MD_Resolution/gmd:equivalentScale]"/>
 
           <action type="add" name="spatialResolution" or="spatialResolution"
-            in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
+                  in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
             <template>
               <snippet>
                 <gmd:spatialResolution>
@@ -707,22 +712,24 @@
               </snippet>
             </template>
           </action>
-          <!-- <action type="add"
-            name="spatialDistance"
-            or="spatialResolution" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
+
+          <field
+              xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:spatialResolution[gmd:MD_Resolution/gmd:distance]"/>
+          <action type="add"
+                  name="spatialDistance"
+                  or="spatialResolution" in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification">
             <template>
               <snippet>
                 <gmd:spatialResolution>
                   <gmd:MD_Resolution>
                     <gmd:distance uom="m">
                       <gco:Integer/>
-                    </gmd:distance:>
+                    </gmd:distance>
                   </gmd:MD_Resolution>
                 </gmd:spatialResolution>
               </snippet>
             </template>
           </action>
-          -->
 
 
           <field name="conformity" templateModeOnly="true"
