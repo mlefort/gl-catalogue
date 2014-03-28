@@ -1367,7 +1367,7 @@
 			<description>Informations appliquées aux caractéristiques de la collection de données</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>nonGeographicDataset</code>
 			<label>Jeux de données non géographiques</label>
 			<description>Informations appliquées aux caractéristiques de jeux de données non géographiques</description>
