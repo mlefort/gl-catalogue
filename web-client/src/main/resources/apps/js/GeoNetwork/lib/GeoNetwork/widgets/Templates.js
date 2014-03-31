@@ -166,7 +166,7 @@ GeoNetwork.Templates.THUMBNAIL = new Ext.XTemplate(
                     GeoNetwork.Templates.SHORT_TITLE,
                     '<div class="thumbnail">',
                         '<tpl if="thumbnail">',
-                            '<a rel="lightbox" href="{overview}"><img src="{thumbnail}" alt="Thumbnail"/></a>', 
+                            '<a rel="lightbox" href="{overview}"><img src="{thumbnail}" alt="Aperçu"/></a>', 
                         '</tpl>',
                         '<tpl if="thumbnail==\'\'"></tpl>',
                     '</div>',

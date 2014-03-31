@@ -589,6 +589,30 @@
                               '{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}', 
                               '{gmd:CI_OnlineResource/gmd:name/gco:CharacterString}', '{generate-id()}']]);">&#160;</a>
                   </xsl:if>
+
+                  <!-- Display json picto for JSON format -->
+                  <xsl:if test="(contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'download.data.grandlyon.com/ws') or contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'secure.grandlyon.webmapping.fr/ws')) and contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'.json')">
+                    &#160;
+                    <a href="{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}" target="blank" class="md-mn md-mn-json" title="Format JSON">&#160;</a>
+                  </xsl:if>
+
+                  <!-- Display ZIP for WFS shape-zip -->
+                  <xsl:if test="contains(current-grouping-key(), 'WFS') and contains(gmd:CI_OnlineResource/gmd:description/gco:CharacterString, 'shape-zip')">
+                    &#160;
+                    <a href="{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}" class="md-mn md-mn-zip" title="Télécharger">&#160;</a>
+                  </xsl:if>
+
+                  <!-- Display open KML for WFS -->
+                  <xsl:if test="contains(current-grouping-key(), 'WFS') and not(contains(gmd:CI_OnlineResource/gmd:description/gco:CharacterString, 'shape-zip'))">
+                    &#160;
+                    <xsl:variable name="database">
+                      <xsl:choose>
+                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'smartdata') ">smartdata</xsl:when>
+                        <xsl:otherwise>grandlyon</xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:variable>
+                    <a href="https://download.data.grandlyon.com/kml/{$database}/?request=list&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-kml" title="Visualiser avec GoogleEarth">&#160;</a>
+                  </xsl:if>
                 </li>
               </xsl:for-each>
             </ul>

@@ -344,6 +344,9 @@ table.related * a:hover,
 .md-mn-www {
   background-image : url(../apps/images/default/link.png);
 }
+.md-mn-json {
+  background-image : url(../apps/images/default/format-json.png);
+}
 .xmlIcon {
   background-image : url(../apps/images/default/page_code.png);
 }
