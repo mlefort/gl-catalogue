@@ -9,12 +9,14 @@
   
   <xsl:template name="get-iso19139-online-source-config">
     <xsl:param name="pattern"/>
+
     <config>
       <xsl:for-each select="$metadata/descendant::gmd:onLine[
         matches(
         gmd:CI_OnlineResource/gmd:protocol/gco:CharacterString,
         $pattern) and
         normalize-space(gmd:CI_OnlineResource/gmd:linkage/gmd:URL) != '']">
+
         <xsl:variable name="protocol" select="gmd:CI_OnlineResource/gmd:protocol/gco:CharacterString"/>
         <xsl:variable name="fileName">
           <xsl:choose>
