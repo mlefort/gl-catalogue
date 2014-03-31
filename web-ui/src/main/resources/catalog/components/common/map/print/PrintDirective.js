@@ -6,7 +6,9 @@
       [
        'pascalprecht.translate']);
 
-  module.controller('GaPrintDirectiveController', function($scope, $http,
+  module.controller('GaPrintDirectiveController', [
+    '$scope', '$http',
+    '$window', '$translate', '$document', function($scope, $http,
       $window, $translate, $document) {
 
         var waitclass = 'ga-print-wait';
@@ -714,10 +716,10 @@
             //        deactivate();
           }
         });
-      });
+      }]);
 
   module.directive('gaPrint',
-      function($http, $log, $translate, gnCurrentEdit) {
+      ['gnCurrentEdit', function(gnCurrentEdit) {
         return {
           restrict: 'A',
           templateUrl: '../../catalog/components/common/map/' +
@@ -728,5 +730,5 @@
             scope.gnCurrentEdit = gnCurrentEdit;
           }
         };
-      });
+      }]);
 })();
