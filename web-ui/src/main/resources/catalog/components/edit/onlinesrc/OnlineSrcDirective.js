@@ -79,20 +79,20 @@
                       scope.relations = data;
                     });
               };
-              scope.isCategoryEnable = function (category) {
+              scope.isCategoryEnable = function(category) {
                 var config = gnCurrentEdit.schemaConfig.related;
                 if (config.readonly === true) {
                   return false;
                 } else {
                   if (config.categories &&
-                    config.categories.length > 0 &&
-                    $.inArray(category, config.categories) === -1) {
+                      config.categories.length > 0 &&
+                      $.inArray(category, config.categories) === -1) {
                     return false;
                   } else {
                     return true;
                   }
                 }
-              }
+              };
 
               // Reload relations when a directive requires it
               scope.$watch('onlinesrcService.reload', function() {
@@ -163,7 +163,7 @@
                   if (!scope.loaded) {
                     scope.map = new ol.Map({
                       layers: [],
-                      renderer: ol.RendererHint.CANVAS,
+                      renderer: 'canvas',
                       view: new ol.View2D({
                         center: [0, 0],
                         projection: gnMap.getMapConfig().projection,
@@ -192,7 +192,8 @@
                       source: new ol.source.TileWMS({
                         url: layer.url,
                         params: {
-                          'LAYERS': layer.name
+                          'LAYERS': layer.name,
+                          'URL': layer.url
                         }
                       })
                     }));
