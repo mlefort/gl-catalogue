@@ -119,7 +119,9 @@
               * 'multiplelist' for multiple selection list
         -->
         <xsl:variable name="widgetMode" select="'tagsinput'"/>
-        <xsl:variable name="maxTags" select="''"/>
+        <xsl:variable name="maxTags"
+                      select="if ($thesaurusKey = 'external.theme.inspire-theme') then '1' else ''"/>
+
         <!--
           Example: to restrict number of keyword to 1 for INSPIRE
           <xsl:variable name="maxTags" 
