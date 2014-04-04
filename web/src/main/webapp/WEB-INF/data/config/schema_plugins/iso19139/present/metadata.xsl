@@ -3253,14 +3253,16 @@
                         </xsl:if>
 
 
-                        <!-- Generate a KML output link for a WFS service -->
+                        <!-- Generate KML and GeoJSON output links for a WFS service -->
                         <xsl:if test="string($linkage)!='' and starts-with($protocol,'OGC:WFS') and not(contains(string($desc),'shape-zip')) and string($name)!=''">
                                 <xsl:variable name="database">
                                         <xsl:choose>
-                                                <xsl:when test="contains(string($linkage),'smartdata')">smartdata</xsl:when>
-                                                <xsl:otherwise>grandlyon</xsl:otherwise>
+                                                <xsl:when test="contains(string($linkage),'sxmartdata')">smartdata</xsl:when>
+                                                <xsl:otherwise>gxrandlyon</xsl:otherwise>
                                         </xsl:choose>
                                 </xsl:variable>
+                                
+                                <!-- KML output link -->
                                 <xsl:element name="link">
                                         <xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
                                         <xsl:attribute name="href">
@@ -3269,7 +3271,18 @@
                                         <xsl:attribute name="name"><xsl:value-of select="$name"/></xsl:attribute>
                                         <xsl:attribute name="type">application/vnd.google-earth.kml+xml</xsl:attribute>
                                 </xsl:element>
+
+                                <!-- GeoJSON output link  -->
+                                <xsl:element name="link">
+                                        <xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
+                                        <xsl:attribute name="href">
+                                                <xsl:value-of select="concat('https','://','download.data.grandlyon.com/wfs/',$database,'/?SERVICE=WFS&amp;VERSION=1.1.0&amp;outputformat=GEOJSON&amp;maxfeatures=30&amp;request=GetFeature&amp;typename=',$name)"/>
+                                        </xsl:attribute>
+                                        <xsl:attribute name="name"><xsl:value-of select="$name"/></xsl:attribute>
+                                        <xsl:attribute name="type">application/json</xsl:attribute>
+                                </xsl:element>
                         </xsl:if>
+
 
                         <!-- Generate a ZIP output link for a WFS shape-zip service -->
                         <xsl:if test="string($linkage)!='' and starts-with($protocol,'OGC:WFS') and contains(string($desc),'shape-zip') and string($name)!=''">
