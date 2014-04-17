@@ -347,6 +347,9 @@ table.related * a:hover,
 .md-mn-json {
   background-image : url(../apps/images/default/format-json.png);
 }
+.md-mn-geojson {
+  background-image : url(../apps/images/default/format-geojson.png);
+}
 .xmlIcon {
   background-image : url(../apps/images/default/page_code.png);
 }

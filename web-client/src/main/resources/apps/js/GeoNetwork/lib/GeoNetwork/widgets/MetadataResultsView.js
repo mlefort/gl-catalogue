@@ -680,8 +680,12 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
             var handler = linkButton[0].handler || function () {
                 window.open(linkButton[0].href);
             };
+            btnLabel = " ";
+            if(currentType == "FILE:RASTER") btnLabel = label; 
             bt = new Ext.Button({
-                text: label,
+                //text: label,
+                text: btnLabel,
+                scale: "large",
                 tooltip: linkButton[0].text,
                 handler: handler,
                 iconCls: GeoNetwork.Util.protocolToCSS[currentType] || currentType,
@@ -689,7 +693,9 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
             });
         } else {
             bt = new Ext.Button({
-                text: label,
+                //text: label,
+                text: btnLabel,
+                scale: "large",
                 menu: new Ext.menu.Menu({cls: 'links-mn', items: linkButton}),
                 iconCls: GeoNetwork.Util.protocolToCSS[currentType] || currentType,
                 renderTo: el

@@ -59,8 +59,8 @@
 
 .md-view div.relation ul li,
 table.related * li {
-  float : left;
-  width : 200px;
+  /*float : left;*/
+  /*width : 200px;*/
   line-height : initial !important;
   word-wrap: break-word;
   padding: 2px;
@@ -287,13 +287,15 @@ Display hyperlink as text next to element
   background-image : url(../apps/images/default/user.png) !important;
 }
 .md-mn-pdf {
-  background-image : url(../apps/images/default/page_white_acrobat.png) !important;
+ /*background-image : url(../apps/images/default/page_white_acrobat.png) !important;*/
+ background-image : url(../apps/images/default/format-pdf.png) !important;
 }
 .md-mn-badd {
   background-image : url(../apps/images/default/brick_add.png) !important;
 }
 .md-mn-zip {
-  background-image : url(../apps/images/default/page_white_zip.png) !important;
+  /*background-image : url(../apps/images/default/page_white_zip.png) !important;*/
+  background-image : url(../apps/images/default/format-zip.png) !important;
 }
 .md-mn-ftp {
   background-image : url(../apps/images/default/folder.png) !important;
