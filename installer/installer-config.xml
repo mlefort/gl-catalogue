@@ -130,23 +130,11 @@
 		</pack>
 
 
-    <pack id="geoserver" name="GeoServer" required="no" preselected="yes">
-      <description/>
-      
-      <fileset dir="../geoserver/target/geoserver" targetdir="$INSTALL_PATH/web/geoserver"/>
-    	
-    	<!-- Unzipping when container start takes a long time on windows. 
-        <singlefile target="$INSTALL_PATH/web/geoserver.war" src="../geoserver/target/geoserver.war"
-        override="true"/>
-      -->
-    </pack>
-
-
     <pack id="inspire" name="European Union INSPIRE Directive configuration pack" required="no" preselected="no">
         <description/>
 
         <!-- Enable schematron rules -->
-        <singlefile src="../web/target/geonetwork/WEB-INF/data/config/schema_plugins/iso19139/schematron/schematron-rules-inspire.sch.disabled"
+        <singlefile src="../web/target/geonetwork/WEB-INF/data/config/schema_plugins/iso19139/schematron/schematron-rules-inspire.disabled.sch"
                     target="$INSTALL_PATH/web/geonetwork/WEB-INF/data/config/schema_plugins/iso19139/schematron/schematron-rules-inspire.sch"
                     override="true"/>
 
