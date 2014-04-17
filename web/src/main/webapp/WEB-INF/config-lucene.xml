@@ -133,6 +133,7 @@
       <field name="rights" tagName="rights"/>
       <field name="publisher" tagName="publisher"/>
       <field name="format" tagName="format"/>
+      <field name="_groupOwner" tagName="groupOwner"/>
     </dumpFields>
   </search>
 
