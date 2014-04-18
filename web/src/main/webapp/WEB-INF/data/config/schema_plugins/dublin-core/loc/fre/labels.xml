@@ -8,7 +8,6 @@
     <label>Titre</label>
     <description>Titre principal du document.</description>
   </element>
-
   <element name="dc:creator">
     <label>Créateur</label>
     <description>Nom de la personne, de l'organisation ou du service à l'origine de la rédaction du
