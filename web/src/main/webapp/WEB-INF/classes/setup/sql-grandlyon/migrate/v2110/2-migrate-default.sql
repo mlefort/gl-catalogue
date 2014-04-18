@@ -28,6 +28,8 @@ ALTER TABLE operations DROP COLUMN reserved;
 ALTER TABLE ServiceParameters DROP COLUMN id;
 ALTER TABLE services DROP COLUMN id;
 
+CREATE TABLE SettingsBackup AS SELECT * FROM SETTINGS;
+
 CREATE OR REPLACE FUNCTION gn_migrate_harvester(parentIdentifier INT) RETURNS integer AS
 $BODY$
 DECLARE
