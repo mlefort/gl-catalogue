@@ -22,6 +22,33 @@
     <example/>
     <helper>
       <option value="OpenData">OpenData</option>
+      <option value="Adresses">Adresses (GEMET - INSPIRE)</option>
+      <option value="Altitude">Altitude (GEMET - INSPIRE)</option>
+      <option value="Bâtiments">Bâtiments (GEMET - INSPIRE themes)</option>
+      <option value="Dénominations géographiques">Dénominations géographiques (GEMET - INSPIRE)</option>
+      <option value="Géologie">Géologie (GEMET - INSPIRE)</option>
+      <option value="Habitats et biotopes">Habitats et biotopes (GEMET - INSPIRE)</option>
+      <option value="Hydrographie">Hydrographie (GEMET - INSPIRE)</option>
+      <option value="Installation de suivi environnemental">Installation de suivi environnemental (GEMET - INSPIRE)</option>
+      <option value="Lieux de production et sites industriels">Lieux de production et sites industriels (GEMET - INSPIRE)</option>
+      <option value="Occupation des terres">Occupation des terres (GEMET - INSPIRE)</option>
+      <option value="Ortho-imagerie">Ortho-imagerie (GEMET - INSPIRE)</option>
+      <option value="Parcelles cadastrales">Parcelles cadastrales (GEMET - INSPIRE)</option>
+      <option value="Référentiels de coordonnées">Référentiels de coordonnées (GEMET - INSPIRE)</option>
+      <option value="Répartition de la population">Répartition de la population (GEMET - INSPIRE)</option>
+      <option value="Répartition des espèces">Répartition des espèces (GEMET - INSPIRE)</option>
+      <option value="Réseaux de transport">Réseaux de transport (GEMET - INSPIRE)</option>
+      <option value="Santé et sécurité des personnes">Santé et sécurité des personnes (GEMET - INSPIRE)</option>
+      <option value="Services d'utilité publique et services publics">Services d'utilité publique et services publics (GEMET - INSPIRE)</option>
+      <option value="Sites protégés">Sites protégés (GEMET - INSPIRE)</option>
+      <option value="Sols">Sols (GEMET - INSPIRE)</option>
+      <option value="Sources d'énergie">Sources d'énergie (GEMET - INSPIRE)</option>
+      <option value="Systèmes de maillage géographique">Systèmes de maillage géographique (GEMET - INSPIRE)</option>
+      <option value="Unités administratives">Unités administratives (GEMET - INSPIRE)</option>
+      <option value="Unités statistiques">Unités statistiques (GEMET - INSPIRE)</option>
+      <option value="Usage des sols">Usage des sols (GEMET - INSPIRE)</option>
+      <option value="Zones de gestion, de restriction ou de réglementation et unités de déclaration">Zones de gestion, de restriction ou de réglementation et unités de déclaration (GEMET - INSPIRE)</option>
+      <option value="Zones à risques naturels">Zones à risques naturels (GEMET - INSPIRE)</option>
     </helper>
   </element>
 
