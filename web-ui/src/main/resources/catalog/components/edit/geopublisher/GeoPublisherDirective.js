@@ -28,6 +28,7 @@
               scope.resources = angular.fromJson(scope.config);
               scope.hidden = true;
               scope.loaded = false;
+              scope.hasStyler = false;
 
               var map, gsNode;
 
@@ -109,17 +110,22 @@
                   gnEditor.save(true);
                 });
               };
-
+              scope.openStyler = function() {
+                window.open(gsNode.stylerUrl +
+                  "?namespace=" + gsNode.namespacePrefix +
+                  "&layer=" + gsNode.namespacePrefix +
+                  ':' + scope.wmsLayerName);
+              };
               /**
                * Dirty check if the node is a Mapserver REST API
                * or a GeoServer REST API.
                *
-               * @param gsNode
-               * @returns {boolean}
+               * @param {Object} gsNode
+               * @return {boolean}
                */
-              var isMRA = function (gsNode) {
+              var isMRA = function(gsNode) {
                 return gsNode.adminUrl.indexOf('/mra') !== -1;
-              }
+              };
               /**
                * Add the layer of the node to the current
                * map.
@@ -127,8 +133,8 @@
               var addLayerToMap = function(layer) {
                 // TODO: drop existing layer before adding new
                 var layerName = isMRA(gsNode) ?
-                  scope.wmsLayerName :
-                  gsNode.namespacePrefix +
+                    scope.wmsLayerName :
+                    gsNode.namespacePrefix +
                     ':' + scope.wmsLayerName;
 
                 map.addLayer(new ol.layer.Tile({
@@ -194,6 +200,7 @@
               scope.selectNode = function(nodeId) {
                 gsNode = getNodeById(nodeId);
                 scope.checkNode(nodeId);
+                scope.hasStyler = !angular.isArray(gsNode.stylerUrl);
               };
 
               /**
