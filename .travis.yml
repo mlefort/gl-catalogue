@@ -1,1 +1,6 @@
-Language: java
+language: java
+jdk:
+  - oraclejdk7
+  - openjdk6
+before_install:
+  - export MAVEN_OPTS="-Xmx512M -XX:MaxPermSize=256M"
