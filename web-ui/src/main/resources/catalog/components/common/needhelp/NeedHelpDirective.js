@@ -43,26 +43,26 @@
 
       // Help configuration TODO: move to an external file or db ?
       var helpLinks = {
-        helpBaseUrl: 'http://geonetwork-opensource.org/manuals/trunk/',
+        helpBaseUrl: 'http://www.mongeosource.fr/docs/',
         defaultLang: 'eng',
         pages: {
           editor: {
-            eng: 'eng/users/quickstartguide/new_metadata/index.html',
-            fre: 'fra/users/editor/index.html'
+            eng: 'editor/index.html'
+            fre: 'editor/index.html'
           },
           editor_sharing: {
-            eng: 'eng/users/managing_metadata/ownership/index.html',
-            fre: 'fra/users/editor/metadata_ownership/index.html'
+            eng: 'editor/metadata_ownership/index.html',
+            fre: 'editor/metadata_ownership/index.html'
           },
           editor_geopublisher: {
-            eng: 'eng/users/quickstartguide/new_metadata/linking.html' +
-                '#publish-uploaded-data-as-wms-wfs',
-            fre: 'fra/users/editor/metadata_link/linking.html' +
+            eng: 'editor/metadata_link/linking.html' +
+              '#publier-les-donnees-telechargees-en-wms-wfs-wcs',
+            fre: 'editor/metadata_link/linking.html' +
                 '#publier-les-donnees-telechargees-en-wms-wfs-wcs'
           },
           admin_settings: {
-            eng: 'eng/users/admin/configuration/index.html',
-            fre: 'fra/users/admin/configuration/index.html'
+            eng: 'admin/configuration/index.html',
+            fre: 'admin/configuration/index.html'
           }
         }
       };
