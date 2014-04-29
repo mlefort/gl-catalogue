@@ -47,7 +47,7 @@
         defaultLang: 'eng',
         pages: {
           editor: {
-            eng: 'editor/index.html'
+            eng: 'editor/index.html',
             fre: 'editor/index.html'
           },
           editor_sharing: {
