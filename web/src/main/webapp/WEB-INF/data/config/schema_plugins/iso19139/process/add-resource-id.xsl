@@ -67,20 +67,20 @@
                 gmd:date|
                 gmd:edition|
                 gmd:editionDate"/>
-
-          <!-- Create resource identifier based on metadata record identifier -->
-          <xsl:variable name="urlWithoutLang" select="substring-before($catalogUrl, $nodeId)"/>
-          <xsl:variable name="prefix" select="if ($resource-id-url-prefix != '') then $resource-id-url-prefix else $urlWithoutLang"/>
-          <xsl:variable name="code" select="concat($prefix, /*/gmd:fileIdentifier/gco:CharacterString)"/>
+            
+            <!-- Create resource identifier based on metadata record identifier -->
+            <xsl:variable name="urlWithoutLang" select="substring-before($catalogUrl, $nodeId)"/>
+            <xsl:variable name="prefix" select="if ($resource-id-url-prefix != '') then $resource-id-url-prefix else $urlWithoutLang"/>
+            <xsl:variable name="code" select="concat($prefix, /*/gmd:fileIdentifier/gco:CharacterString)"/>
 
             <xsl:copy-of
                 select="gmd:identifier[gmd:MD_Identifier/gmd:code/gco:CharacterString != $code]"/>
             <gmd:identifier>
-                <gmd:MD_Identifier>
-                    <gmd:code>
-                        <gco:CharacterString><xsl:value-of select="$code"/></gco:CharacterString>
-                    </gmd:code>
-                </gmd:MD_Identifier>
+              <gmd:MD_Identifier>
+                <gmd:code>
+                  <gco:CharacterString><xsl:value-of select="$code"/></gco:CharacterString>
+                </gmd:code>
+              </gmd:MD_Identifier>
             </gmd:identifier>
             
             <xsl:copy-of
