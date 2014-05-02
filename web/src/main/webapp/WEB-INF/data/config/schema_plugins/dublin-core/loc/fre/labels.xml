@@ -68,14 +68,14 @@
       du document.</description>
     <example/>
     <helper>
-      <option value="GRAND LYON (DAVI) Direction des assemblées et de la vie institutionnelle">GRAND LYON (DAVI) Direction des assemblées et de la vie institutionnelle</option>
-	    <option value="GRAND LYON (DE) Direction de l'eau">GRAND LYON (DE) Direction de l'eau</option>
-      <option value="GRAND LYON (DGDEI) Délégation générale au développement économique et international">GRAND LYON (DGDEI) Délégation générale au développement économique et international</option>
-	    <option value="GRAND LYON (DGDU) Délégation générale au développement urbain">GRAND LYON (DGDU) Délégation générale au développement urbain</option>
-	    <option value="GRAND LYON (DP) Direction de la propreté">GRAND LYON (DP) Direction de la propreté</option>
-	    <option value="GRAND LYON (DSIT) Direction des systèmes d'informations et de télécommunications">GRAND LYON (DSIT) Direction des systèmes d'informations et de télécommunications</option>
-	    <option value="GRAND LYON (DV) Direction de la voirie">GRAND LYON (DV) Direction de la voirie</option>
-	    <option value="VILLE DE LYON / DSIT / Service Opérations">VILLE DE LYON / DSIT / Service Opérations</option>
+    	<option value="GRAND LYON (DAVI) Direction des assemblées et de la vie institutionnelle">GRAND LYON (DAVI) Direction des assemblées et de la vie institutionnelle</option>
+	<option value="GRAND LYON (DE) Direction de l'eau">GRAND LYON (DE) Direction de l'eau</option>
+	<option value="GRAND LYON (DGDEI) Délégation générale au développement économique et international">GRAND LYON (DGDEI) Délégation générale au développement économique et international</option>
+	<option value="GRAND LYON (DGDU) Délégation générale au développement urbain">GRAND LYON (DGDU) Délégation générale au développement urbain</option>
+	<option value="GRAND LYON (DP) Direction de la propreté">GRAND LYON (DP) Direction de la propreté</option>
+	<option value="GRAND LYON (DSIT) Direction des systèmes d'informations et de télécommunications">GRAND LYON (DSIT) Direction des systèmes d'informations et de télécommunications</option>
+	<option value="GRAND LYON (DV) Direction de la voirie">GRAND LYON (DV) Direction de la voirie</option>
+	<option value="VILLE DE LYON / DSIT / Service Opérations">VILLE DE LYON / DSIT / Service Opérations</option>
     </helper>
   </element>
 
@@ -108,17 +108,17 @@
     <description>Type MIME, ou format physique du document.</description>
     <example/>
     <helper>
-      <option value="text/plain">Fichier texte (text/plain)</option>
-      <option value="text/xml">XML (text/xml)</option>
-  	  <option value="text/csv">Fichier CSV (text/csv)</option>
-      <option value="application/pdf">Fichier PDF (application/pdf)</option>
-  	  <option value="application/json">Fichier JSON (application/json)</option>
-      <option value="application/xml">Fichier XML (application/xml)</option>
-  	  <option value="application/vnd.ms-excel">Fichier Excel (application/vnd.ms-excel)</option>
-      <option value="application/dxf">Fichier DXF (application/dxf)</option>
-      <option value="application/vnd.google-earth.kml+xml">Fichier KML (application/vnd.google-earth.kml+xml)</option>
-      <option value="application/zip">Fichier ZIP (application/zip)</option>
-      <option value="image/tiff">Image TIFF (image/tiff)</option>
+	<option value="text/plain">Fichier texte (text/plain)</option>
+	<option value="text/xml">XML (text/xml)</option>
+	<option value="text/csv">Fichier CSV (text/csv)</option>
+	<option value="application/pdf">Fichier PDF (application/pdf)</option>
+	<option value="application/json">Fichier JSON (application/json)</option>
+	<option value="application/xml">Fichier XML (application/xml)</option>
+	<option value="application/vnd.ms-excel">Fichier Excel (application/vnd.ms-excel)</option>
+	<option value="application/dxf">Fichier DXF (application/dxf)</option>
+	<option value="application/vnd.google-earth.kml+xml">Fichier KML (application/vnd.google-earth.kml+xml)</option>
+	<option value="application/zip">Fichier ZIP (application/zip)</option>
+	<option value="image/tiff">Image TIFF (image/tiff)</option>
     </helper>
   </element>
 
@@ -171,9 +171,9 @@
     <description>Droits de propriété intellectuelle, Copyright, droits de propriété divers.</description>
     <example/>
     <helper>
-      <option value="Licence Ouverte">Licence Ouverte (accès libre et gratuit)</option>
-      <option value="Licence Engagée">Licence Engagée (accès gratuit après authentification)</option>
-  	  <option value="Licence Associée">Licence Associée (souscription requise)</option>
+    	<option value="Licence Ouverte">Licence Ouverte (accès libre et gratuit)</option>
+	<option value="Licence Engagée">Licence Engagée (accès gratuit après authentification)</option>
+	<option value="Licence Associée">Licence Associée (souscription requise)</option>
     </helper>
   </element>
   
