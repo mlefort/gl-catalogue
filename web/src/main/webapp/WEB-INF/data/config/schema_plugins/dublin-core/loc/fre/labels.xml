@@ -271,11 +271,6 @@
     <description>A related resource that is referenced, cited, or otherwise pointed to by the described resource.</description>
   </element>
   <!-- ==================================================== -->
-  <element name="dct:accessRights">
-    <label>Access Rights</label>
-    <description>Information about who can access the resource or an indication of its security status.</description>
-  </element>
-  <!-- ==================================================== -->
   <element name="dct:alternative">
     <label>Alternative Title</label>
     <description>An alternative name for the resource.</description>
@@ -291,11 +286,6 @@
     <description>An established standard to which the described resource conforms.</description>
   </element>
   <!-- ==================================================== -->
-  <element name="dct:created">
-    <label>Date Created</label>
-    <description>Date of creation of the resource.</description>
-  </element>
-  <!-- ==================================================== -->
   <element name="dct:dateAccepted">
     <label>Date Accepted</label>
     <description>Date of acceptance of the resource.</description>
@@ -304,11 +294,6 @@
   <element name="dct:dateCopyrighted">
     <label>Date Copyrighted</label>
     <description>Date of copyright.</description>
-  </element>
-  <!-- ==================================================== -->
-  <element name="dct:dateSubmitted">
-    <label>Date Submitted</label>
-    <description>Date of submission of the resource.</description>
   </element>
   <!-- ==================================================== -->
   <element name="dct:educationLevel">
@@ -339,11 +324,6 @@
   <element name="dct:isFormatOf">
     <label>Is Format Of</label>
     <description>A related resource that is substantially the same as the described resource, but in another format.</description>
-  </element>
-  <!-- ==================================================== -->
-  <element name="dct:isPartOf">
-    <label>Is Part Of</label>
-    <description>A related resource in which the described resource is physically or logically included.</description>
   </element>
   <!-- ==================================================== -->
   <element name="dct:isReferencedBy">
