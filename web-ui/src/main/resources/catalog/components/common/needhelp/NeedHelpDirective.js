@@ -43,7 +43,7 @@
 
       // Help configuration TODO: move to an external file or db ?
       var helpLinks = {
-        helpBaseUrl: 'http://www.mongeosource.fr/docs/',
+        helpBaseUrl: 'http://www.geosource.fr/docs/',
         defaultLang: 'eng',
         pages: {
           editor: {
