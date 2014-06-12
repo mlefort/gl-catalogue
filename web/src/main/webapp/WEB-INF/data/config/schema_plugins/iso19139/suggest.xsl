@@ -14,10 +14,10 @@
   <xsl:include href="process/linked-data-checker.xsl"/>
   <xsl:include href="process/related-metadata-checker.xsl"/>
   <xsl:include href="process/add-resource-id.xsl"/>
+  <xsl:include href="process/inspire-themes-and-topiccategory.xsl"/>
 <!--  Disabled by default because related to INSPIRE only
   <xsl:include href="process/inspire-add-conformity.xsl"/>
   <xsl:include href="process/inspire-add-dq-toporeport.xsl"/>
-  <xsl:include href="process/inspire-themes-and-topiccategory.xsl"/>
 -->
   
   <xsl:variable name="processes">
@@ -29,10 +29,10 @@
     <p>linked-data-checker</p>
     <p>related-metadata-checker</p>
     <p>add-resource-id</p>
+    <p>inspire-themes-and-topiccategory</p>
 <!--  Disabled by default because related to INSPIRE only
     <p>inspire-add-conformity</p>
     <p>inspire-add-dq-toporeport</p>
-    <p>inspire-themes-and-topiccategory</p>
 -->
   </xsl:variable>
   
