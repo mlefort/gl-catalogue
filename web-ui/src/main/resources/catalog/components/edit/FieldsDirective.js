@@ -84,13 +84,23 @@
 
                      // TODO: externalize in a template.
                      if (angular.isArray(info.help)) {
+                       // Custom layout for tooltip in GéoSource
+                       var inspireText = '';
+                       var isoText = '';
+                       var exampleText = '';
                        angular.forEach(info.help, function(helpText) {
-                         if (helpText['@for']) {
-                           html += helpText['#text'];
+                         if (helpText['@for'] == 'france' ||
+                           helpText['@for'] == 'inspire') {
+                           inspireText += helpText['#text'];
+                         } else if (helpText['@for'] == 'example') {
+                           exampleText += helpText['#text'];
                          } else {
-                           html += helpText;
+                           isoText += helpText;
                          }
                        });
+                       html = (inspireText != '' ? inspireText : isoText);
+                       html += exampleText;
+
                      } else if (info.help) {
                        html += info.help;
                      }
@@ -108,7 +118,7 @@
                          element.offset().left -
                          element.outerWidth()) * .95;
                      element.popover({
-                       title: info.description,
+//                       title: info.description,
                        content: html,
                        html: true,
                        placement: placement,
