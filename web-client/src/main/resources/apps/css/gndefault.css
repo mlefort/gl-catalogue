@@ -321,7 +321,7 @@ table.related * a:hover,
 
 /* Icon based on protocol prefix in related resource table */
 .WWWLINK {
-  background-image : url(../apps/images/default/link.png);
+  background-image : url(../apps/images/default/link-16.png);
 }
 .WWWDOWNLOAD {
   background-image : url(../apps/images/default/database_yellow.png);
@@ -338,14 +338,23 @@ table.related * a:hover,
 .md-mn-reset {
   background-image : url(../apps/images/default/cross.png);
 }
-.md-mn-kml {
+.x-btn-text.md-mn-kml {
   background-image : url(../apps/images/default/google-earth-link.png);
 }
-.md-mn-www {
+.md-mn-kml {
+  background-image : url(../apps/images/default/google-earth-link-16.png);
+}
+.x-btn-text.md-mn-www {
   background-image : url(../apps/images/default/link.png);
 }
-.md-mn-json {
+.md-mn-www {
+  background-image : url(../apps/images/default/link-16.png);
+}
+.x-btn-text.md-mn-json {
   background-image : url(../apps/images/default/format-json.png);
+}
+.md-mn-json {
+  background-image : url(../apps/images/default/format-json-16.png);
 }
 .md-mn-geojson {
   background-image : url(../apps/images/default/format-geojson.png);

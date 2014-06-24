@@ -286,16 +286,20 @@ Display hyperlink as text next to element
 .md-mn-user {
   background-image : url(../apps/images/default/user.png) !important;
 }
-.md-mn-pdf {
- /*background-image : url(../apps/images/default/page_white_acrobat.png) !important;*/
+.x-btn-text.md-mn-pdf {
  background-image : url(../apps/images/default/format-pdf.png) !important;
+}
+.md-mn-pdf {
+ background-image : url(../apps/images/default/page_white_acrobat.png) !important;
 }
 .md-mn-badd {
   background-image : url(../apps/images/default/brick_add.png) !important;
 }
-.md-mn-zip {
-  /*background-image : url(../apps/images/default/page_white_zip.png) !important;*/
+.x-btn-text.md-mn-zip {
   background-image : url(../apps/images/default/format-zip.png) !important;
+}
+.md-mn-zip {
+  background-image : url(../apps/images/default/page_white_zip.png) !important;
 }
 .md-mn-ftp {
   background-image : url(../apps/images/default/folder.png) !important;
