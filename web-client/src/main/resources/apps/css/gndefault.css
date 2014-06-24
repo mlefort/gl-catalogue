@@ -356,8 +356,11 @@ table.related * a:hover,
 .md-mn-json {
   background-image : url(../apps/images/default/format-json-16.png);
 }
-.md-mn-geojson {
+.x-btn-text.md-mn-geojson {
   background-image : url(../apps/images/default/format-geojson.png);
+}
+.md-mn-geojson {
+  background-image : url(../apps/images/default/format-geojson-16.png);
 }
 .xmlIcon {
   background-image : url(../apps/images/default/page_code.png);
