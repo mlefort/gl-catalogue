@@ -80,7 +80,7 @@ layouts:
             - !image
               maxHeight: 40
               maxWidth: 220
-              url: '${configDir}/logo_GL.jpeg'
+              url: 'file://${configDir}/logo_GL.jpeg'
         - !columns
           config:
             borderWidth: 2 
@@ -154,7 +154,7 @@ layouts:
             - !image
               maxHeight: 40
               maxWidth: 220
-              url: '${configDir}/logo_GL.jpeg' 
+              url: 'file://${configDir}/logo_GL.jpeg'
         - !columns
           config:
             borderWidth: 2 
