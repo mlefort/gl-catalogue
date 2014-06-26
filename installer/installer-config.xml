@@ -131,7 +131,7 @@
 		</pack>
 
 
-    <pack id="geoserver" name="GeoServer" required="no" preselected="yes">
+    <pack id="geoserver" name="GeoServer" required="no" preselected="no">
       <description/>
       
       <fileset dir="../geoserver/target/geoserver" targetdir="$INSTALL_PATH/web/geoserver"/>
