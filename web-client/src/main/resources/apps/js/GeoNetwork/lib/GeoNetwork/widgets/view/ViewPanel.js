@@ -334,7 +334,7 @@ GeoNetwork.view.ViewPanel = Ext.extend(Ext.Panel, {
         
         // Related metadata are only displayed in view mode with no tabs
         if (this.currTab === 'view-simple' || this.currTab === 'inspire' || this.currTab === 'simple') {
-            this.createExtractor();
+            //this.createExtractor();
             this.getLinkedData();
         }
         

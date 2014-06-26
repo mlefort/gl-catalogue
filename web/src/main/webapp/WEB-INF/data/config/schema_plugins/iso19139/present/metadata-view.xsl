@@ -602,7 +602,7 @@
                     <a href="{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}" class="md-mn md-mn-zip" title="Télécharger">&#160;</a>
                   </xsl:if>
 
-                  <!-- Display open KML for WFS -->
+                  <!-- Display open KML and GEOJSON for WFS -->
                   <xsl:if test="contains(current-grouping-key(), 'WFS') and not(contains(gmd:CI_OnlineResource/gmd:description/gco:CharacterString, 'shape-zip'))">
                     &#160;
                     <xsl:variable name="database">
@@ -612,6 +612,8 @@
                       </xsl:choose>
                     </xsl:variable>
                     <a href="https://download.data.grandlyon.com/kml/{$database}/?request=list&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-kml" title="Visualiser avec GoogleEarth">&#160;</a>
+                    &#160;
+                    <a href="https://download.data.grandlyon.com/wfs/{$database}/?SERVICE=WFS&amp;VERSION=1.1.0&amp;outputformat=GEOJSON&amp;maxfeatures=30&amp;request=GetFeature&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-geojson" title="Format GEOJSON" target="blank">&#160;</a>
                   </xsl:if>  
 		  <xsl:if test="contains(current-grouping-key(), 'WMC')">
                     &#160;
