@@ -680,8 +680,8 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
             var handler = linkButton[0].handler || function () {
                 window.open(linkButton[0].href);
             };
-            btnLabel = " ";
-            if(currentType == "FILE:RASTER") btnLabel = label; 
+            var btnLabel = (currentType == "FILE:RASTER") label : " ";
+ 
             bt = new Ext.Button({
                 //text: label,
                 text: btnLabel,
