@@ -587,6 +587,25 @@
               setParams('sibling-remove', params));
         },
 
+        buildOnLineResource : function (url, protocol, name, description) {
+
+          return '<gmd:onLine xmlns:gmd="http://www.isotc211.org/2005/gmd" ' +
+            '            xmlns:gco="http://www.isotc211.org/2005/gco">' +
+            '  <gmd:CI_OnlineResource>' +
+            '    <gmd:linkage><gmd:URL>' + url +
+            '    </gmd:URL></gmd:linkage>' +
+            '    <gmd:protocol><gco:CharacterString>' +
+            protocol +
+            '    </gco:CharacterString></gmd:protocol>' +
+            '    <gmd:name><gco:CharacterString>' +
+            name +
+            '    </gco:CharacterString></gmd:name>' +
+            '    <gmd:description><gco:CharacterString>' +
+            description +
+            '    </gco:CharacterString></gmd:description>' +
+            '  </gmd:CI_OnlineResource>' +
+            '</gmd:onLine>';
+        },
         /**
          * Specific method used by the geopublisher.
          * Compute online resource XML for the given protocols.
@@ -594,30 +613,37 @@
          * return the XML snippet to include to the form.
          */
         addFromGeoPublisher: function(layerName, title, node, protocols) {
-
           var xml = '';
-
           for (var p in protocols) {
             if (protocols.hasOwnProperty(p) && protocols[p].checked === true) {
               // TODO : define default description
               var key = p + 'Url';
               xml +=
-                  '<gmd:onLine xmlns:gmd="http://www.isotc211.org/2005/gmd" ' +
-                  '            xmlns:gco="http://www.isotc211.org/2005/gco">' +
-                  '  <gmd:CI_OnlineResource>' +
-                  '    <gmd:linkage><gmd:URL>' + node[key] +
-                  '    </gmd:URL></gmd:linkage>' +
-                  '    <gmd:protocol><gco:CharacterString>' +
-                  protocols[p].label +
-                  '    </gco:CharacterString></gmd:protocol>' +
-                  '    <gmd:name><gco:CharacterString>' +
-                  layerName +
-                  '    </gco:CharacterString></gmd:name>' +
-                  '    <gmd:description><gco:CharacterString>' +
-                  title + ' (' + protocols[p].label + ')' +
-                  '    </gco:CharacterString></gmd:description>' +
-                  '  </gmd:CI_OnlineResource>' +
-                  '</gmd:onLine>' + '&&&';
+                this.buildOnLineResource(node[key], protocols[p].label,
+                  layerName, title + ' (' + protocols[p].label + ')')
+                   + '&&&';
+
+              // Specific to GrandLyon
+              // Data accessible using WFS are also
+              if (protocols[p].label === 'OGC:WFS') {
+                xml +=
+                  this.buildOnLineResource(node[key] + 'SERVICE=WFS&amp;amp;' +
+                    'REQUEST=GetFeature&amp;amp;' +
+                    'typename=' + layerName + '&amp;amp;' +
+                    'outputformat=SHAPEZIP&amp;amp;' +
+                    'VERSION=2.0.0&amp;amp;' +
+                    'SRSNAME=EPSG:3946', protocols[p].label,
+                    layerName, title + ' (' + protocols[p].label + ')(shape-zip)')
+                    + '&&&';
+
+                xml +=
+                  this.buildOnLineResource('https://download.data.grandlyon.com/ws' +
+                    '/grandlyon' +
+                    '/' + layerName + '/all.json', 'WWW:LINK-1.0-http--link',
+                    layerName + '/all.json',
+                    'Description des données dans le format texte JSON')
+                    + '&&&';
+              }
             }
           }
           return xml;
