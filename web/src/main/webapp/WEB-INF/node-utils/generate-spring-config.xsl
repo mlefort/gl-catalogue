@@ -42,9 +42,7 @@
                         <prop key="jdbcDataSource.maxActive">
                             <xsl:value-of select="$poolSize"/>
                         </prop>
-                        <prop key="jdbcDataSource.maxIdle">
-                            <xsl:value-of select="$poolSize"/>
-                        </prop>
+                        <prop key="jdbcDataSource.maxIdle">0</prop>
                         <prop key="jdbcDataSource.initialSize">0</prop>
                         <prop key="jdbcDataSource.Url">
                             <xsl:value-of select="$dbUrl"/>
