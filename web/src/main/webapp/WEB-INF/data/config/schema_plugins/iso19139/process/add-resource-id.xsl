@@ -70,7 +70,7 @@
             
             <!-- Create resource identifier based on metadata record identifier -->
             <xsl:variable name="urlWithoutLang" select="substring-before($catalogUrl, $nodeId)"/>
-            <xsl:variable name="prefix" select="if ($resource-id-url-prefix != '') then $resource-id-url-prefix else $urlWithoutLang"/>
+            <xsl:variable name="prefix" select="if ($resource-id-url-prefix != '') then $resource-id-url-prefix else concat($urlWithoutLang, $nodeId, '/metadata/')"/>
             <xsl:variable name="code" select="concat($prefix, /*/gmd:fileIdentifier/gco:CharacterString)"/>
 
             <xsl:copy-of
