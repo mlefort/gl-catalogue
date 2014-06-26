@@ -577,6 +577,7 @@ GeoNetwork.app = function () {
             printUrl: GeoNetwork.printUrl || 'print.html',
             catalogue: this,
             maximized: maximized || false,
+            constrainHeader: true,
             metadataUuid: uuid,
             showFeedBackButton: showFeedBackButton,
             record: record,
