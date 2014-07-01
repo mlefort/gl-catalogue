@@ -607,6 +607,40 @@
             '</gmd:onLine>';
         },
         /**
+         * @ngdoc method
+         * @name gnOnlinesrc#buildOnLineResource
+         * @methodOf gn_onlinesrc.service:gnOnlinesrc
+         *
+         * @description
+         * The `buildOnLineResource` create an ISO19139
+         * XML snippet based on the url, protocol, name
+         * and description provided.
+         *
+         * @param {String} url the URL
+         * @param {String} protocol the URL protocol
+         * @param {String} name the name
+         * @param {String} description the description
+         */
+        buildOnLineResource: function(url, protocol, name, description) {
+
+          return '<gmd:onLine xmlns:gmd="http://www.isotc211.org/2005/gmd" ' +
+              '            xmlns:gco="http://www.isotc211.org/2005/gco">' +
+              '  <gmd:CI_OnlineResource>' +
+              '    <gmd:linkage><gmd:URL>' + url +
+              '    </gmd:URL></gmd:linkage>' +
+              '    <gmd:protocol><gco:CharacterString>' +
+              protocol +
+              '    </gco:CharacterString></gmd:protocol>' +
+              '    <gmd:name><gco:CharacterString>' +
+              name +
+              '    </gco:CharacterString></gmd:name>' +
+              '    <gmd:description><gco:CharacterString>' +
+              description +
+              '    </gco:CharacterString></gmd:description>' +
+              '  </gmd:CI_OnlineResource>' +
+              '</gmd:onLine>';
+        },
+        /**
          * Specific method used by the geopublisher.
          * Compute online resource XML for the given protocols.
          *
