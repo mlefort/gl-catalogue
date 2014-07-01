@@ -501,6 +501,7 @@ public class Importer {
                 // user has privileges to replace the existing metadata
                 if(dm.getAccessManager().canEdit(context, dm.getMetadataId(uuid))) {
                     dm.deleteMetadata(context, dm.getMetadataId(uuid));
+                    dm.flush();
                     if(Log.isDebugEnabled(Geonet.MEF))
                         Log.debug(Geonet.MEF, "Deleting existing metadata with UUID : " + uuid);
                 }
