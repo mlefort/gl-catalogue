@@ -1445,17 +1445,17 @@
 		
 		
 		<!-- Used for facet translation only and not displayed in editor -->
-		<entry hideInEditMode="true">
+		<entry>
 			<code>map</code>
 			<label>Carte</label>
 			<description></description>
 		</entry>
-		<entry hideInEditMode="true">
+		<entry>
 			<code>staticMap</code>
 			<label>Carte statique</label>
 			<description></description>
 		</entry>
-		<entry hideInEditMode="true">
+		<entry>
 			<code>interactiveMap</code>
 			<label>Carte interactive</label>
 			<description></description>
