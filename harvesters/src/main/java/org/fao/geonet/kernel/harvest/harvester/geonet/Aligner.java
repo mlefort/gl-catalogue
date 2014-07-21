@@ -48,6 +48,10 @@ import org.fao.geonet.utils.Xml;
 import org.fao.geonet.repository.Updater;
 import org.fao.geonet.utils.XmlRequest;
 import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.Namespace;
+import org.jdom.xpath.XPath;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -286,7 +290,6 @@ public class Aligner extends BaseAligner
 		}
 	}
 
-	//--------------------------------------------------------------------------
 
 	private String addMetadata(RecordInfo ri, Element md, Element info, boolean localRating) throws Exception
 	{
@@ -316,6 +319,10 @@ public class Aligner extends BaseAligner
         if (!params.xslfilter.equals("")) {
             md = HarvesterUtil.processMetadata(dataMan.getSchema(ri.schema),
                     md, processName, processParams, log);
+        }
+
+        if (params.mefFormatFull) {
+            relocateThumbnailURL(md);
         }
         // insert metadata
         String group = null, docType = null, title = null, category = null;
@@ -372,8 +379,37 @@ public class Aligner extends BaseAligner
 
 		return id;
 	}
+    //--------------------------------------------------------------------------
+    public static final Namespace GMD = Namespace.getNamespace("gmd", "http://www.isotc211.org/2005/gmd");
+    public static final Namespace GCO = Namespace.getNamespace("gco", "http://www.isotc211.org/2005/gco");
+    private static final List<Namespace> NAMESPACES = Arrays.asList(GMD, GCO);
 
-	//--------------------------------------------------------------------------
+    /**
+     * Update thumbnail URL to point to local catalog as thumbnail are
+     * retrieved using full MEF format
+     *
+     * @param md
+     * @throws JDOMException
+     */
+    private void relocateThumbnailURL(Element md) throws JDOMException {
+        SettingManager settingManager = context.getBean(SettingManager.class);
+        String catalogURL = settingManager.getSiteURL(context);
+
+        List<?> nodes = Xml.selectNodes(md,
+                "*//gmd:MD_BrowseGraphic/gmd:fileName/" +
+                        "gco:CharacterString",
+                NAMESPACES);
+        for (Object object : nodes) {
+            if (object instanceof Element) {
+                Element thumbnailUrl = (Element) object;
+                String url = thumbnailUrl.getTextTrim();
+                String params = url.substring(url.indexOf("/resources.get"));
+                thumbnailUrl.setText(catalogURL + params);
+            }
+        }
+    }
+
+    //--------------------------------------------------------------------------
 	//--- Privileges
 	//--------------------------------------------------------------------------
 
@@ -601,6 +637,11 @@ public class Aligner extends BaseAligner
                 md = HarvesterUtil.processMetadata(dataMan.getSchema(ri.schema),
                         md, processName, processParams, log);
             }
+
+            if (params.mefFormatFull) {
+                relocateThumbnailURL(md);
+            }
+
             // update metadata
             if(log.isDebugEnabled())
                 log.debug("  - Updating local metadata with id="+ id);
