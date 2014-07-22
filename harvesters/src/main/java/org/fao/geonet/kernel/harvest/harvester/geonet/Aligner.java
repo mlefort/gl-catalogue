@@ -404,8 +404,11 @@ public class Aligner extends BaseAligner
                 Element thumbnailUrl = (Element) object;
                 String url = thumbnailUrl.getTextTrim();
                 if (url != null) {
-                    String params = url.substring(url.indexOf("/resources.get"));
-                    thumbnailUrl.setText(catalogURL + params);
+                    int idx = url.indexOf("/resources.get");
+                    if (idx != -1) {
+                        String params = url.substring(idx);
+                        thumbnailUrl.setText(catalogURL + params);
+                    }
                 }
             }
         }
