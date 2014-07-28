@@ -696,6 +696,7 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                 //text: label,
                 text: btnLabel,
                 scale: "large",
+                autoWidth: true,
                 menu: new Ext.menu.Menu({cls: 'links-mn', items: linkButton}),
                 iconCls: GeoNetwork.Util.protocolToCSS[currentType] || currentType,
                 renderTo: el
