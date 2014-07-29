@@ -611,11 +611,11 @@
                         <xsl:otherwise>grandlyon</xsl:otherwise>
                       </xsl:choose>
                     </xsl:variable>
-                    <a href="https://download.data.grandlyon.com/kml/{$database}/?request=list&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-kml" title="Visualiser avec GoogleEarth">&#160;</a>
+                    <a href="https://download.data.grandlyon.com/kml/{$database}?request=list&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-kml" title="Visualiser avec GoogleEarth">&#160;</a>
                     &#160;
-                    <a href="https://download.data.grandlyon.com/wfs/{$database}/?SERVICE=WFS&amp;VERSION=1.1.0&amp;outputformat=GEOJSON&amp;maxfeatures=30&amp;request=GetFeature&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-geojson" title="Format GEOJSON" target="blank">&#160;</a>
-                  </xsl:if>  
-		  <xsl:if test="contains(current-grouping-key(), 'WMC')">
+                    <a href="https://download.data.grandlyon.com/wfs/{$database}?SERVICE=WFS&amp;VERSION=2.0.0&amp;outputformat=GEOJSON&amp;maxfeatures=30&amp;request=GetFeature&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-geojson" title="Format GEOJSON" target="blank">&#160;</a>
+                  </xsl:if>
+                  <xsl:if test="contains(current-grouping-key(), 'WMC')">
                     &#160;
                     <a href="#" class="md-mn addLayer"
                        onclick="app.switchMode('1', true);app.getIMap().addWMC('{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}');">&#160;</a>

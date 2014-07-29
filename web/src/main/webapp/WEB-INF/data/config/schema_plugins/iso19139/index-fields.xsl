@@ -584,15 +584,15 @@
 
                                <xsl:if test="starts-with($protocol,'OGC:WFS') and not(contains(string($desc),'shape-zip')) and string($linkage)!='' and string($title)!=''">
                                         <Field name="link" string="{concat($title, '|', $desc, '|',
-                                               'https','://','download.data.grandlyon.com/kml/',$database,'/?request=list&amp;typename=',$title,
+                                               'https','://','download.data.grandlyon.com/kml/',$database,'?request=list&amp;typename=',$title,
                                                '|application/vnd.google-earth.kml+xml|application/vnd.google-earth.kml+xml')}" store="true" index="false"/>
 
                                         <Field name="link" string="{concat($title, '|', $desc, '|',
-                                               'https','://','download.data.grandlyon.com/wfs/',$database,'/?SERVICE=WFS&amp;VERSION=2.0.0&amp;outputformat=SHAPEZIP&amp;request=GetFeature&amp;SRSNAME=EPSG:3946&amp;typename=',$title,
+                                               'https','://','download.data.grandlyon.com/wfs/',$database,'?SERVICE=WFS&amp;VERSION=2.0.0&amp;outputformat=SHAPEZIP&amp;request=GetFeature&amp;SRSNAME=EPSG:3946&amp;typename=',$title,
                                                '|application/zip|application/zip')}" store="true" index="false"/>
 
                                         <Field name="link" string="{concat($title, '|', $desc, '|',
-                                               'https','://','download.data.grandlyon.com/wfs/',$database,'/?SERVICE=WFS&amp;VERSION=1.1.0&amp;outputformat=GEOJSON&amp;maxfeatures=30&amp;request=GetFeature&amp;typename=',$title,
+                                               'https','://','download.data.grandlyon.com/wfs/',$database,'?SERVICE=WFS&amp;VERSION=2.0.0&amp;outputformat=GEOJSON&amp;maxfeatures=30&amp;request=GetFeature&amp;typename=',$title,
                                                '|application/geojson|application/geojson')}" store="true" index="false"/>
                                </xsl:if>
 				

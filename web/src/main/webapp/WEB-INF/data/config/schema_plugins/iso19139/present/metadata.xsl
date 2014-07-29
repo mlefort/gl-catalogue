@@ -3261,12 +3261,12 @@
                                                 <xsl:otherwise>gxrandlyon</xsl:otherwise>
                                         </xsl:choose>
                                 </xsl:variable>
-                                
+
                                 <!-- KML output link -->
                                 <xsl:element name="link">
                                         <xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
                                         <xsl:attribute name="href">
-                                                <xsl:value-of select="concat('https','://','download.data.grandlyon.com/kml/',$database,'/?request=list&amp;typename=',$name)"/>
+                                                <xsl:value-of select="concat('https','://','download.data.grandlyon.com/kml/',$database,'?request=list&amp;typename=',$name)"/>
                                         </xsl:attribute>
                                         <xsl:attribute name="name"><xsl:value-of select="$name"/></xsl:attribute>
                                         <xsl:attribute name="type">application/vnd.google-earth.kml+xml</xsl:attribute>
@@ -3276,7 +3276,7 @@
                                 <xsl:element name="link">
                                         <xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
                                         <xsl:attribute name="href">
-                                                <xsl:value-of select="concat('https','://','download.data.grandlyon.com/wfs/',$database,'/?SERVICE=WFS&amp;VERSION=1.1.0&amp;outputformat=GEOJSON&amp;maxfeatures=30&amp;request=GetFeature&amp;typename=',$name)"/>
+                                                <xsl:value-of select="concat('https','://','download.data.grandlyon.com/wfs/',$database,'?SERVICE=WFS&amp;VERSION=2.0.0&amp;outputformat=GEOJSON&amp;maxfeatures=30&amp;request=GetFeature&amp;typename=',$name)"/>
                                         </xsl:attribute>
                                         <xsl:attribute name="name"><xsl:value-of select="$name"/></xsl:attribute>
                                         <xsl:attribute name="type">application/json</xsl:attribute>
