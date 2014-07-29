@@ -3258,7 +3258,7 @@
                                 <xsl:variable name="database">
                                         <xsl:choose>
                                                 <xsl:when test="contains(string($linkage),'sxmartdata')">smartdata</xsl:when>
-                                                <xsl:otherwise>gxrandlyon</xsl:otherwise>
+                                                <xsl:otherwise>grandlyon</xsl:otherwise>
                                         </xsl:choose>
                                 </xsl:variable>
 
