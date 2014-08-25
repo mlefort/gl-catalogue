@@ -3257,7 +3257,7 @@
                         <xsl:if test="string($linkage)!='' and starts-with($protocol,'OGC:WFS') and not(contains(string($desc),'shape-zip')) and string($name)!=''">
                                 <xsl:variable name="database">
                                         <xsl:choose>
-                                                <xsl:when test="contains(string($linkage),'sxmartdata')">smartdata</xsl:when>
+                                                <xsl:when test="contains(string($linkage),'smartdata')">smartdata</xsl:when>
                                                 <xsl:otherwise>grandlyon</xsl:otherwise>
                                         </xsl:choose>
                                 </xsl:variable>
