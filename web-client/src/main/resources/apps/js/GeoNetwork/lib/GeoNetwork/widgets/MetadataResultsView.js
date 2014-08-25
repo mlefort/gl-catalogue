@@ -677,6 +677,9 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
      */
     addLinkMenu: function (linkButton, label, currentType, el) {
         if (linkButton.length === 1) {
+            //no button if raster link (ie. file:///home/opendata/...)
+            if(currentType == "FILE:RASTER" && linkButton[0].href.substr(0,8) == "file:///") return false;
+            
             var handler = linkButton[0].handler || function () {
                 window.open(linkButton[0].href);
             };
