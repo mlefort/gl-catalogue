@@ -611,9 +611,18 @@
                         <xsl:otherwise>grandlyon</xsl:otherwise>
                       </xsl:choose>
                     </xsl:variable>
-                    <a href="https://download.data.grandlyon.com/kml/{$database}?request=list&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-kml" title="Visualiser avec GoogleEarth">&#160;</a>
+                    
+                    <!-- ServerName different si recette ou production -->
+                    <xsl:variable name="servername">
+                      <xsl:choose>
+                        <xsl:when test="contains(string($linkage),'secure.grandlyon.webmapping.fr') or contains(string($linkage),'46.105.245.177')">secure.grandlyon.webmapping.fr</xsl:when>
+                        <xsl:otherwise>download.data.grandlyon.com</xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:variable>
+                    
+                    <a href="https://{$servername}/kml/{$database}?request=list&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-kml" title="Visualiser avec GoogleEarth">&#160;</a>
                     &#160;
-                    <a href="https://download.data.grandlyon.com/wfs/{$database}?SERVICE=WFS&amp;VERSION=2.0.0&amp;outputformat=GEOJSON&amp;maxfeatures=30&amp;request=GetFeature&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-geojson" title="Format GEOJSON" target="blank">&#160;</a>
+                    <a href="https://{$servername}/wfs/{$database}?SERVICE=WFS&amp;VERSION=2.0.0&amp;outputformat=GEOJSON&amp;maxfeatures=30&amp;request=GetFeature&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-geojson" title="Format GEOJSON" target="blank">&#160;</a>
                   </xsl:if>
                   <xsl:if test="contains(current-grouping-key(), 'WMC')">
                     &#160;
