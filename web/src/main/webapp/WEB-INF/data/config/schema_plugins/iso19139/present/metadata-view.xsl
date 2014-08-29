@@ -615,7 +615,7 @@
                     <!-- ServerName different si recette ou production -->
                     <xsl:variable name="servername">
                       <xsl:choose>
-                        <xsl:when test="contains(string($linkage),'secure.grandlyon.webmapping.fr') or contains(string($linkage),'46.105.245.177')">secure.grandlyon.webmapping.fr</xsl:when>
+                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'secure.grandlyon.webmapping.fr') or contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'46.105.245.177')">secure.grandlyon.webmapping.fr</xsl:when>
                         <xsl:otherwise>download.data.grandlyon.com</xsl:otherwise>
                       </xsl:choose>
                     </xsl:variable>
