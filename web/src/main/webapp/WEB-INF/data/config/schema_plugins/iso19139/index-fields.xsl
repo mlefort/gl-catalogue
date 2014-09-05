@@ -578,6 +578,7 @@
                                <xsl:variable name="database">
                                         <xsl:choose>
                                                 <xsl:when test="contains(string($linkage),'smartdata')">smartdata</xsl:when>
+                                                <xsl:when test="contains(string($linkage),'tuba')">tuba</xsl:when>
                                                 <xsl:otherwise>grandlyon</xsl:otherwise>
                                         </xsl:choose>
                                </xsl:variable>
