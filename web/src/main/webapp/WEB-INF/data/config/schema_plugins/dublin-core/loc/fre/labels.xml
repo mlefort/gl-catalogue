@@ -16,6 +16,12 @@
     <helper>
       <option value="246900245">GRAND LYON (siren 246900245)</option>
       <option value="69123">VILLE DE LYON (siren 69123)</option>
+      <option value="410118434">ACOUCITE (siren 410118434)</option>
+      <option value="493425136">AEROPORTS DE LYON (siren 493425136)</option>
+      <option value="534194451">AIR RHONE-ALPES (siren 534194451)</option>
+      <option value="779832252">OnlyLyon Tourisme et Congrès (siren 779832252)</option>
+      <option value="408900884">RNSA (siren 408900884)</option>
+      <option value="256900994">TCL (SYTRAL)(siren 256900994)</option>
     </helper>
   </element>
 
@@ -68,14 +74,21 @@
       du document.</description>
     <example/>
     <helper>
-    	<option value="GRAND LYON (DAVI) Direction des assemblées et de la vie institutionnelle">GRAND LYON (DAVI) Direction des assemblées et de la vie institutionnelle</option>
-	<option value="GRAND LYON (DE) Direction de l'eau">GRAND LYON (DE) Direction de l'eau</option>
-	<option value="GRAND LYON (DGDEI) Délégation générale au développement économique et international">GRAND LYON (DGDEI) Délégation générale au développement économique et international</option>
-	<option value="GRAND LYON (DGDU) Délégation générale au développement urbain">GRAND LYON (DGDU) Délégation générale au développement urbain</option>
-	<option value="GRAND LYON (DP) Direction de la propreté">GRAND LYON (DP) Direction de la propreté</option>
-	<option value="GRAND LYON (DSIT) Direction des systèmes d'informations et de télécommunications">GRAND LYON (DSIT) Direction des systèmes d'informations et de télécommunications</option>
-	<option value="GRAND LYON (DV) Direction de la voirie">GRAND LYON (DV) Direction de la voirie</option>
-	<option value="VILLE DE LYON / DSIT / Service Opérations">VILLE DE LYON / DSIT / Service Opérations</option>
+        <option value="GRAND LYON (DAVI) Direction des assemblées et de la vie institutionnelle">GRAND LYON (DAVI) Direction des assemblées et de la vie institutionnelle</option>
+        <option value="GRAND LYON (DE) Direction de l'eau">GRAND LYON (DE) Direction de l'eau</option>
+        <option value="GRAND LYON (DGDEI) Délégation générale au développement économique et international">GRAND LYON (DGDEI) Délégation générale au développement économique et international</option>
+        <option value="GRAND LYON (DGDU) Observation et valorisation des données">GRAND LYON (DGDU) Observation et valorisation des données</option>
+        <option value="GRAND LYON (DGDU) Territoires et planification">GRAND LYON (DGDU) Territoires et planification</option>
+        <option value="GRAND LYON (DP) Direction de la propreté">GRAND LYON (DP) Direction de la propreté</option>
+        <option value="GRAND LYON (DSIT) Direction des systèmes d'informations et de télécommunications">GRAND LYON (DSIT) Direction des systèmes d'informations et de télécommunications</option>
+        <option value="GRAND LYON (DV) Direction de la voirie">GRAND LYON (DV) Direction de la voirie</option>
+        <option value="VILLE DE LYON / DSIT / Service Opérations">VILLE DE LYON / DSIT / Service Opérations</option>
+        <option value="Acoucité - Observatoire de l'environnement sonore">Acoucité - Observatoire de l'environnement sonore</option>
+        <option value="AEROPORTS de LYON / Direction des Systèmes d'Information">AEROPORTS de LYON / Direction des Systèmes d'Information</option>
+        <option value="Air Rhône-Alpes - Observatoire Régional">Air Rhône-Alpes - Observatoire Régional</option>
+        <option value="OnlyLyon Tourisme et Congrès">OnlyLyon Tourisme et Congrès</option>
+        <option value="RNSA (Réseau National de Surveillance Aérobiologique)">RNSA (Réseau National de Surveillance Aérobiologique)</option>
+        <option value="TCL (SYTRAL) Direction des Systèmes d'Information">TCL (SYTRAL) Direction des Systèmes d'Information</option>
     </helper>
   </element>
 
@@ -220,6 +233,7 @@
       <option value="continuous">Mise à jour continue</option>
       <option value="daily">Mise à jour quotidienne</option>
       <option value="weekly">Mise à jour hebdomadaire</option>
+      <option value="biweekly">Mise à jour bi-hebdomadaire</option>
       <option value="semimonthly">Mise à jour 2 fois par mois</option>
       <option value="monthly">Mise à jour mensuelle</option>
       <option value="quarterly">Mise à jour trimestrielle</option>
