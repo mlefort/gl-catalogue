@@ -23,15 +23,7 @@
 
 package org.fao.geonet.kernel.harvest;
 
-import java.io.File;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import jeeves.server.context.ServiceContext;
-
 import org.fao.geonet.GeonetContext;
 import org.fao.geonet.constants.Edit;
 import org.fao.geonet.constants.Geonet;
@@ -49,17 +41,19 @@ import org.fao.geonet.kernel.harvest.Common.OperResult;
 import org.fao.geonet.kernel.harvest.harvester.AbstractHarvester;
 import org.fao.geonet.kernel.harvest.harvester.HarversterJobListener;
 import org.fao.geonet.kernel.setting.HarvesterSettingsManager;
-import org.fao.geonet.lib.Lib;
 import org.fao.geonet.repository.HarvestHistoryRepository;
-import org.fao.geonet.repository.MetadataRepository;
 import org.fao.geonet.repository.specification.MetadataSpecs;
-import org.fao.geonet.util.FileCopyMgr;
 import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
+
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * TODO Javadoc.
@@ -583,32 +577,8 @@ public class HarvestManagerImpl implements HarvestInfoProvider, HarvestManager {
 
         String harvesterUUID = ah.getParams().uuid;
 
-//        batchDeleteMetadataAndUpdateIndex trigger an error and does not take care of
-//        metadata data dir
-//
-//        2014-07-23 16:36:51,626 DEBUG [org.hibernate.SQL] - select metadata0_.id as col_0_0_ from Metadata metadata0_ where metadata0_.harvestUuid=?
-//        2014-07-23 16:36:51,635 DEBUG [org.hibernate.SQL] - delete from MetadataCateg where (metadataId) in (select id from Metadata where harvestUuid=?)
-//        2014-07-23 16:36:51,636 DEBUG [org.hibernate.SQL] - delete from Metadata where harvestUuid=?
-//        2014-07-23 16:36:51,637 ERROR [jeeves.service] - Exception when executing service
-//        2014-07-23 16:36:51,637 ERROR [jeeves.service] -  (C) Exc : org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [operationallowed_metadataid_fkey]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
-//        2014-07-23 16:36:51,638 DEBUG [jeeves.service] - Raised exception while executing service
-//        <error id="error">
-//        <message>could not execute statement; SQL [n/a]; constraint [operationallowed_metadataid_fkey]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement</message>
-//
-//        final Specification<Metadata> specification = MetadataSpecs.hasHarvesterUuid(harvesterUUID);
-//        dataMan.batchDeleteMetadataAndUpdateIndex(specification);
-
-
-        MetadataRepository metadataRepository = context.getBean(MetadataRepository.class);
-        List<Metadata> metadataList = metadataRepository.findAllByHarvestInfo_Uuid(harvesterUUID);
-        for (Metadata metadata : metadataList) {
-            //--- remove the metadata directory
-            File pb = new File(Lib.resource.getMetadataDir(context, metadata.getId() + ""));
-            FileCopyMgr.removeDirectoryOrFile(pb);
-
-            // Remove from the DB and the index
-            dataMan.deleteMetadata(context, metadata.getId() + "");
-        }
+        final Specification<Metadata> specification = MetadataSpecs.hasHarvesterUuid(harvesterUUID);
+        dataMan.batchDeleteMetadataAndUpdateIndex(specification);
 
         elapsedTime = (System.currentTimeMillis() - elapsedTime) / 1000;
 

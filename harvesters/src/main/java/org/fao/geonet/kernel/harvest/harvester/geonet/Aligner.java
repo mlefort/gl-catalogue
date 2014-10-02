@@ -337,8 +337,14 @@ public class Aligner extends BaseAligner
         dataMan.setTemplateExt(iId, MetadataType.lookup(isTemplate));
         dataMan.setHarvestedExt(iId, params.uuid);
 
+
+
         MetadataRepository metadataRepository = context.getBean(MetadataRepository.class);
         Metadata metadata = metadataRepository.findOne(iId);
+
+        addCategories(metadata, params.getCategories(), localCateg, context, log, null);
+
+        metadata = metadataRepository.findOne(iId);
 
 		if(!localRating) {
 			String rating = general.getChildText("rating");
@@ -346,10 +352,11 @@ public class Aligner extends BaseAligner
                 metadata.getDataInfo().setRating(Integer.valueOf(rating));
             }
 		}
-		
+
 		if (popularity != null) {
             metadata.getDataInfo().setPopularity(Integer.valueOf(popularity));
         }
+
 
 		String pubDir = Lib.resource.getDir(context, "public",  id);
 		String priDir = Lib.resource.getDir(context, "private", id);
@@ -357,7 +364,6 @@ public class Aligner extends BaseAligner
 		IO.mkdirs(new File(pubDir), "Geonet Aligner public resources directory for metadata " + id);
 		IO.mkdirs(new File(priDir), "Geonet Aligner private resources directory for metadata " + id);
 
-        addCategories(metadata, params.getCategories(), localCateg, context, log, null);
 
         if (params.createRemoteCategory) {
     		Element categs = info.getChild("categories");
@@ -371,6 +377,7 @@ public class Aligner extends BaseAligner
             addPrivilegesFromGroupPolicy(id, info.getChild("privileges"));
         }
         metadataRepository.save(metadata);
+//        dataMan.flush();
 
         dataMan.indexMetadata(id, false);
 		result.addedMetadata++;
@@ -656,15 +663,15 @@ public class Aligner extends BaseAligner
             String language = context.getLanguage();
             dataMan.updateMetadata(context, id, md, validate, ufo, index, language, ri.changeDate,
                     updateDateStamp);
-
             metadata = metadataRepository.findOne(id);
             result.updatedMetadata++;
 		}
 
         metadata.getCategories().clear();
-        metadata = metadataRepository.save(metadata);
+        addCategories(metadata, params.getCategories(), localCateg, context, log, null);
+        metadata = metadataRepository.findOne(id);
 
-        Element general = info.getChild("general");
+		Element general = info.getChild("general");
 
 		String popularity = general.getChildText("popularity");
 
@@ -678,8 +685,6 @@ public class Aligner extends BaseAligner
 		if (popularity != null) {
             metadata.getDataInfo().setPopularity(Integer.valueOf(popularity));
         }
-
-        addCategories(metadata, params.getCategories(), localCateg, context, log, null);
 
 		if (params.createRemoteCategory) {
             Element categs = info.getChild("categories");
@@ -695,7 +700,9 @@ public class Aligner extends BaseAligner
         } else {
             addPrivilegesFromGroupPolicy(id, info.getChild("privileges"));
         }
+
         metadataRepository.save(metadata);
+//        dataMan.flush();
 
         dataMan.indexMetadata(id, false);
 	}
