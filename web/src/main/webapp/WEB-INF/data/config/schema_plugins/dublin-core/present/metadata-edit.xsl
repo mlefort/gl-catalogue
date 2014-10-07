@@ -36,9 +36,11 @@
           </xsl:with-param>
         </xsl:call-template>
       </xsl:with-param>
+<!--
       <xsl:with-param name="logo">
         <img src="../../images/logos/{//geonet:info/source}.gif" alt="logo"/>
       </xsl:with-param>
+-->
       <xsl:with-param name="relatedResources">
         <xsl:call-template name="dublin-core-relatedResources"/>
       </xsl:with-param>
