@@ -722,7 +722,7 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
         
         if (this.displaySerieMembers) {
             Ext.each(records, function(r) {
-                var isSerie = GeoNetwork.Settings.results.loadRelationForAll || r.get('type') === 'series',
+                var isSerie = GeoNetwork.Settings.results.loadRelationForAll || r.get('type') === 'series' || r.get('schema') === 'dublin-core',
                     id = r.get('id');
                 if (isSerie) {
                     //TODO : use this.maxOfMembers
