@@ -29,6 +29,7 @@
     <label>Mots-clés</label>
     <description>Mots-clés, phrases de résumé, ou codes de classement.</description>
     <example/>
+<!-- Removed because now we can set keyword from thesaurus
     <helper>
       <option value="OpenData">OpenData</option>
       <option value="Adresses">Adresses (GEMET - INSPIRE)</option>
@@ -59,6 +60,7 @@
       <option value="Zones de gestion, de restriction ou de réglementation et unités de déclaration">Zones de gestion, de restriction ou de réglementation et unités de déclaration (GEMET - INSPIRE)</option>
       <option value="Zones à risques naturels">Zones à risques naturels (GEMET - INSPIRE)</option>
     </helper>
+-->
   </element>
 
   <element name="dc:description">
