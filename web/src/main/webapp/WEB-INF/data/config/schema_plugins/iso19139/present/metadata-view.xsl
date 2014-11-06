@@ -599,10 +599,12 @@
                   </xsl:if>
 
                   <!-- Display ZIP for WFS shape-zip -->
+                  <!--
                   <xsl:if test="contains(current-grouping-key(), 'WFS') and contains(gmd:CI_OnlineResource/gmd:description/gco:CharacterString, 'shape-zip')">
                     &#160;
                     <a href="{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}" class="md-mn md-mn-zip" title="Télécharger">&#160;</a>
                   </xsl:if>
+                  -->
 
                   <!-- Display open KML and GEOJSON for WFS -->
                   <xsl:if test="contains(current-grouping-key(), 'WFS') and not(contains(gmd:CI_OnlineResource/gmd:description/gco:CharacterString, 'shape-zip'))">
@@ -623,6 +625,8 @@
                       </xsl:choose>
                     </xsl:variable>
                     
+                    <a href="https://{$servername}/wfs/{$database}?SERVICE=WFS&amp;VERSION=2.0.0&amp;outputformat=SHAPEZIP&amp;request=GetFeature&amp;SRSNAME=EPSG:3946&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-zip" title="Format SHAPEZIP" target="blank">&#160;</a>
+                    &#160;                    
                     <a href="https://{$servername}/kml/{$database}?request=list&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-kml" title="Visualiser avec GoogleEarth">&#160;</a>
                     &#160;
                     <a href="https://{$servername}/wfs/{$database}?SERVICE=WFS&amp;VERSION=2.0.0&amp;outputformat=GEOJSON&amp;maxfeatures=30&amp;request=GetFeature&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-geojson" title="Format GEOJSON" target="blank">&#160;</a>
