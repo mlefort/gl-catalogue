@@ -268,11 +268,11 @@ GeoNetwork.util.SearchTools = {
             similarity = values.E_similarity, 
             hits = values.E_hitsperpage;
         
-        // Add the similarity if defined
+        // Add the similarity if defined, or defaultSimilarity if not
         if (similarity !== undefined) {
             defaultSimilarity = values.E_similarity;
-            GeoNetwork.util.SearchTools.addFilter(filters, 'E_similarity', defaultSimilarity);
         }
+        GeoNetwork.util.SearchTools.addFilter(filters, 'E_similarity', defaultSimilarity);
         
         if (!hits) {
             hits = GeoNetwork.util.SearchTools.hitsPerPage;
