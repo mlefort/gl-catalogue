@@ -578,10 +578,10 @@
                                <!-- Generate KML, Shape-zip and GeoJSON output links for a WFS service -->
                                <xsl:variable name="database">
                                         <xsl:choose>
-                                                <xsl:when test="contains(string($linkage),'grandlyon')">grandlyon</xsl:when>
-                                                <xsl:when test="contains(string($linkage),'smartdata')">smartdata</xsl:when>
-                                                <xsl:when test="contains(string($linkage),'tuba')">tuba</xsl:when>
-                                                <xsl:when test="contains(string($linkage),'capteurs')">capteurs</xsl:when>
+                                                <xsl:when test="contains(string($linkage),'/grandlyon')">grandlyon</xsl:when>
+                                                <xsl:when test="contains(string($linkage),'/smartdata')">smartdata</xsl:when>
+                                                <xsl:when test="contains(string($linkage),'/tuba')">tuba</xsl:when>
+                                                <xsl:when test="contains(string($linkage),'/capteurs')">capteurs</xsl:when>
                                                 <xsl:otherwise>missingdb</xsl:otherwise>
                                         </xsl:choose>
                                </xsl:variable>
