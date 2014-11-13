@@ -611,10 +611,10 @@
                     &#160;
                     <xsl:variable name="database">
                       <xsl:choose>
-                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'grandlyon') ">grandlyon</xsl:when>
-                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'smartdata') ">smartdata</xsl:when>
-                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'tuba') ">tuba</xsl:when>
-                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'capteurs') ">capteurs</xsl:when>
+                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'/grandlyon') ">grandlyon</xsl:when>
+                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'/smartdata') ">smartdata</xsl:when>
+                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'/tuba') ">tuba</xsl:when>
+                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'/capteurs') ">capteurs</xsl:when>
                         <xsl:otherwise>missingdb</xsl:otherwise>
                       </xsl:choose>
                     </xsl:variable>
