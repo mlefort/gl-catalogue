@@ -3300,7 +3300,7 @@
                                                 <xsl:value-of select="concat('https','://',$servername,'/wfs/',$database,'?SERVICE=WFS&amp;VERSION=2.0.0&amp;outputformat=SHAPEZIP&amp;request=GetFeature&amp;SRSNAME=EPSG:3946&amp;typename=',$name)"/>
                                         </xsl:attribute>
                                         <xsl:attribute name="name"><xsl:value-of select="$name"/></xsl:attribute>
-                                        <xsl:attribute name="type">application/json</xsl:attribute>
+                                        <xsl:attribute name="type">application/zip</xsl:attribute>
                                 </xsl:element>
                         </xsl:if>
 
