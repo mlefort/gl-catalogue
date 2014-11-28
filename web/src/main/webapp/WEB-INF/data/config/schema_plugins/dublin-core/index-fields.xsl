@@ -68,7 +68,8 @@
                           <Field name="publisher" string="{string(.)}" store="true" index="true"/>
                         </xsl:for-each>
                         <xsl:for-each select="/simpledc/dc:rights">
-                          <Field name="rights" string="{string(.)}" store="true" index="true"/>
+                          <!-- Field name="rights" string="{string(.)}" store="true" index="true"/ -->
+                          <Field name="conditionApplyingToAccessAndUse" string="{string(.)}" store="true" index="true"/>
                         </xsl:for-each>
 
                         <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
