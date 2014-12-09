@@ -3202,6 +3202,10 @@
 			<xsl:with-param name="info" select="$info"/>
 		</xsl:apply-templates>
 
+		<xsl:for-each select="gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier">
+			<referenceSystemCode><xsl:value-of select="gmd:code"/></referenceSystemCode>
+		</xsl:for-each>
+		
 		<xsl:for-each select="gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource">
 			<xsl:variable name="protocol" select="gmd:protocol[1]/gco:CharacterString"/>
 			<xsl:variable name="linkage"  select="normalize-space(gmd:linkage/gmd:URL)"/>
