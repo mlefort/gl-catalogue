@@ -250,7 +250,9 @@
 					<northBL><xsl:value-of select="$north"/></northBL>
 				</geoBox>
 			</xsl:if>
-		
+                        <xsl:if test="dct:spatial">
+				<spatial><xsl:value-of select="dct:spatial"/></spatial>
+			</xsl:if>
 			<xsl:copy-of select="geonet:*"/>
 		</metadata>
 	</xsl:template>
