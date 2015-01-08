@@ -191,11 +191,11 @@
     <Field name="hasfeaturecat" analyzer="org.fao.geonet.kernel.search.GeoNetworkAnalyzer"/>
 
 
-    <!--
     <Field name="any" analyzer="org.apache.lucene.analysis.fr.FrenchAnalyzer">
       <Param name="version" type="org.apache.lucene.util.Version"/>
     </Field>
     
+    <!--
     <Field name="any" analyzer="org.fao.geonet.kernel.search.GeoNetworkAnalyzer"/>
     
     <Field name="any" analyzer="org.apache.lucene.analysis.standard.StandardAnalyzer">
