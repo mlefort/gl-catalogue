@@ -678,7 +678,7 @@
                  https://download.data.grandlyon.com/ws/grandlyon/<layerName>/all.json
                 */
                 var token = node[key].split('/');
-                var baseUrl = token.slice(0, 3).join('/');
+                var baseUrl = (node[key].indexOf("46.105.245.177") > -1) ? 'https://secure.grandlyon.webmapping.fr' : 'https://download.data.grandlyon.com';
                   xml +=
                   this.buildOnLineResource(baseUrl +
                     '/ws/' + token.pop().replace('?', '') +
