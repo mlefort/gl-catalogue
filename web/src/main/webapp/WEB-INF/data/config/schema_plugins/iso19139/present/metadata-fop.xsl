@@ -190,7 +190,20 @@
         />
       </xsl:with-param>
     </xsl:call-template>
-
+    
+    <!-- Contact Logo -->
+    <fo:table-row>
+      <fo:table-cell> 
+        <fo:block padding-top="4pt" padding-bottom="4pt" padding-right="4pt" padding-left="4pt">
+          <fo:external-graphic>
+            <xsl:attribute name="src">url('<xsl:value-of
+              select="./gmd:contact/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:contactInstructions/gmx:FileName/@src"
+              />')" </xsl:attribute>
+          </fo:external-graphic>
+        </fo:block>
+      </fo:table-cell>
+    </fo:table-row>
+    
     <!-- Topic category -->
     <xsl:variable name="topicCat">
       <xsl:apply-templates mode="elementFop" select="./gmd:identificationInfo/*/gmd:topicCategory">
