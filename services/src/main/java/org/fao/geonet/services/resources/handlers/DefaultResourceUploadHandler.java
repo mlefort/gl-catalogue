@@ -23,19 +23,25 @@
 
 package org.fao.geonet.services.resources.handlers;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import jeeves.server.context.ServiceContext;
-import org.apache.commons.io.FileUtils;
 import org.fao.geonet.Util;
 import org.fao.geonet.constants.Geonet;
 import org.fao.geonet.constants.Params;
-import org.fao.geonet.domain.*;
+import org.fao.geonet.domain.ISODate;
+import org.fao.geonet.domain.MetadataFileUpload;
 import org.fao.geonet.lib.Lib;
 import org.fao.geonet.repository.MetadataFileUploadRepository;
 import org.fao.geonet.utils.IO;
 import org.fao.geonet.utils.Log;
 import org.jdom.Element;
 
-import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 
 /**
@@ -47,15 +53,16 @@ import java.io.File;
  */
 public class DefaultResourceUploadHandler implements IResourceUploadHandler {
 
+	@Override
     public void onUpload(ServiceContext context, Element params,
                          int metadataId, String fileName, double fileSize) throws ResourceHandlerException {
         
         try {
-            String uploadDir = context.getUploadDir();
+            Path uploadDir = context.getUploadDir();
             String access = Util.getParam(params, Params.ACCESS, "private");
             String overwrite = Util.getParam(params, Params.OVERWRITE, "no");
 
-            File dir = new File(Lib.resource.getDir(context, access, metadataId));
+            Path dir = Lib.resource.getDir(context, access, metadataId);
             moveFile(context, uploadDir, fileName, dir, overwrite);
 
             storeFileUploadRequest(context, metadataId, fileName, fileSize);
@@ -69,10 +76,6 @@ public class DefaultResourceUploadHandler implements IResourceUploadHandler {
 
     /**
      * Stores a file upload request in the MetadataFileUploads table.
-     *
-     * @param context
-     * @param metadataId
-     * @param fileName
      */
     private void storeFileUploadRequest(ServiceContext context, int metadataId, String fileName, double fileSize) {
         MetadataFileUploadRepository repo = context.getBean(MetadataFileUploadRepository.class);
@@ -89,41 +92,114 @@ public class DefaultResourceUploadHandler implements IResourceUploadHandler {
     }
 
 
-    private static void moveFile(ServiceContext context, String sourceDir,
-                                   String filename, File targetDir, String overwrite) throws Exception {
-        // move uploaded file to destination directory
-        // note: uploadDir and rootDir must be in the same volume
-        IO.mkdirs(targetDir, "directory to move a file to");
+    @Override
+    public void onUpload(InputStream is, ServiceContext context, String access, String overwrite,
+            int metadataId, String fileName, double fileSize) throws ResourceHandlerException {
 
-        // get ready to move uploaded file to destination directory
-        File oldFile = new File(sourceDir, filename);
-        File newFile = new File(targetDir, filename);
+		try {
+			Path dir = Lib.resource.getDir(context, access, metadataId);
+			moveFile(is, fileName, dir, overwrite);
+			
+			storeFileUploadRequest(context, metadataId, fileName, fileSize);
+		
+		} catch (Exception ex) {
+			Log.error(Geonet.RESOURCES, "DefaultResourceUploadHandler (onUpload): " + ex.getMessage());
+			ex.printStackTrace();
+			throw new ResourceHandlerException(ex);
+		}
+	}
+    
+	private static void moveFile(InputStream is, String filename,
+			Path targetDir, String overwrite) throws Exception {
+		File f = new File(targetDir.toFile(), filename);
+		
+		if(!Files.exists(targetDir)) {
+            Files.createDirectories(targetDir);
+		}
+		
+		// check if file already exists and do whatever overwrite wants
+		if (Files.exists(f.toPath())) {
+			if (overwrite.equals("no")) {
+				throw new Exception("File upload unsuccessful because "
+						+ f.getAbsolutePath()
+						+ " already exists and overwrite was not permitted");
+			} else {
+				f.delete();
+			}
+		}
+		
+		f.createNewFile();
+		
+		OutputStream outputStream = null;
 
-        context.info("Source : " + oldFile.getAbsolutePath());
-        context.info("Destin : " + newFile.getAbsolutePath());
+		try {
+			// write the inputStream to a FileOutputStream
+			outputStream = new FileOutputStream(f);
 
-        if (!oldFile.exists()) {
-            throw new Exception("File upload unsuccessful "
-                    + oldFile.getAbsolutePath() + " does not exist");
-        }
+			int read = 0;
+			byte[] bytes = new byte[1024];
 
-        // check if file already exists and do whatever overwrite wants
-        if (newFile.exists() && overwrite.equals("no")) {
-            throw new Exception("File upload unsuccessful because "
-                    + newFile.getName()
-                    + " already exists and overwrite was not permitted");
-        }
+			while ((read = is.read(bytes)) != -1) {
+				outputStream.write(bytes, 0, read);
+			}
 
-        // move uploaded file to destination directory - have two goes
-        try {
-            FileUtils.moveFile(oldFile, newFile);
-        } catch (Exception e) {
-            context.warning("Cannot move uploaded file");
-            context.warning(" (C) Source : " + oldFile.getAbsolutePath());
-            context.warning(" (C) Destin : " + newFile.getAbsolutePath());
-            IO.delete(oldFile, false, context);
-            throw new Exception(
-                    "Unable to move uploaded file to destination directory");
-        }
-    }
+		} catch (IOException e) {
+			throw new Exception("Unable to read uploaded file.", e);
+		} finally {
+			if (is != null) {
+				try {
+					is.close();
+				} catch (IOException e) {
+				}
+			}
+			if (outputStream != null) {
+				try {
+					outputStream.flush();
+					outputStream.close();
+				} catch (IOException e) {
+					throw new Exception("Problem writing the uploaded file on destination.", e);
+				}
+
+			}
+		}
+	}
+
+	private static void moveFile(ServiceContext context, Path sourceDir,
+			String filename, Path targetDir, String overwrite) throws Exception {
+		// move uploaded file to destination directory
+		// note: uploadDir and rootDir must be in the same volume
+		Files.createDirectories(targetDir);
+
+		// get ready to move uploaded file to destination directory
+		Path oldFile = sourceDir.resolve(filename);
+		Path newFile = targetDir.resolve(filename);
+
+		context.info("Source : " + oldFile.toAbsolutePath().normalize());
+		context.info("Destin : " + newFile.toAbsolutePath().normalize());
+
+		if (!Files.exists(oldFile)) {
+			throw new Exception("File upload unsuccessful " + oldFile
+					+ " does not exist");
+		}
+
+		// check if file already exists and do whatever overwrite wants
+		if (Files.exists(newFile) && overwrite.equals("no")) {
+			throw new Exception("File upload unsuccessful because "
+					+ newFile.getFileName()
+					+ " already exists and overwrite was not permitted");
+		}
+
+		// move uploaded file to destination directory - have two goes
+		try {
+			IO.moveDirectoryOrFile(oldFile, newFile, false);
+		} catch (Exception e) {
+			context.warning("Cannot move uploaded file");
+			context.warning(" (C) Source : " + oldFile);
+			context.warning(" (C) Destin : " + newFile);
+			IO.deleteFile(oldFile, false, context);
+			throw new Exception(
+					"Unable to move uploaded file to destination directory");
+		}
+	}
+
 }

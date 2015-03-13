@@ -27,48 +27,152 @@
         defaultTab: 'harvest',
         tabs: []
       };
+      $scope.searchObj = {
+        params: {
+          template: 'y or s or n',
+          sortBy: 'title'
+        }};
+
       $scope.harvesterTypes = {};
       $scope.harvesters = null;
       $scope.harvesterSelected = null;
       $scope.harvesterUpdated = false;
       $scope.harvesterNew = false;
       $scope.harvesterHistory = {};
+      $scope.harvesterHistoryPaging = {
+        page: 1,
+        size: 3,
+        pages: 0,
+        total: 0
+      };
       $scope.isLoadingHarvester = false;
       $scope.isLoadingHarvesterHistory = false;
 
 
       var unbindStatusListener = null;
 
-
       function loadHarvesters() {
         $scope.isLoadingHarvester = true;
         $scope.harvesters = null;
-        return $http.get('admin.harvester.list@json').success(function(data) {
-          if (data != 'null') {
-            $scope.harvesters = data;
-            gnUtilityService.parseBoolean($scope.harvesters);
+
+        return $http.get('admin.harvester.list?_content_type=json').success(
+            function(data) {
+              if (data != 'null') {
+                $scope.harvesters = data;
+                gnUtilityService.parseBoolean($scope.harvesters);
+                pollHarvesterStatus();
+              }
+              $scope.isLoadingHarvester = false;
+            }).error(function(data) {
+          // TODO
+          $scope.isLoadingHarvester = false;
+        });
+      }
+
+      var getRunningHarvesterIds = function() {
+        var runningHarvesters = [];
+        for (var i = 0; $scope.harvesters &&
+            i < $scope.harvesters.length; i++) {
+          var h = $scope.harvesters[i];
+          if (h.info.running) {
+            runningHarvesters.push(h['@id']);
           }
-          $scope.isLoadingHarvester = false;
-        }).error(function(data) {
-          // TODO
-          $scope.isLoadingHarvester = false;
+        }
+
+        return runningHarvesters;
+      };
+      var isPolling = false;
+      var pollHarvesterStatus = function() {
+        if (isPolling) {
+          return;
+        }
+        var runningHarvesters = getRunningHarvesterIds();
+        if (runningHarvesters.length == 0) {
+          return;
+        }
+        isPolling = true;
+
+        $http.get('admin.harvester.list?onlyInfo=true&_content_type=json&id=' +
+            runningHarvesters.join('&id=')).success(
+            function(data) {
+              isPolling = false;
+              if (data != 'null') {
+                if (!angular.isArray(data)) {
+                  data = [data];
+                }
+                var harvesterIndex = {};
+                angular.forEach($scope.harvesters, function(oldH) {
+                  harvesterIndex[oldH['@id']] = oldH;
+                });
+
+                for (var i = 0; i < data.length; i++) {
+                  var h = data[i];
+                  gnUtilityService.parseBoolean(h.info);
+                  var old = harvesterIndex[h['@id']];
+                  if (old && !angular.equals(old.info, h.info)) {
+                    old.info = h.info;
+                  }
+                  if (old && !angular.equals(old.error, h.error)) {
+                    old.error = h.error;
+                  }
+                }
+
+                setTimeout(pollHarvesterStatus, 5000);
+              }
+            }).error(function(data) {
+          isPolling = false;
         });
-      }
+      };
 
-
-      function loadHistory() {
+      function loadHistory(backgroundLoad) {
+        var page, size, uuid;
+        page = $scope.harvesterHistoryPaging.page - 1;
+        size = $scope.harvesterHistoryPaging.size;
+        uuid = $scope.harvesterSelected.site.uuid;
+        var list;
         $scope.isLoadingHarvesterHistory = true;
-        $scope.harvesterHistory = undefined;
-        $http.get('admin.harvester.history@json?uuid=' +
-            $scope.harvesterSelected.site.uuid).success(function(data) {
-          $scope.harvesterHistory = data.harvesthistory;
-          $scope.isLoadingHarvesterHistory = false;
-        }).error(function(data) {
+        if (!backgroundLoad) {
+          $scope.harvesterHistory = undefined;
+        } else {
+          list = $('ul.timeline, .timeline-panel');
+          list.addClass('loading');
+        }
+        $http.get('admin.harvester.history?uuid=' + uuid + '&page=' +
+            page + '&size=' + size + '&_content_type=json').success(
+            function(data) {
+              $scope.harvesterHistory = data.harvesthistory;
+              $scope.harvesterHistoryPaging.pages = parseInt(data.pages);
+              $scope.harvesterHistoryPaging.total = parseInt(data.total);
+              $scope.isLoadingHarvesterHistory = false;
+              if (list) {
+                list.removeClass('loading');
+              }
+            }).error(function(data) {
           // TODO
           $scope.isLoadingHarvesterHistory = false;
         });
       }
 
+      $scope.historyFirstPage = function() {
+        $scope.harvesterHistoryPaging.page = 1;
+        loadHistory(true);
+      };
+      $scope.historyLastPage = function() {
+        $scope.harvesterHistoryPaging.page =
+            $scope.harvesterHistoryPaging.pages;
+        loadHistory(true);
+      };
+      $scope.historyNextPage = function() {
+        $scope.harvesterHistoryPaging.page = Math.min(
+            $scope.harvesterHistoryPaging.pages,
+            $scope.harvesterHistoryPaging.page + 1);
+        loadHistory(true);
+      };
+      $scope.historyPreviousPage = function() {
+        $scope.harvesterHistoryPaging.page = Math.max(1,
+            $scope.harvesterHistoryPaging.page - 1);
+        loadHistory(true);
+      };
       function loadHarvesterTypes() {
         $http.get('admin.harvester.info@json?type=harvesterTypes',
             {cache: true})
@@ -131,6 +235,13 @@
             });
       };
 
+      $scope.buildTranslations = function(h) {
+        var translations = '';
+        angular.forEach(h.site.translations, function(value, key) {
+          translations += '<' + key + '>' + value + '</' + key + '>';
+        });
+        return '<translations>' + translations + '</translations>';
+      };
       $scope.buildResponseGroup = function(h) {
         var groups = '';
         angular.forEach(h.privileges, function(p) {
@@ -162,10 +273,13 @@
 
         $http.post('admin.harvester.' +
             ($scope.harvesterNew ? 'add' : 'update') +
-            '@json', body, {
+            '?_content_type=json', body, {
               headers: {'Content-type': 'application/xml'}
             }).success(function(data) {
-          loadHarvesters();
+          if (!$scope.harvesterSelected['@id']) {
+            $scope.harvesterSelected['@id'] = data[0];
+          }
+          loadHarvesters().then(refreshSelectedHarvester);
           $rootScope.$broadcast('StatusUpdated', {
             msg: $translate('harvesterUpdated'),
             timeout: 2,
@@ -199,19 +313,33 @@
         loadHistory();
 
         // Retrieve records in that harvester
-        $scope.harvesterRecordsFilter = {
-          template: 'y or s or n',
-          siteId: $scope.harvesterSelected.site.uuid,
-          sortBy: 'title'
-        };
-        $scope.$broadcast('resetSearch', $scope.harvesterRecordsFilter);
+        angular.extend($scope.searchObj.params, {
+          siteId: $scope.harvesterSelected.site.uuid
+        });
+        $scope.$broadcast('resetSearch', $scope.searchObj.params);
       };
-
+      var refreshSelectedHarvester = function() {
+        if ($scope.harvesterSelected) {
+          // Refresh the selected harvester
+          angular.forEach($scope.harvesters, function(h) {
+            if (h['@id'] === $scope.harvesterSelected['@id']) {
+              $scope.selectHarvester(h);
+            }
+          });
+        }
+      };
       $scope.refreshHarvester = function() {
-        loadHarvesters();
+        loadHarvesters().then(function() {
+          // Select the clone
+          angular.forEach($scope.harvesters, function(h) {
+            if (h['@id'] === $scope.harvesterSelected['@id']) {
+              $scope.selectHarvester(h);
+            }
+          });
+        });
       };
       $scope.deleteHarvester = function() {
-        $http.get('admin.harvester.remove@json?id=' +
+        $http.get('admin.harvester.remove?_content_type=json&id=' +
             $scope.harvesterSelected['@id'])
           .success(function(data) {
               $scope.harvesterSelected = {};
@@ -224,7 +352,7 @@
       };
 
       $scope.deleteHarvesterRecord = function() {
-        $http.get('admin.harvester.clear@json?id=' +
+        $http.get('admin.harvester.clear?_content_type=json&id=' +
             $scope.harvesterSelected['@id'])
           .success(function(data) {
               $scope.harvesterSelected = {};
@@ -235,23 +363,24 @@
               console.log(data);
             });
       };
-      $scope.deleteHarvesterHistory = function() {
-        var ids = [];
-        angular.forEach($scope.harvesterHistory, function(h) {
-          ids.push(h.id);
-        });
-        $http.get('admin.harvester.history.delete@json?id=' + ids.join('&id='))
-          .success(function(data) {
-              loadHarvesters().then(function() {
-                $scope.selectHarvester($scope.harvesterSelected);
-              });
-            });
-      };
       $scope.runHarvester = function() {
-        $http.get('admin.harvester.run@json?id=' +
+        $http.get('admin.harvester.run?_content_type=json&id=' +
             $scope.harvesterSelected['@id'])
           .success(function(data) {
-              loadHarvesters();
+              loadHarvesters().then(function() {refreshSelectedHarvester();});
+            });
+      };
+      $scope.stopping = false;
+      $scope.stopHarvester = function() {
+        var status = $scope.harvesterSelected.options.status;
+        var id = $scope.harvesterSelected['@id'];
+        $scope.stopping = true;
+        $http.get('admin.harvester.stop?_content_type=json&id=' +
+            id + '&status=' + status)
+          .success(function(data) {
+              loadHarvesters().then(refreshSelectedHarvester);
+            }).then(function() {
+              $scope.stopping = false;
             });
       };
 
@@ -393,7 +522,10 @@
                     'SupportedQueryables',
                     'AdditionalQueryables'];
                   var parseCriteriaFn = function() {
-                    var name = $(this).text();
+                    // If the queryable has a namespace,
+                    // replace the : with __
+                    // to make valid XML tag name
+                    var name = $(this).text().replace(':', '__');
                     $scope.cswCriteria.push(name);
                     if (!$scope.harvesterSelected.searches[0][name]) {
                       $scope.harvesterSelected.searches[0][name] =

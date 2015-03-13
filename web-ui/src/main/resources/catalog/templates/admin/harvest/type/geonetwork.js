@@ -9,24 +9,26 @@ var gnHarvestergeonetwork = {
       "ownerGroup": [""],
       "site":   {
         "name": "",
+        "translations": {},
         "uuid": "",
         "account":     {
-          "use": "false",
+          "use": false,
           "username": "",
           "password": ""
         },
         "host": [],
-        "createRemoteCategory": "false",
-        "mefFormatFull": "false",
+              "node": "srv",
+        "createRemoteCategory": false,
+        "mefFormatFull": false,
         "xslfilter": []
       },
       "content":   {
-        "validate": "false",
+        "validate": "NOVALIDATION",
         "importxslt": "none"
       },
       "options":   {
         "every": "0 0 0 ? * *",
-        "oneRunOnly": "false",
+        "oneRunOnly": false,
         "status": ""
       },
       "searches": [{
@@ -54,7 +56,7 @@ var gnHarvestergeonetwork = {
       "groupsCopyPolicy": [],
       "info":   {
         "lastRun": [],
-        "running": "false"
+        "running": false
       }
     };
   },
@@ -64,8 +66,10 @@ var gnHarvestergeonetwork = {
       + '  <ownerGroup><id>' + h.ownerGroup[0] + '</id></ownerGroup>'
       + '  <site>'
       + '    <name>' + h.site.name + '</name>'
+      + $scope.buildTranslations(h)
       + '    <host>' + h.site.host.replace(/&/g, '&amp;') + '</host>'
-      + '    <createRemoteCategory>' + h.site.createRemoteCategory + '</createRemoteCategory>'
+      + '    <node>' + h.site.node + '</node>'
+     + '    <createRemoteCategory>' + h.site.createRemoteCategory + '</createRemoteCategory>'
       + '    <icon>' + h.site.icon + '</icon>'
       + '    <mefFormatFull>' + h.site.mefFormatFull + '</mefFormatFull>'
       + '    <xslfilter>' + h.site.xslfilter + '</xslfilter>'
@@ -94,6 +98,7 @@ var gnHarvestergeonetwork = {
       + '  <options>'
       + '    <oneRunOnly>' + h.options.oneRunOnly + '</oneRunOnly>'
       + '    <every>' + h.options.every + '</every>'
+      + '    <status>' + h.options.status + '</status>'
       + '  </options>'
       + '  <content>'
       + '    <validate>' + h.content.validate + '</validate>'
