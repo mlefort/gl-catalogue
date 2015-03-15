@@ -11,7 +11,7 @@
 @import "gn_doc.less";
 @import "gn_icons.less";
 
-@fa-version: '4.1.0';
+@fa-version: '4.3.0';
 @fa-font-path: '../catalog/lib/style/font-awesome/fonts';
 
 
@@ -92,6 +92,10 @@
 
 a {
   word-wrap: break-word;
+}
+.gn-break {
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 
@@ -297,7 +301,7 @@ font-size: small;
 
 .tt-suggestion.tt-is-under-cursor {
   color: #fff;
-  background-color: #0097cf;
+  background-color: #428bca;
 
 }
 
@@ -314,8 +318,8 @@ font-size: small;
 
 .tt-suggestion.tt-cursor {
   color: #fff;
-  background-color: #0097cf;
-
+  background-color: #428bca;
+  cursor: pointer;
 }
 
 .bootstrap-tagsinput {

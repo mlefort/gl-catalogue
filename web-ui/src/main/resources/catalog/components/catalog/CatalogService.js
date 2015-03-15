@@ -263,9 +263,9 @@
     processReport: 'md.processing.batch.report',
     processXml: 'xml.metadata.processing',
 
-    info: 'info@json',
+    info: 'info?_content_type=json',
 
-    country: 'regions.list@json?categoryId=' +
+    country: 'regions.list?_content_type=json&categoryId=' +
         'http://geonetwork-opensource.org/regions%23country',
     regionsList: 'regions.category.list@json',
     region: 'regions.list@json',
@@ -484,14 +484,18 @@
   module.factory('Metadata', function() {
     function Metadata(k) {
       $.extend(true, this, k);
-      if (angular.isDefined(this.category) &&
-          !angular.isArray(this.category)) {
-        this.category = [this.category];
-      }
-      if (angular.isDefined(this.topicCat) &&
-          !angular.isArray(this.topicCat)) {
-        this.topicCat = [this.topicCat];
-      }
+      var listOfArrayFields = ['topicCat', 'category',
+        'securityConstraints', 'resourceConstraints', 'legalConstraints',
+        'denominator', 'resolution', 'geoDesc', 'geoBox',
+        'mdLanguage', 'datasetLang', 'type'];
+      var record = this;
+      $.each(listOfArrayFields, function(idx) {
+        var field = listOfArrayFields[idx];
+        if (angular.isDefined(record[field]) &&
+            !angular.isArray(record[field])) {
+          record[field] = [record[field]];
+        }
+      });
     };
 
     function formatLink(sLink) {
@@ -576,10 +580,11 @@
         }
         return ret;
       },
-      getBoxAsPolygon: function() {
+      getBoxAsPolygon: function(i) {
         // Polygon((4.6810%2045.9170,5.0670%2045.9170,5.0670%2045.5500,4.6810%2045.5500,4.6810%2045.9170))
-        if (this.geoBox) {
-          var coords = this.geoBox.split('|');
+        var bboxes = [];
+        if (this.geoBox[i]) {
+          var coords = this.geoBox[i].split('|');
           return 'Polygon((' +
               coords[0] + ' ' +
               coords[1] + ',' +

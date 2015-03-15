@@ -560,6 +560,7 @@ INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/server/protocol', 'http', 0, 220, 'n');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/server/port', '8080', 1, 230, 'n');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/server/securePort', '8443', 1, 240, 'y');
+INSERT INTO settings (name, value, datatype, position, internal) VALUES ('system/server/log','log4j',0,250,'y');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/intranet/network', '127.0.0.1', 0, 310, 'y');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/intranet/netmask', '255.0.0.0', 0, 320, 'y');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/z3950/enable', 'true', 2, 410, 'y');
@@ -626,12 +627,13 @@ INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/harvesting/mail/level1', 'false', 2, 9026, 'y');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/harvesting/mail/level2', 'false', 2, 9027, 'y');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/harvesting/mail/level3', 'false', 2, 9028, 'y');
-INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/metadata/prefergrouplogo', 'y', 0, 9111, 'y');
+INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/metadata/prefergrouplogo', 'true', 2, 9111, 'y');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/metadata/enableSimpleView', 'true', 2, 9110, 'y');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/metadata/enableIsoView', 'false', 2, 9120, 'y');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/metadata/enableInspireView', 'true', 2, 9130, 'y');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/metadata/enableXmlView', 'true', 2, 9140, 'y');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/metadata/defaultView', 'simple', 0, 9150, 'n');
+INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/metadata/allThesaurus', 'false', 2, 9160, 'n');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/metadataprivs/usergrouponly', 'false', 2, 9180, 'n');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/threadedindexing/maxthreads', '1', 1, 9210, 'y');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/autodetect/enable', 'true', 2, 9510, 'y');
@@ -644,7 +646,7 @@ INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system
 -- INSERT INTO Settings (name, value, datatype, position, internal) VALUES 
 --  ('map/backgroundChoices', '{"contextList": []}', 0, 9590, false);
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES 
-  ('map/config', '{"viewerMap": "../../map/config-viewer.xml", "listOfServices": {wms: [], wmts: []}, "useOSM":true,"context":"","layer":{"url":"http://www2.demis.nl/mapserver/wms.asp?","layers":"Countries","version":"1.1.1"},"projection":"EPSG:3857","projectionList":[{"code":"EPSG:4326","label":"WGS84 (EPSG:4326)"},{"code":"EPSG:3857","label":"Google mercator (EPSG:3857)"}]}', 0, 9590, 'n');
+  ('map/config', '{"viewerMap": "../../map/config-viewer.xml", "listOfServices": {"wms": [], "wmts": []}, "useOSM":true,"context":"","layer":{"url":"http://www2.demis.nl/mapserver/wms.asp?","layers":"Countries","version":"1.1.1"},"projection":"EPSG:3857","projectionList":[{"code":"EPSG:4326","label":"WGS84 (EPSG:4326)"},{"code":"EPSG:3857","label":"Google mercator (EPSG:3857)"}]}', 0, 9590, 'n');
 
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('region/getmap/background', 'osm', 0, 9590, 'n');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('region/getmap/width', '500', 0, 9590, 'n');
@@ -664,6 +666,8 @@ INSERT INTO Settings (name, value, datatype, position, internal) VALUES
   ('metadata/editor/schemaConfig', '{"iso19110":{"defaultTab":"default","displayToolTip":false,"related":{"display":true,"readonly":true,"categories":["dataset"]},"validation":{"display":true}},"iso19139":{"defaultTab":"default","displayToolTip":false,"related":{"display":true,"categories":[]},"suggestion":{"display":true},"validation":{"display":true}},"dublin-core":{"defaultTab":"default","related":{"display":true,"readonly":false,"categories":["parent","onlinesrc"]}}}', 0, 10000, 'n');
 
 
+
+INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/ui/defaultView', 'default', 0, 10100, 'n');
 
 INSERT INTO HarvesterSettings (id, parentid, name, value) VALUES  (1,NULL,'harvesting',NULL);
 

@@ -197,7 +197,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/xml.region.get!?.*" access="permitAll"></sec:intercept-url>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/xml.regions.list!?.*" access="permitAll"></sec:intercept-url>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/xml.regions.category.list!?.*" access="permitAll"></sec:intercept-url>
-                <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/region.getmap.\w\w\w!?.*" access="permitAll"></sec:intercept-url>
+                <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/region.getmap.\w\w\w\?.*" access="permitAll"></sec:intercept-url>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/region\.geom\.\w\w\w!?.*" access="permitAll"></sec:intercept-url>
 
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/metadata.batch.replace.form!?.*" access="hasRole('Editor')"/>
@@ -324,7 +324,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.insert!?.*" access="hasRole('Editor')"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.import!?.*" access="hasRole('Editor')"/>
 
-                <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.view!?.*" access="hasRole('Editor')"/>
+                <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.rate!?.*" access="permitAll"/>
+                <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.view!?(\?.*)?" access="hasRole('Editor')"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.edit!?.*" access="hasRole('Editor')"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.edit.save!?.*" access="hasRole('Editor')"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.edit.saveonly!?.*" access="hasRole('Editor')"/>
@@ -356,6 +357,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.processing.batch!?.*" access="hasRole('Editor')"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.processing!?.*" access="hasRole('Editor')"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.processing.batch.report!?.*" access="hasRole('Editor')"/>
+                <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.searchandreplace!?.*" access="hasRole('Editor')"/>
 
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.relations!?.*" access="permitAll"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.suggestion!?.*" access="hasRole('Editor')"/>
@@ -400,6 +402,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.format.xml!?.*" access="permitAll"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.format.pdf!?.*" access="permitAll"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.format.text!?.*" access="permitAll"/>
+                <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.format.public.!?.*" access="permitAll"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.formatter.resource!?.*" access="permitAll"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.formatter.list!?.*" access="permitAll"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.formatter.register!?.*" access="hasRole('UserAdmin')"/>
@@ -408,6 +411,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.formatter.update!?.*" access="hasRole('UserAdmin')"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.formatter.files!?.*" access="hasRole('UserAdmin')"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.formatter.edit!?.*" access="hasRole('UserAdmin')"/>
+                <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/admin.format.clear" access="hasRole('Administrator')"/>
+                <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/md.viewer(\?debug)?" access="permitAll"/>
 
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/crs.search!?.*" access="permitAll"/>
 
@@ -447,8 +452,6 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/thread/trace/.+" access="hasRole('Administrator')"/>
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/thread/debugging/.+" access="hasRole('Administrator')"/>
 
-                <!-- Massive update metadata services -->
-                <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/metadata.batch.replace.new!?.*" access="hasRole('Editor')"/>
 
                 <!-- Reports -->
                 <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/recordsupdated.csv!?.*" access="hasRole('UserAdmin')"/>

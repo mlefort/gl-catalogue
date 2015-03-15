@@ -8,7 +8,7 @@
          data-ng-show="user.isReviewerOrMore()"
          title="{{('isTemplate' + md.isTemplate) | translate}}"></i>
       <a href=""
-           data-ng-href="../../?uuid={{md.getUuid()}}"
+           data-ng-href="catalog.search#/metadata/{{md.getUuid()}}"
            title="{{md.abstract}}">{{md.title || md.defaultTitle}}</a>
 
       <i class="fa text-muted"
@@ -27,8 +27,8 @@
       <a class="btn btn-link"
          data-ng-show="user.canEditRecord(md)"
          data-gn-click-and-spin="deleteRecord(md)"
+         data-gn-confirm-click="{{'deleteRecordConfirm' | translate:md}}"
          title="{{'delete' | translate}}">
-
         <i class="fa fa-trash-o text-danger"></i>
       </a>
     </td>

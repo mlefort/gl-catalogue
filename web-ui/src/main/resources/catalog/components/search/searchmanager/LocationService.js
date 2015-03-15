@@ -14,9 +14,17 @@
       this.METADATA = '/metadata/';
       this.HOME = '/home';
 
+      /** ---- get methods from $location ---- **/
       this.absUrl = function() {
         return $location.absUrl();
       };
+      this.host = function() {
+        return $location.host();
+      };
+      this.path = function(path) {
+        return $location.path(path);
+      };
+      /** ---- **/
 
       this.isSearch = function() {
         return $location.path() == this.SEARCH;
@@ -62,7 +70,9 @@
 
       this.setSearch = function(params) {
         $location.path(this.SEARCH);
-        $location.search(params);
+        if (params) {
+          $location.search(params);
+        }
       };
       this.removeParams = function() {
         $location.search('');

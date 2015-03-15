@@ -368,9 +368,8 @@ class Harvester extends BaseAligner implements IHarvester<HarvestResult>
 
          dataMan.flush();
 
-         //dataMan.indexMetadata(dbms, id); setTemplate update the index
-		
-		result.addedMetadata++;
+         dataMan.indexMetadata(id, true);
+         result.addedMetadata++;
 		
 		// Add Thumbnails only after metadata insertion to avoid concurrent transaction
 		// and loaded thumbnails could eventually failed anyway.
@@ -668,7 +667,7 @@ class Harvester extends BaseAligner implements IHarvester<HarvestResult>
                     setUuid(params.getUuid()).
                     setUri(params.url);
             if (params.datasetCategory!=null && !params.datasetCategory.equals("")) {
-                MetadataCategory metadataCategory = context.getBean(MetadataCategoryRepository.class).findOneByName(params.datasetCategory);
+                MetadataCategory metadataCategory = context.getBean(MetadataCategoryRepository.class).findOne(Integer.parseInt(params.datasetCategory));
 
                 if (metadataCategory == null) {
                     throw new IllegalArgumentException("No category found with name: " + params.datasetCategory);

@@ -17,8 +17,9 @@
       '$log',
       'gnSearchLocation',
       '$rootScope',
+      'gnUrlUtils',
       function(ngeoDecorateLayer, gnOwsCapabilities, gnConfig, $log, 
-          gnSearchLocation, $rootScope) {
+          gnSearchLocation, $rootScope, gnUrlUtils) {
 
         var defaultMapConfig = {
           'useOSM': 'true',
@@ -252,12 +253,21 @@
               source: source,
               legend: options.legend,
               attribution: options.attribution,
-              metadata: options.metadata,
               label: options.label,
               group: options.group,
               isNcwms: options.isNcwms,
               cextent: options.extent
             });
+
+            if (options.metadata) {
+              olLayer.set('metadataUrl', options.metadata);
+              var params = gnUrlUtils.parseKeyValue(
+                  options.metadata.split('?')[1]);
+              var uuid = params.uuid || params.id;
+              if (uuid) {
+                olLayer.set('metadataUuid', uuid);
+              }
+            }
             ngeoDecorateLayer(olLayer);
             olLayer.displayInLayerManager = true;
 
@@ -351,15 +361,17 @@
                   DCP.HTTP.Get;
 
               for (var i = 0; i < urls.length; i++) {
-                if(urls[i].Constraint[0].AllowedValues.Value[0].toLowerCase()
-                    == 'kvp') {
+                if (urls[i].Constraint[0].AllowedValues.Value[0].
+                    toLowerCase() == 'kvp') {
                   url = urls[i].href;
                   break;
                 }
               }
 
               var urlCap = capabilities.operationsMetadata.GetCapabilities.
-                DCP.HTTP.Get[0].href;
+                  DCP.HTTP.Get[0].href;
+
+              var style = layer.Style[0].Identifier;
 
               var projection = map.getView().getProjection();
 
@@ -407,7 +419,7 @@
                   resolutions: resolutions,
                   matrixIds: matrixIds
                 }),
-                style: 'default'
+                style: style
               });
 
               var olLayer = new ol.layer.Tile({
@@ -532,6 +544,9 @@
          */
         selected: function(layer) {
           return layer.displayInLayerManager;
+        },
+        visible: function(layer) {
+          return layer.displayInLayerManager && layer.visible;
         }
       };
     };

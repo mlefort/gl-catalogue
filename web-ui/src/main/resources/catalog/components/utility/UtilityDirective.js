@@ -4,6 +4,24 @@
   var module = angular.module('gn_utility_directive', [
   ]);
 
+  module.directive('gnConfirmClick', [
+    function() {
+      return {
+        priority: -1,
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+          element.bind('click', function(e) {
+            var message = attrs.gnConfirmClick;
+            if (message && !confirm(message)) {
+              e.stopImmediatePropagation();
+              e.preventDefault();
+            }
+          });
+        }
+      };
+    }
+  ]);
+
   /**
    * @ngdoc directive
    * @name gn_fields_directive.directive:gnCountryPicker
@@ -699,8 +717,11 @@
       scope: true,
       link: function(scope, element, attrs) {
         scope.collapsed = attrs['gnCollapse'] == 'true';
+        var next = element.next();
         element.on('click', function(e) {
-          var next = element.next();
+          scope.$apply(function() {
+            scope.collapsed = !scope.collapsed;
+          });
           next.collapse('toggle');
         });
       }
@@ -764,7 +785,15 @@
       }
     };
   }]);
-
+  module.filter('newlines', function() {
+    return function(text) {
+      if (text) {
+        return text.replace(/(\r)?\n/g, '<br/>');
+      } else {
+        return text;
+      }
+    }
+  });
   module.directive('gnJsonText', function() {
     return {
       restrict: 'A',

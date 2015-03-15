@@ -73,11 +73,13 @@ public class SettingManager {
     public static final String SYSTEM_REQUESTED_LANGUAGE_ONLY = "system/requestedLanguage/only";
     public static final String SYSTEM_AUTODETECT_ENABLE = "system/autodetect/enable";
     public static final String SYSTEM_XLINKRESOLVER_ENABLE = "system/xlinkResolver/enable";
+	public static final String SYSTEM_SERVER_LOG = "system/server/log";
 
     public static final String SYSTEM_INSPIRE_ENABLE = "system/inspire/enable";
     public static final String SYSTEM_INSPIRE_ATOM = "system/inspire/atom";
     public static final String SYSTEM_INSPIRE_ATOM_SCHEDULE = "system/inspire/atomSchedule";
-    public static final java.lang.String SYSTEM_PREFER_GROUP_LOGO = "system/metadata/prefergrouplogo";
+    public static final String SYSTEM_PREFER_GROUP_LOGO = "system/metadata/prefergrouplogo";
+    public static final String ENABLE_ALL_THESAURUS = "system/metadata/allThesaurus";
 
     @Autowired
     private SettingRepository _repo;
@@ -151,7 +153,10 @@ public class SettingManager {
                         currentElement.setAttribute("datatype", String.valueOf(dataType.ordinal()));
                         currentElement.setAttribute("datatypeName", dataType.name());
 
-                        currentElement.setText(xmlContentEscaper().escape(setting.getValue()));
+                        if (setting.getValue() != null)
+                            currentElement.setText(xmlContentEscaper().escape(setting.getValue()));
+                    } else {
+                        currentElement.setText("");
                     }
                     parent.addContent(currentElement);
                     pathElements.put(path.toString(), currentElement);
