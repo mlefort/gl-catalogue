@@ -74,7 +74,9 @@
     "batchreplacer-replacementsConfig": "Replacement configuration",
     "batchreplacer-loadReplacementConfig": "Load configuration",
     "batchreplacer-replacementsConfig-help": "Define an array of replacements. When loaded it will remove existing replacements. The element name and the search value could be a regular expression. eg. 'iso19139\\..*\\.organisationName' to match any organisation name, 'dublin-core.simpledc.publisher' to match dublin core publisher.",
-
+    "add-resource-id": "Compute resource identifiers",
+    "metadata/resourceIdentifierPrefix": "Resource identifier prefix",
+    "metadata/resourceIdentifierPrefix-help": "In the editor, a suggestion provides the capability to compute the resource identifier automatically. This identifier is computed by concatenating this prefix with the metadata identifier (eg. http://localhost:8080/geonetwork/srv/a1fd6bb7-6425-48b6-bca3-13c9e1bc4ab1).",
     "bestRated": "Best rated",
     "recordsStatistics": "Metadata statistics",
     "byOwner": "By owner",
