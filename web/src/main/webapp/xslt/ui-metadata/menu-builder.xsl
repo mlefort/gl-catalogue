@@ -17,8 +17,7 @@
     <xsl:variable name="currentView" select="$config/editor/views/view[tab/@id = $tab]"/>
 
     <div class="gn-scroll-spy"
-      data-gn-scroll-spy="gn-editor-{$metadataId}" 
-      data-all-depth="{if ($isFlatMode) then 'true' else 'false'}"
+      data-gn-scroll-spy="gn-editor-{$metadataId}"
       data-watch=""
       data-all-depth="{if ($isFlatMode) then 'true' else 'false'}"/>
 
