@@ -57,10 +57,10 @@
   
   <!-- URL for webapp root -->
   <!-- <xsl:variable name="baseURL" select="substring-before($siteURL,'/srv/')"/> -->
-  <xsl:variable name="smartdataURL" select="concat('http://','smartdata.grandlyon.com')" />
+  <xsl:variable name="dataURL" select="concat('http://','data.grandlyon.com')" />
   <xsl:variable name="baseURL">
     <xsl:choose>
-        <xsl:when test="/root/request/smardata"><xsl:value-of select="$smartdataURL"/></xsl:when>
+        <xsl:when test="/root/request/data"><xsl:value-of select="$dataURL"/></xsl:when>
         <xsl:otherwise><xsl:value-of select="substring-before($siteURL,'/srv/')"/></xsl:otherwise>
     </xsl:choose>
   </xsl:variable> 
