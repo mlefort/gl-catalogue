@@ -72,13 +72,18 @@
                           <Field name="conditionApplyingToAccessAndUse" string="{string(.)}" store="true" index="true"/>
                         </xsl:for-each>
 
+                        <!-- 2015 : index sur la date de publication -->
+                        <xsl:for-each select="/simpledc/dct:dateSubmitted">
+                                <Field name="publicationDate" string="{string(.)}" store="true" index="true"/>
+                        </xsl:for-each>
+                        
                         <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
                         <xsl:for-each select="/simpledc/dct:abstract|/simpledc/dc:description">
 				<Field name="abstract" string="{string(.)}" store="true" index="true"/>
 			</xsl:for-each>
 
-			<xsl:for-each select="/simpledc/dc:date">
+			<xsl:for-each select="/simpledc/dct:date">
 			  <Field name="createDate" string="{string(.)}" store="true" index="true"/>
 			</xsl:for-each>
 
