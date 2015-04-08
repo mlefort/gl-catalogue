@@ -116,7 +116,15 @@
         importFromDir: function(data) {
           return $http({
             url: 'md.import@json?' + data,
-            method: 'GET'
+            method: 'GET',
+            transformResponse: function (defaults) {
+              try {
+                return JSON.parse(defaults);
+              }
+              catch(e) {
+                return defaults;
+              }
+            }
           });
         },
 
@@ -134,7 +142,16 @@
         importFromXml: function(data) {
           return $http.post('md.insert?_content_type=json', data, {
             headers: {'Content-Type':
-                  'application/x-www-form-urlencoded'}
+                  'application/x-www-form-urlencoded'},
+            transformResponse: function (defaults) {
+              try {
+                return JSON.parse(defaults);
+              }
+              catch(e) {
+                return defaults;
+              }
+            }
+
           });
         },
 
@@ -522,6 +539,12 @@
       },
       isPublished: function() {
         return this['geonet:info'].isPublishedToAll === 'true';
+      },
+      isOwned: function() {
+        return this['geonet:info'].owner === 'true';
+      },
+      getOwnerId: function() {
+        return this['geonet:info'].ownerId;
       },
       publish: function() {
         this['geonet:info'].isPublishedToAll = this.isPublished() ?
