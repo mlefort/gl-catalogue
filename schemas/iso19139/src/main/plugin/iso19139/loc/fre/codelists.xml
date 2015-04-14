@@ -1355,13 +1355,13 @@
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>dataset</code>
-			<label>Jeu de données</label>
+			<label>Série de données</label>
 			<description>Informations appliquées aux caractéristiques de jeu de données</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>series</code>
-			<label>Collection de données</label>
+			<label>Ensemble de séries de données</label>
 			<description>Informations appliquées aux caractéristiques de la collection de données</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
