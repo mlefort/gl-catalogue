@@ -34,6 +34,8 @@
     };
     var self = this;
 
+    var hiddenParams = $scope.searchObj.hiddenParams;
+
     /** State of the facets of the current search */
     $scope.currentFacets = [];
 
@@ -118,7 +120,8 @@
             gnFacetService.getParamsFromFacets($scope.currentFacets));
       }
 
-      gnSearchManagerService.gnSearch(params).then(
+      var finalParams = angular.extend(params, hiddenParams);
+      gnSearchManagerService.gnSearch(finalParams).then(
           function(data) {
             $scope.searching--;
             $scope.searchResults.records = [];
@@ -264,12 +267,14 @@
         controllerAs: 'controller',
         link: function(scope, element, attrs) {
 
-          scope.resetSearch = function(htmlQuery) {
-            scope.controller.resetSearch();
+          scope.resetSearch = function(htmlElementOrDefaultSearch) {
             //TODO: remove geocat ref
             $('.geocat-search').find('.bootstrap-tagsinput .tag').remove();
-            if (htmlQuery) {
-              $(htmlQuery).focus();
+            if (angular.isObject(htmlElementOrDefaultSearch)) {
+              scope.controller.resetSearch(htmlElementOrDefaultSearch);
+            } else {
+              scope.controller.resetSearch();
+              $(htmlElementOrDefaultSearch).focus();
             }
           };
 

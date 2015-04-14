@@ -213,6 +213,7 @@
     "chooseAFile": "Choose a file",
     "chooseAServiceType": "Choose a service type",
     "chooseFormatter": "Choose a formatter package to upload",
+    "formatterUploadError": "Error occurred while loading formatter",
     "chooseLogos": "Choose or drop images here",
     "chooseProcess": "Choose",
     "chooseRecordsToUpdate": "Select records to process",
@@ -873,9 +874,8 @@
     "thesaurusTitle": "Title",
     "thesaurusUploadHelp": "Thesaurus in <a href=\"http://www.w3.org/2004/02/skos/\">SKOS format</a> are supported. File could have xml or rdf extensions.",
     "thesaurusUrl": "URL",
-
     "recordsRemoved": "record(s) removed",
-
+    "recordsHarvestedIn": "record(s) harvested in ",
     "thredds-DIF": "Extract DIF metadata elements and create ISO metadata",
     "thredds-UNIDATA": "Extract Unidata dataset discovery metadata using fragments",
     "thredds-createAtomicDatasetMd": "Create metadata for Atomic Datasets",
@@ -925,6 +925,8 @@
     "updateUser": "Update user ",
     "updateVirtualCSW": "Update ",
     "uploadThesaurus": "Upload",
+    "useCtrlClickToUnselect": "Use CTRL + click to unselect a group",
+    "aReviewerInAGroupIsAlsoAnEditor": "A reviewer in a group will also be set editor of this group",
     "url-host-relocator": "URL replacer",
     "urlPrefix": "URL prefix to search",
     "urlUpdater": "Update URLs in metadata records",

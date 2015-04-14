@@ -9,10 +9,10 @@
 		<appversion>@version@ @subVersion@</appversion>
 		<authors>
 			<author name="BRGM" email="geonetwork-users-fr@lists.sourceforge.net"/>
-			<author name="OSGeo"               email="geonetwork@osgeo.org"/>					
+			<author name="OSGeo"               email="geonetwork@osgeo.org"/>
 			<author name="FAO GeoNetwork Team" email="GeoNetwork@fao.org"/>
 			<author name="VAM WFP"             email="vamsie@wfp.org"/>
-			<author name="UNEP.net"            email="info@unep.net"/>			 
+			<author name="UNEP.net"            email="info@unep.net"/>
 			<author name="OCHA"                email="ochageodata@un.org"/>				 
 		</authors>
 		<url>http://www.geosource.fr/</url>
@@ -97,9 +97,6 @@
 			
 			<fileset dir="../web-client/target/classes/apps" targetdir="$INSTALL_PATH/web/geosource/apps" />
 			
-			<!-- Update the config-gui.xml to reflect the selected GUI -->
-			<parsable targetfile="$INSTALL_PATH/web/geosource/WEB-INF/config-gui.xml" />
-				
 			<executable targetfile="$INSTALL_PATH/bin/startup.sh" />
 			<executable targetfile="$INSTALL_PATH/bin/shutdown.sh" />
 		</pack>
