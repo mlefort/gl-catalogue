@@ -1,44 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!--
+	
+ * Hide in edit mode : If some codelist needs to be hidden
+ in edit mode, the hideInEditMode attribute could be added
+ to any entries.
+ 
+ eg.
+	<entry hideInEditMode="true">
+	
+ This will restrict the number of available entries for end
+ user editors and keep all records ISO compatible when using
+ codelist (eg. harvested records could use codelist hidden
+ in local node and needs to be displayed in view mode).
+ 
+ By default, this attribute is not used.
+ 
+ * editorMode attribute allows to configure the editor form field.
+ 
+ * - not set -: simple combo box
+ * radio : radio button in one line
+ * radio_linebreak : radio button with line break
+ * radio_withdesc : radion button with line break and codelist entry description
+ * select : select box with size set to the number of items if lower than 7 entries.
+ 
+-->
 <codelists xmlns:gmd="http://www.isotc211.org/2005/gmd">
 	<!-- ==================================================== -->
 	<codelist name="gmd:CI_DateTypeCode">
 		<entry>
 			<code>creation</code>
-			<label>Création</label>
-			<description>Date à laquelle la ressource est créée</description>
+			<label>Creation</label>
+			<description>Date identifies when the resource was brought into existence</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>publication</code>
 			<label>Publication</label>
-			<description>Date à laquelle la ressource est publiée</description>
+			<description>Date identifies when the resource was issued</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>revision</code>
-			<label>Révision</label>
-			<description>Date à laquelle la ressource est révisée</description>
+			<label>Revision</label>
+			<description>Date identifies when the resource was examined or re-examined and improved or
+				amended</description>
 		</entry>
-		<!-- ISO PROFIL FRA ONLY
-		<entry>
-			<code>validity</code>
-			<label>Validité</label>
-			<description>Date à laquelle la ressource est validée</description>
-		</entry>
-		<entry>
-			<code>useBy</code>
-			<label>Péremption</label>
-			<description>Date de péremption de la ressource</description>
-		</entry>
--->
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
 	<!-- ==================================================== -->
 	<codelist name="gmd:CI_OnLineFunctionCode">
 		<entry>
 			<code>download</code>
-			<label>Téléchargement</label>
-			<description>Téléchargement de la ressource</description>
+			<label>Download</label>
+			<description>Online instructions for transferring data from one storage device or system to
+				another</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
@@ -49,20 +64,22 @@
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>offlineAccess</code>
-			<label>Commande hors ligne</label>
-			<description>Instruction pour une commande auprès du distributeur</description>
+			<label>Offline access</label>
+			<description>Online instructions for requesting the resource from the
+			provider</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>order</code>
-			<label>Commande en ligne</label>
-			<description>Commande en ligne pour obtenir la ressource</description>
+			<label>Order</label>
+			<description>Online order process for obtening the resource</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>search</code>
-			<label>Interface de recherche</label>
-			<description>Interface de recherche pour trouver la ressource</description>
+			<label>Search</label>
+			<description>Online search interface for seeking out information about the
+			resource</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -70,86 +87,98 @@
 	<codelist name="gmd:CI_PresentationFormCode">
 		<entry>
 			<code>documentDigital</code>
-			<label>Document numérique</label>
-			<description>Document numérique contenant du texte et pouvant contenir des illustrations</description>
+			<label>Digital document</label>
+			<description>Digital representation of a primarily textual item (can contain illustrations
+				also)</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>imageDigital</code>
-			<label>Image numérique</label>
-			<description>Aspects à travers la télédétection, stocké sous format numérique</description>
+			<label>Digital image</label>
+			<description>Likeness of natural or man-made features, objects, and activities acquired
+				through the sensing of visual or any other segment of the electromagnetic spectrum by
+				sensors, such as thermal infrared, and high resolution radar and stored in digital
+				format</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>documentHardcopy</code>
-			<label>Document papier</label>
-			<description>Document papier contenant du texte et pouvant contenir des illustrations</description>
+			<label>Hardcopy document</label>
+			<description>Representation of a primarily textual item (can contain illustrations also) on
+				paper, photograhic material, or other media</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>imageHardcopy</code>
-			<label>Image papier</label>
-			<description>Aspects à travers la télédétection, reproduit sur un support utilisable par l’homme</description>
+			<label>Hardcopy image</label>
+			<description>Likeness of natural or man-made features, objects, and activities acquired
+				through the sensing of visual or any other segment of the electromagnetic spectrum by
+				sensors, such as thermal infrared, and high resolution radar and reproduced on paper,
+				photographic material, or other media for use directly by the human user</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>mapDigital</code>
-			<label>Carte numérique</label>
-			<description>Carte numérique au format raster ou vecteur</description>
+			<label>Digital map</label>
+			<description>Map represented in raster or vector form</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>mapHardcopy</code>
-			<label>Carte papier</label>
-			<description>Carte imprimée sur papier ou autre support utilisable par l’homme</description>
+			<label>Hardcopy map</label>
+			<description>Map printed on paper, photographic material, or other media for use directly
+				by the human user</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>modelDigital</code>
-			<label>Modèle numérique de terrain</label>
-			<description>Modèle numérique 3D sous forme digitale</description>
+			<label>Digital model</label>
+			<description>Multi-dimensional digital representation of a feature, process,
+			etc.</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>modelHardcopy</code>
-			<label>Modèle numérique physique</label>
-			<description>Modèle numérique 3D physique</description>
+			<label>Hardcopy model</label>
+			<description>3-dimensional, physical model</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>profileDigital</code>
-			<label>Profil numérique</label>
-			<description>Profil vertical sous forme numérique</description>
+			<label>Digital profile</label>
+			<description>Vertical cross-section in digital form</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>profileHardcopy</code>
-			<label>Profil papier</label>
-			<description>Profil vertical sous forme papier</description>
+			<label>Hardcopy profile</label>
+			<description>Vertical cross-section printed on paper, etc.</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>tableDigital</code>
-			<label>Table numérique</label>
-			<description>Représentation numérique d’informations sous forme de colonnes</description>
+			<label>Digital table</label>
+			<description>Digital representation of facts or figures systematically displayed,
+				especially in columns</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>tableHardcopy</code>
-			<label>Table papier</label>
-			<description>Représentation d’informations sous forme de colonnes sur papier ou autre support utilisable par l’homme</description>
+			<label>Hardcopy table</label>
+			<description>Representation of facts or figures systematically displayed, especially in
+				columns, printed onpapers, photographic material, or other media</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>videoDigital</code>
-			<label>Vidéo numérique</label>
-			<description>Vidéo numérique</description>
+			<label>Digital video</label>
+			<description>Digital video recording</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>videoHardcopy</code>
-			<label>Vidéo magnétique</label>
-			<description>Vidéo enregistré sur bande</description>
+			<label>Hardcopy video</label>
+			<description>Video recording on film</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -157,78 +186,82 @@
 	<codelist name="gmd:CI_RoleCode">
 		<entry>
 			<code>resourceProvider</code>
-			<label>Fournisseur</label>
-			<description>Organisme qui fournit la ressource. Acteur qui délivre physiquement la ressource, soit de manière directe au destinataire, soit par l’intermédiaire d’un diffuseur</description>
+			<label>Resource provider</label>
+			<description>Party that supplies the resource</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>custodian</code>
-			<label>Gestionnaire</label>
-			<description>Acteur responsable de la gestion et de la mise à jour de la ressource</description>
+			<label>Custodian</label>
+			<description>Party that accepts accountability and responsability for the data and ensures
+				appropriate care and maintenance of the resource</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>owner</code>
-			<label>Propriétaire</label>
-			<description>Organisme qui est propriétaire de la ressource / Acteur qui détient les droits patrimoniaux de la ressource</description>
+			<label>Owner</label>
+			<description>Party that owns the resource</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>user</code>
-			<label>Utilisateur</label>
-			<description>Organisme qui utilise ou a utilisé la ressource</description>
+			<label>User</label>
+			<description>Party who uses the resource</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>distributor</code>
-			<label>Distributeur</label>
-			<description>Organisme qui distribue la ressource. Diffuseur de second niveau de la ressource</description>
+			<label>Distributor</label>
+			<description>Party who distributes the resource</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>originator</code>
-			<label>A l’origine de</label>
-			<description>Organisme qui  a commandé la ressource. Acteur qui a été habilité à créer la ressource et qui a mis en place les moyens pour la constituer</description>
+			<label>Originator</label>
+			<description>Party who created the resource</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>pointOfContact</code>
-			<label>Point de contact</label>
-			<description>Organisme que l’on peut contacter pour avoir des renseignements détaillés sur la ressource. Acteur à contacter en premier lieu pour obtenir des informations relatives à la ressource</description>
+			<label>Point of contact</label>
+			<description>Party who can be contacted for acquiring knowledge about or acquisition of the
+				resource</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>principalInvestigator</code>
-			<label>Point de recherche</label>
-			<description>Personne clé pour obtenir des informations sur la ressource et les recherches conduites autour de la ressource&#xA;Acteur qui a assuré la réalisation de la ressource,éventuellement en faisant appel à des co-traitants ou des sous traitants</description>
+			<label>Principal investigator</label>
+			<description>Key party responsible for gathering information and conducting
+			research</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>processor</code>
-			<label>Exécutant</label>
-			<description>Organisme qui a réalisé des traitements sur la ressource. Acteur qui est intervenu lors de la réalisation de la ressource</description>
+			<label>Processor</label>
+			<description>Party wha has processed the data in a manner such that the resource has been
+				modified</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>publisher</code>
-			<label>Editeur (publication)</label>
-			<description>Organisme qui assure la publication de la ressource.</description>
+			<label>Publisher</label>
+			<description>Party who published the resource</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>author</code>
-			<label>Auteur</label>
-			<description>Organisme  ou personne qui est auteur. Acteur qui dispose des droits moraux relatifs à la ressource</description>
+			<label>Author</label>
+			<description>Party who authored the resource</description>
 		</entry>
-		<!-- ISO PROFIL CHE ONLY
+		<!-- ISO PROFIL CHE ONLY 
 		<entry>
 			<code>editor</code>
-			<label>Editeur</label>
+			<label>Editor</label>
 			<description></description>
 		</entry>
 		<entry>
 			<code>partner</code>
-			<label>Partenaire</label>
+			<label>Partner</label>
 			<description></description>
 		</entry>-->
 	</codelist>
@@ -236,20 +269,25 @@
 	<codelist name="gmd:DQ_EvaluationMethodTypeCode">
 		<entry>
 			<code>directInternal</code>
-			<label>Directe interne</label>
-			<description>Méthode d’évaluation de la qualité d’un jeu de données basée sur l’analyse des données du jeu où toutes les données requises sont internes au jeu de données</description>
+			<label>Direct internal</label>
+			<description>Method of evaluating the quality of a dataset based on inspection of items
+				within the dataset, where all data required is internal to the dataset being
+			evaluated</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>directExternal</code>
-			<label>Directe externe</label>
-			<description>Méthode d’évaluation de la qualité d’un jeu de données basée sur l’analyse des données du jeu où les références vers des données externes sont requises.</description>
+			<label>Direct external</label>
+			<description>Method of evaluating the quality of a dataset based on inspection of items
+				within the dataset, where reference data external to the dataset being evaluated is
+				required</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>indirect</code>
-			<label>Indirecte</label>
-			<description>Méthode d’évaluation de la qualité basée sur une connaissance externe.</description>
+			<label>Indirect</label>
+			<description>Method of evaluating the quality of a dataset based on external
+			knowledge</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -257,32 +295,34 @@
 	<codelist name="gmd:DS_AssociationTypeCode">
 		<entry>
 			<code>crossReference</code>
-			<label>Référence croisée</label>
-			<description>Référence d’un jeu de données à un autre</description>
+			<label>Cross reference</label>
+			<description>Reference from one dataset to another</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>largerWorkCitation</code>
-			<label>Référence mère</label>
-			<description>Référence à un jeu de données maître</description>
+			<label>Larger work citation</label>
+			<description>Reference to a master dataset of which this one is a part</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>partOfSeamlessDatabase</code>
-			<label>Partie d'une même base de données</label>
-			<description>Référence à un jeu de données stocké dans une même base de données</description>
+			<label>Part of seamless database</label>
+			<description>Part of the same structured set of data held in a computer</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>source</code>
 			<label>Source</label>
-			<description>Références vers la source des données qui a permis de produire les cartes,…</description>
+			<description>Mapping and charting information from which the dataset content
+			originates</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>stereoMate</code>
-			<label>Stéréo restitution</label>
-			<description>Partie d’un ensemble d’images qui, utilisé ensemble, fournit une vision 3D de l’image.</description>
+			<label>Stereo mate</label>
+			<description>Part of a set of imagery that when used together, provides three-dimensional
+				images</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -290,92 +330,92 @@
 	<codelist name="gmd:DS_InitiativeTypeCode">
 		<entry>
 			<code>campaign</code>
-			<label>Campagne</label>
-			<description>Séries d’actions planifiées</description>
+			<label>Campaign</label>
+			<description>Series of organized planned actions</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>collection</code>
 			<label>Collection</label>
-			<description>Accumulation de données dans un but précis</description>
+			<description>Accumulation of datasets assembled for a specific purpose</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>exercise</code>
-			<label>Exercice</label>
-			<description>Action spécifique répondant à une ou des fonctions</description>
+			<label>Exercise</label>
+			<description>Specific performance of a function or group of functions</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>experiment</code>
-			<label>Expérimentation</label>
-			<description>Recherche pour vérifier si une hypothèse est valide</description>
+			<label>Experiment</label>
+			<description>Process designed to find if something is effective or valid</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>investigation</code>
 			<label>Investigation</label>
-			<description>Recherche systématique</description>
+			<description>Search or systematic inquiry</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>mission</code>
 			<label>Mission</label>
-			<description>Spécifique opération d’une collecte de données</description>
+			<description>Specific operation of a data collection system</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>sensor</code>
-			<label>Capteur</label>
-			<description>Part d’un équipement qui détecte une information</description>
+			<label>Sensor</label>
+			<description>Device or piece of equipment which detects or records</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>operation</code>
-			<label>Opération</label>
-			<description>Action qui est une partie d’une série d’action</description>
+			<label>Operation</label>
+			<description>Action that is part of a series of actions</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>platform</code>
-			<label>Plate-forme</label>
-			<description>Véhicule ou autre support supportant un capteur</description>
+			<label>Platform</label>
+			<description>Vehicle or other support base that holds a sensor</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>process</code>
-			<label>Processus</label>
-			<description>Méthode pour faire quelque chose</description>
+			<label>Process</label>
+			<description>Method of doing something involving a number of steps</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>program</code>
-			<label>Programme</label>
-			<description>Action spécifiquement planifiée</description>
+			<label>Program</label>
+			<description>Specific planned activity</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>project</code>
-			<label>Projet</label>
-			<description>Recherche ou développement organisé</description>
+			<label>Project</label>
+			<description>Organized undertaking, research, or development</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>study</code>
-			<label>Etude</label>
-			<description>Investigation</description>
+			<label>Study</label>
+			<description>Examination or investigation</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>task</code>
-			<label>Tâche</label>
-			<description>Partie d'un travail</description>
+			<label>Task</label>
+			<description>Piece of work</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>trial</code>
-			<label>Essai</label>
-			<description>Processus visant à tester ou démontrer quelque chose</description>
+			<label>Trial</label>
+			<description>Process of testing to discover or demonstrate something</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -384,13 +424,13 @@
 		<entry>
 			<code>point</code>
 			<label>Point</label>
-			<description>Chaque cellule représente un point</description>
+			<description>Each cell represents a point</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>area</code>
-			<label>Surface</label>
-			<description>Chaque cellule représente une surface</description>
+			<label>Area</label>
+			<description>Each cell represents an area</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -398,179 +438,180 @@
 	<codelist name="gmd:MD_CharacterSetCode">
 		<entry>
 			<code>ucs2</code>
-			<label>Ucs2</label>
-			<description>16-bit fixed size Universal Character Set, based on ISO 10646</description>
+			<label>UCS2</label>
+			<description>16-bit fixed size Universal Character Set, based on ISO/IEC
+			10646</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>ucs4</code>
-			<label>Ucs4</label>
+			<label>UCS4</label>
 			<description>32-bit fixed size Universal Character Set, based on ISO/IEC
 			10646</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>utf7</code>
-			<label>Utf7</label>
+			<label>UTF7</label>
 			<description>7-bit variable size UCS Transfer Format, based on ISO/IEC 10646</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>utf8</code>
-			<label>Utf8</label>
+			<label>UTF8</label>
 			<description>8-bit variable size UCS Transfer Format, based on ISO/IEC 10646</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>utf16</code>
-			<label>Utf16</label>
+			<label>UTF16</label>
 			<description>16-bit variable size UCS Transfer Format, based on ISO/IEC 10646</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part1</code>
-			<label>8859part1</label>
+			<label>8859 Part 1</label>
 			<description>ISO/IEC 8859-1, Information technology - 8-bit single byte coded graphic
 				character sets - Part 1 : Latin alphabet No.1</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part2</code>
-			<label>8859part2</label>
+			<label>8859 Part 2</label>
 			<description>ISO/IEC 8859-2, Information technology - 8-bit single byte coded graphic
 				character sets - Part 2 : Latin alphabet No.2</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part3</code>
-			<label>8859part3</label>
+			<label>8859 Part 3</label>
 			<description>ISO/IEC 8859-3, Information technology - 8-bit single byte coded graphic
 				character sets - Part 3 : Latin alphabet No.3</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part4</code>
-			<label>8859part4</label>
+			<label>8859 Part 4</label>
 			<description>ISO/IEC 8859-4, Information technology - 8-bit single byte coded graphic
 				character sets - Part 4 : Latin alphabet No.4</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part5</code>
-			<label>8859part5</label>
+			<label>8859 Part 5</label>
 			<description>ISO/IEC 8859-5, Information technology - 8-bit single byte coded graphic
 				character sets - Part 5 : Latin/Cyrillic alphabet</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part6</code>
-			<label>8859part6</label>
+			<label>8859 Part 6</label>
 			<description>ISO/IEC 8859-6, Information technology - 8-bit single byte coded graphic
 				character sets - Part 6 : Latin/Arabic alphabet</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part7</code>
-			<label>8859part7</label>
+			<label>8859 Part 7</label>
 			<description>ISO/IEC 8859-7, Information technology - 8-bit single byte coded graphic
 				character sets - Part 7 : Latin/Greek alphabet</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part8</code>
-			<label>8859part8</label>
+			<label>8859 Part 8</label>
 			<description>ISO/IEC 8859-8, Information technology - 8-bit single byte coded graphic
 				character sets - Part 8 : Latin/Hebrew alphabet</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part9</code>
-			<label>8859part9</label>
+			<label>8859 Part 9</label>
 			<description>ISO/IEC 8859-9, Information technology - 8-bit single byte coded graphic
 				character sets - Part 9 : Latin alphabet No.5</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part10</code>
-			<label>8859part10</label>
+			<label>8859 Part 10</label>
 			<description>ISO/IEC 8859-10, Information technology - 8-bit single byte coded graphic
 				character sets - Part 10 : Latin alphabet No.6</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part11</code>
-			<label>8859part11</label>
+			<label>8859 Part 11</label>
 			<description>ISO/IEC 8859-11, Information technology - 8-bit single byte coded graphic
 				character sets - Part 11 : Latin/Thai alphabet</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part13</code>
-			<label>8859part13</label>
+			<label>8859 Part 13</label>
 			<description>ISO/IEC 8859-13, Information technology - 8-bit single byte coded graphic
 				character sets - Part 13 : Latin alphabet No.7</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part14</code>
-			<label>8859part14</label>
+			<label>8859 Part 14</label>
 			<description>ISO/IEC 8859-14, Information technology - 8-bit single byte coded graphic
 				character sets - Part 14 : Latin alphabet No.8 (Celtic)</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part15</code>
-			<label>8859part15</label>
+			<label>8859 Part 15</label>
 			<description>ISO/IEC 8859-15, Information technology - 8-bit single byte coded graphic
 				character sets - Part 15 : Latin alphabet No.9</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8859part16</code>
-			<label>8859part16</label>
+			<label>8859 Part 16</label>
 			<description>ISO/IEC 8859-16, Information technology - 8-bit single byte coded graphic
 				character sets - Part 16 : Latin alphabet No.10</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>jis</code>
-			<label>Jis</label>
+			<label>JIS</label>
 			<description>Japanese code set used for electronic transmission</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>shiftJIS</code>
-			<label>ShiftJIS</label>
+			<label>Shift JIS</label>
 			<description>Japanese code set used on MS-DOS machines</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>eucJP</code>
-			<label>EucJP</label>
+			<label>EUC JP</label>
 			<description>Japanese code set used on UNIX based machines</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>usAscii</code>
-			<label>UsAscii</label>
+			<label>US ASCII</label>
 			<description>United States ASCII code set (ISO 646 US)</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>ebcdic</code>
-			<label>Ebcdic</label>
+			<label>EBCDIC</label>
 			<description>IBM mainframe code set</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>eucKR</code>
-			<label>EucKR</label>
+			<label>EUC KR</label>
 			<description>Korean code set</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>big5</code>
-			<label>Big5</label>
+			<label>Big 5</label>
 			<description>Traditional Chinese code set used in Taiwan, Hong Kong of China and other
 				areas</description>
 		</entry>
@@ -586,32 +627,33 @@
 	<codelist name="gmd:MD_ClassificationCode">
 		<entry>
 			<code>unclassified</code>
-			<label>Non classifié</label>
-			<description>La ressource ne revêt pas un caractère sensible</description>
+			<label>Unclassified</label>
+			<description>Available for general disclosure</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>restricted</code>
-			<label>Restreint</label>
-			<description>Le caractère sensible de la ressource restreint son utilisation ou sa diffusion</description>
+			<label>Restricted</label>
+			<description>Not for general disclosure</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>confidential</code>
-			<label>Confidentiel</label>
-			<description>La ressource présente un caractère confidentiel.</description>
+			<label>Confidential</label>
+			<description>Available for someone who can be entrusted with information</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>secret</code>
 			<label>Secret</label>
-			<description>La confidentialité de la ressource implique des mesures de protection particulière</description>
+			<description>Kept or meant to be kept private, unknown, or hidden from all but a select
+				group of people</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>topSecret</code>
 			<label>Top secret</label>
-			<description>La confidentialité de la ressource implique des mesures de protection extrêmes</description>
+			<description>Of the highest secrecy</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -620,19 +662,21 @@
 		<entry>
 			<code>image</code>
 			<label>Image</label>
-			<description>Représentation numérique d’un paramètre physique</description>
+			<description>Meaningful numerical representation of a physical parameter that is not the
+				actual value of the physical parameter</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>thematicClassification</code>
-			<label>Classification thématique</label>
-			<description>Codification selon une classification</description>
+			<label>Thematic classification</label>
+			<description>Code value with no quantitative meaning, used to represent a physical
+			quantity</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>physicalMeasurement</code>
-			<label>Mesure physique</label>
-			<description>Valeur physique mesurée</description>
+			<label>Physical measurement</label>
+			<description>Value in physical units of the quantity being measured</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -640,92 +684,102 @@
 	<codelist name="gmd:MD_DatatypeCode">
 		<entry>
 			<code>class</code>
-			<label>Classe</label>
-			<description>Description d’un ensemble d’objet qui ont les mêmes attributs, méthodes …</description>
+			<label>Class</label>
+			<description>Descriptor of a set of objects that share the same attributes, operations,
+				methods, relationships, and behavior</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>codelist</code>
-			<label>Liste de codes</label>
-			<description>Enumération modifiable, utilisée pour exprimée une liste de valeurs extensible</description>
+			<label>Codelist</label>
+			<description>Descriptor of a set of objects that share the same attributes, operations,
+				methods, relationships, and behavior</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>enumeration</code>
-			<label>Enumération</label>
-			<description>Enumération, utilisée pour exprimée une liste de valeurs non extensible</description>
+			<label>Enumeration</label>
+			<description>Data type whose instances form a list of named literal values, not
+			extendable</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>codelistElement</code>
-			<label>Elément d'une liste de codes</label>
-			<description>Valeur possible pour une liste de codes</description>
+			<label>Codelist element</label>
+			<description>Permissible value for a codelist or enumeration</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>abstractClass</code>
-			<label>Classe abstraite</label>
-			<description>Classe qui ne peut être directement instancée</description>
+			<label>Abstract class</label>
+			<description>Class that cannot be directly instantiated</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>aggregateClass</code>
-			<label>Classe agrégée</label>
-			<description>Classe qui est composé d’un ensemble de classes connecté par une relation de type Agrégation.</description>
+			<label>Aggregate class</label>
+			<description>Class that is composed of classes it is connected to by an aggregate
+				relationship</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>specifiedClass</code>
-			<label>Classe spécifique</label>
-			<description>Classe qui peut être substituée à une classe de  niveau supérieur</description>
+			<label>Specified class</label>
+			<description>Subclass that may be substituted for its superclass</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>datatypeClass</code>
-			<label>Classe de type de donnée</label>
-			<description>Classe avec peu ou aucune opération dont le rôle est de gérer l’état d’une autre classe pour les informations relevant de la transmission, le stockage, l’encodage ou la persistance.</description>
+			<label>Datatype class</label>
+			<description>Class with few or no operations whose primary purpose is to hold the abstract
+				state of another class for transmittal, storage, encoding or persistent
+			storage</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>interfaceClass</code>
-			<label>Classe d'interface</label>
-			<description>Noms des opérations qui caractérisent le comportement d’une ressource</description>
+			<label>Interface class</label>
+			<description>Named set of operations that characterize the behavior of an
+			element</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>unionClass</code>
-			<label>Classe d'union</label>
-			<description>Classe décrivant une sélection d’un type spécifique</description>
+			<label>Union class</label>
+			<description>Class describing a selection of one of the specified types</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>metaClass</code>
-			<label>Méta-classe</label>
-			<description>Classe dont les instances sont des classes</description>
+			<label>Meta class</label>
+			<description>Class whose instances are classes</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>typeClass</code>
-			<label>Type de classe</label>
-			<description>Classe utilisée pour spécifier un domaine d’instance (objet) en relation avec les opérations applicables à ces objets. Un type peut avoir des attributs et des associations</description>
+			<label>Type class</label>
+			<description>Class used for specification of a domain of instances (objects), together with
+				the operations applicable to the objects. A type may have attributes and
+			associations</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>characterString</code>
-			<label>Chaîne de caractères</label>
-			<description>Texte libre</description>
+			<label>Character string</label>
+			<description>Free text field</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>integer</code>
-			<label>Entier</label>
-			<description>Champ numérique</description>
+			<label>Integer</label>
+			<description>Numerical field</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>association</code>
 			<label>Association</label>
-			<description>Relation entre deux classes</description>
+			<description>Semantic relationship between two classes that involves connections among
+				their instances</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -733,50 +787,50 @@
 	<codelist name="gmd:MD_DimensionNameTypeCode">
 		<entry>
 			<code>row</code>
-			<label>Axe - Y</label>
-			<description>Axe des ordonnées (axe - Y)</description>
+			<label>Row</label>
+			<description>Ordinate (y) axis</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>column</code>
-			<label>Axe - X</label>
-			<description>Axe des abscisses (axe X)</description>
+			<label>Column</label>
+			<description>Abscissa (x) axis</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>vertical</code>
-			<label>Axe - Z</label>
-			<description>Axe vertical (axe Z)</description>
+			<label>Vertical</label>
+			<description>Vertical (z) axis</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>track</code>
-			<label>Piste</label>
-			<description>Dans la direction de la ...</description>
+			<label>Track</label>
+			<description>Along the direction of motion of the scan point</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>crossTrack</code>
-			<label>Profil de piste</label>
-			<description>Perpendiculaire ...</description>
+			<label>Cross track</label>
+			<description>Perpendicular to the direction of motion of the scan point</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>line</code>
-			<label>Ligne</label>
-			<description>Ligne de scannage d'un capteur</description>
+			<label>Line</label>
+			<description>Scan line of a sensor</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>sample</code>
-			<label>Echantillon</label>
-			<description>Elément le long d'une ligne de scannage</description>
+			<label>Sample</label>
+			<description>Element along a scan line</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>time</code>
-			<label>Temps</label>
-			<description>Durée</description>
+			<label>Time</label>
+			<description>Duration</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -784,38 +838,43 @@
 	<codelist name="gmd:MD_GeometricObjectTypeCode">
 		<entry>
 			<code>complex</code>
-			<label>Complexe</label>
-			<description>Ensemble de primitives géométriques représentées comme l'union d'autres primitives</description>
+			<label>Complex</label>
+			<description>Set of geometric primitives such that their boundaries can be represented as a
+				union of other primitives</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>composite</code>
 			<label>Composite</label>
-			<description>Ensemble de lignes connectées entre elles</description>
+			<description>Connected set of curves, solids or surfaces</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>curve</code>
-			<label>Ligne</label>
-			<description>Primitive géométrique à une dimension représentant une image continue d'une ligne</description>
+			<label>Curve</label>
+			<description>Bounded, 1-dimensional geometric primitive, representing the continuous image
+				of a line</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>point</code>
 			<label>Point</label>
-			<description>Primitive géométrique à zéro dimension représentant une position sans étendue</description>
+			<description>Zero-dimensional geometric primitive, representing a position but not having
+				an extent</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>solid</code>
-			<label>Volume</label>
-			<description>Primitive géométrique à trois dimensions représentant un volume (définition à revoir)</description>
+			<label>Solid</label>
+			<description>Bounded, connected 3-dimensional geometric primitive, representing the
+				continuous image of a region of space</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>surface</code>
-			<label>Polygone</label>
-			<description>Primitive géométrique à deux dimensions représentant une surface</description>
+			<label>Surface</label>
+			<description>Bounded, connected 2-dimensional geometric primitive, representing the
+				continuous image of a region of a plane</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -823,68 +882,73 @@
 	<codelist name="gmd:MD_ImagingConditionCode">
 		<entry>
 			<code>blurredImage</code>
-			<label>Flou</label>
-			<description>Portion de l’image floue</description>
+			<label>Blurred image</label>
+			<description>Portion of the image is blurred</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>cloud</code>
-			<label>Nuage</label>
-			<description>Portion de l’image partiellement occultée par des nuages</description>
+			<label>Cloud</label>
+			<description>Portion of the image is partially obscured by cloud cover</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>degradingObliquity</code>
-			<label>Dégradation oblique</label>
-			<description>Due à l’angle entre le plan de l’écliptique et le plan équatorial</description>
+			<label>Degrading obliquity</label>
+			<description>Acute angle between the plane of the ecliptic (the plane of the Earth s orbit)
+				and the plane of the celestial equator</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>fog</code>
-			<label>Brouillard</label>
-			<description>Portion de l’image partiellement occultée par du brouillard</description>
+			<label>Fog</label>
+			<description>Portion of the image is partially obscured by fog</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>heavySmokeOrDust</code>
-			<label>Fumée et poussière</label>
-			<description>Portion de l’image partiellement occultée des fumées ou des poussières</description>
+			<label>Heavy smoke or dust</label>
+			<description>Portion of the image is partially obscured by heavy smoke or
+			dust</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>night</code>
-			<label>Nuit</label>
-			<description>Image prise la nuit</description>
+			<label>Night</label>
+			<description>Image was taken at night</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>rain</code>
-			<label>Pluie</label>
-			<description>Image prise durant la pluie</description>
+			<label>Rain</label>
+			<description>Image was taken during rainfall</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>semiDarkness</code>
-			<label>Semi obscurité</label>
-			<description>Image prise pendant une semi obscurité</description>
+			<label>Semi darkness</label>
+			<description>Image was taken during semi-dark conditions -- twilight
+			conditions</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>shadow</code>
-			<label>Ombre</label>
-			<description>Image obscurcie par une ombre</description>
+			<label>Shadow</label>
+			<description>Portion of the image is obscured by shadow</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>snow</code>
-			<label>Neige</label>
-			<description>Image obscurcie par la neige</description>
+			<label>Snow</label>
+			<description>Portion of the image is obscured by snow</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>terrainMasking</code>
-			<label>Terrain masqué</label>
-			<description>Absence de données en raison des caractéristiques topographiques qui masquent les informations recherchées</description>
+			<label>Terrain masking</label>
+			<description>The absence of collection data of a given point or area caused by the relative
+				location of topographic features which obstruct the collection path between the
+				collector(s) and the subject(s) of interest</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -893,31 +957,32 @@
 		<entry>
 			<code>discipline</code>
 			<label>Discipline</label>
-			<description>Mot-clé en relation avec une branche de la connaissance</description>
+			<description>Keyword identifies a branch of instruction or specialized
+			learning</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>place</code>
-			<label>Localisation</label>
-			<description>Mot-clé identifiant un lieu</description>
+			<label>Place</label>
+			<description>Keyword identifies a location</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>stratum</code>
-			<label>Strate</label>
-			<description>Couche géologique</description>
+			<label>Stratum</label>
+			<description>Keyword identifies the layer(s) of any deposited substance</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>temporal</code>
-			<label>Temps</label>
-			<description>Mot clef identifiant une période de temps</description>
+			<label>Temporal</label>
+			<description>Keyword identifies a time period related to the dataset</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>theme</code>
-			<label>Thème</label>
-			<description>Mot-clé identifiant un sujet particulier</description>
+			<label>Theme</label>
+			<description>Keyword identifies a particular subject or topic</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -925,118 +990,119 @@
 	<codelist name="gmd:MD_MaintenanceFrequencyCode">
 		<entry>
 			<code>continual</code>
-			<label>Continue</label>
-			<description>Mise à jour continue</description>
+			<label>Continual</label>
+			<description>Data is repeatedly and frequently updated</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>daily</code>
-			<label>Journalière</label>
-			<description>Mise à jour quotidienne</description>
+			<label>Daily</label>
+			<description>Data is updated each day</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>weekly</code>
-			<label>Hebdomadaire</label>
-			<description>Mise à jour hebdomadaire</description>
+			<label>Weekly</label>
+			<description>Data is updated on a weekly basis</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>fortnightly</code>
-			<label>Bi-mensuelle</label>
-			<description>Mise à jour 2 fois par mois</description>
+			<label>Fortnightly</label>
+			<description>Data is updated every two weeks</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>monthly</code>
-			<label>Mensuelle</label>
-			<description>Mise à jour mensuelle</description>
+			<label>Monthly</label>
+			<description>Data is updated each month</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>quarterly</code>
-			<label>Trimestrielle</label>
-			<description>Mise à jour trimestrielle</description>
+			<label>Quarterly</label>
+			<description>Data is updated every three months</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>biannually</code>
-			<label>Bi-annuelle</label>
-			<description>Mise à jour bi-annuelle</description>
+			<label>Biannually</label>
+			<description>Data is updated twice each year</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>annually</code>
-			<label>Annuelle</label>
-			<description>Mise à jour annuelle</description>
+			<label>Annually</label>
+			<description>Data is updated every year</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>asNeeded</code>
-			<label>Lorsque nécessaire</label>
-			<description>Mise à jour lorsque cela est jugé nécessaire</description>
+			<label>As needed</label>
+			<description>Data is updated as deemed necessary</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>irregular</code>
-			<label>Irrégulière</label>
-			<description>Mise à jour irrégulière</description>
+			<label>Irregular</label>
+			<description>Data is updated in intervals that are uneven in duration</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>notPlanned</code>
-			<label>Non planifiée</label>
-			<description>Mise à jour non planifiée</description>
+			<label>Not planned</label>
+			<description>There are no plans to update the data</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>unknown</code>
-			<label>Inconnue</label>
-			<description>Mise à jour inconnue</description>
+			<label>Unknown</label>
+			<description>Frequency of maintenance for the data is not known</description>
 		</entry>
 		<!-- ISO PROFIL CHE ONLY
 		<entry>
 			<code>userDefined</code>
-			<label>Fréquence personnalisée</label>
-			<description>Dans ce cas l'attribut définissant une fréquence personnalisée doit être utilisée</description>
-		</entry>-->
+			<label>User defined</label>
+			<description></description>
+		</entry>
+		-->
 	</codelist>
 	<!-- ==================================================== -->
 	<codelist name="gmd:MD_MediumFormatCode">
 		<entry>
 			<code>cpio</code>
-			<label>Cpio</label>
-			<description>Copie en entrée /sortie (commande et fichier au format UNIX)</description>
+			<label>CPIO</label>
+			<description>CoPy In / Out (UNIX file format and command)</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>tar</code>
-			<label>Tar</label>
-			<description>Format d’archivage sur bande</description>
+			<label>TAR</label>
+			<description>Tape ARchive</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>highSierra</code>
-			<label>High Sierra</label>
-			<description>Système de fichiers High Sierra</description>
+			<label>High sierra</label>
+			<description>High sierra file system</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>iso9660</code>
-			<label>Iso9660</label>
-			<description>Système de fichier CD – ROM</description>
+			<label>ISO9660</label>
+			<description>Information processing volume and file structure of CD-ROM</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>iso9660RockRidge</code>
-			<label>Iso9660RockRidge</label>
-			<description>Protocole d’échange  Rock Ridge (UNIX)</description>
+			<label>ISO9660 Rock Ridge</label>
+			<description>Rock ridge interchange protocol (UNIX)</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>iso9660AppleHFS</code>
-			<label>Iso9660AppleHFS</label>
-			<description>Système hiérarchique de fichiers (Macintosh)</description>
+			<label>ISO9660 Apple HFS</label>
+			<description>Hierarchical file system (Macintosh)</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -1044,120 +1110,121 @@
 	<codelist name="gmd:MD_MediumNameCode">
 		<entry>
 			<code>cdRom</code>
-			<label>CD-ROM</label>
-			<description>Disque optique en lecture seule</description>
+			<label>CDROM</label>
+			<description>Read-only optical disk</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>dvd</code>
 			<label>DVD</label>
-			<description>Disque numérique universel</description>
+			<description>Digital versatile disk</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>dvdRom</code>
-			<label>DVD-ROM</label>
-			<description>Disque numérique universel en lecture seule</description>
+			<label>DVDROM</label>
+			<description>Digital versatile disk, read only</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>3halfInchFloppy</code>
-			<label>Disquette 3.5 pouces</label>
-			<description>Disquette magnétique de 3.5 pouces</description>
+			<label>3 Half Inch Floppy</label>
+			<description>3,5 inch magnetic disk</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>5quarterInchFloppy</code>
-			<label>Disquette 5.25 pouces</label>
-			<description>Disquette magnétique de 5.25 pouces</description>
+			<label>5 Quarter Inch Floppy</label>
+			<description>5,25 inch magnetic disk</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>7trackTape</code>
-			<label>Bande magnétique 7 pistes</label>
-			<description>Bande magnétique</description>
+			<label>7 Track tape</label>
+			<description>7 track magnetic tape</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>9trackTape</code>
-			<label>Bande magnétique 9 pistes</label>
-			<description>Bande magnétique</description>
+			<label>9 track tape</label>
+			<description>9 track magnetic tape</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>3480Cartridge</code>
-			<label>Cartouche 3480</label>
-			<description>Cartouche à bande magnétique 3480</description>
+			<label>3480 Cartridge</label>
+			<description>3480 cartridge tape drive</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>3490Cartridge</code>
-			<label>Cartouche 3490</label>
-			<description>Cartouche à bande magnétique 3490</description>
+			<label>3490 Cartridge</label>
+			<description>3490 cartridge tape drive</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>3580Cartridge</code>
-			<label>Cartouche 3580</label>
-			<description>Cartouche à bande magnétique 3580</description>
+			<label>3580 Cartridge</label>
+			<description>3580 cartridge tape drive</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>4mmCartridgeTape</code>
-			<label>Bande magnétique 4 mm</label>
-			<description>Bande magnétique 4 mm</description>
+			<label>4 mm Cartridge tape</label>
+			<description>4 millimetre magnetic tape</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>8mmCartridgeTape</code>
-			<label>Bande magnétique 8 mm</label>
-			<description>Bande magnétique 8 mm</description>
+			<label>8 mm Cartridge tape</label>
+			<description>8 millimetre magnetic tape</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>1quarterInchCartridgeTape</code>
-			<label>Bande magnétique 0.25 pouces</label>
-			<description>Bande magnétique 0.25 pouces</description>
+			<label>1 Quarter inch cartridge tape</label>
+			<description>0,25 inch magnetic tape</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
-			<code>digitalLinearTape</code>
-			<label>Bande magnétique 0.5 pouces</label>
-			<description>Bande magnétique 0.5 pouces</description>
+			<code>digitalLinearTap</code>
+			<label>Digital linear tape</label>
+			<description>Half inch cartridge streaming tape drive</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>onLine</code>
-			<label>En ligne</label>
-			<description>En ligne</description>
+			<label>Online</label>
+			<description>Direct computer linkage</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>satellite</code>
 			<label>Satellite</label>
-			<description>Communication par satellite</description>
+			<description>Linkage through a satellite communication system</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>telephoneLink</code>
-			<label>Communication téléphonique</label>
-			<description>Liens via un réseau téléphonique</description>
+			<label>Telephone link</label>
+			<description>Communication through a telephone network</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>hardcopy</code>
-			<label>Papier</label>
-			<description>Document papier</description>
+			<label>Hardcopy</label>
+			<description>Pamphlet or leaflet giving descriptive information</description>
 		</entry>
-		<!-- ISO PROFIL CHE ONLY
-			<entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<!-- ISO PROFIL CHE ONLY 
+		<entry>
 			<code>zip100</code>
-			<label>ZIP 100</label>
+			<label>Zip100</label>
 			<description></description>
 		</entry>
 		<entry>
 			<code>zip250</code>
-			<label>ZIP 250</label>
+			<label>Zip250</label>
 			<description></description>
 		</entry>      <entry>
 			<code>e-mail</code>
@@ -1165,15 +1232,15 @@
 			<description></description>
 		</entry>      <entry>
 			<code>zip</code>
-			<label>ZIP</label>
+			<label>Zip</label>
 			<description></description>
 		</entry>      <entry>
 			<code>jaz</code>
-			<label>JAZ</label>
+			<label>Jaz</label>
 			<description></description>
 		</entry>      <entry>
 			<code>other</code>
-			<label>Autre</label>
+			<label>Other</label>
 			<description></description>
 		</entry>-->
 	</codelist>
@@ -1181,20 +1248,20 @@
 	<codelist name="gmd:MD_ObligationCode">
 		<entry>
 			<code>mandatory</code>
-			<label>Obligatoire</label>
-			<description>Obligatoire</description>
+			<label>Mandatory</label>
+			<description>Element is always required</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>optional</code>
-			<label>Optionnel</label>
-			<description>Optionnel</description>
+			<label>Optional</label>
+			<description>Element is not required</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>conditional</code>
-			<label>Conditionnel</label>
-			<description>Conditionnel</description>
+			<label>Conditional</label>
+			<description>Element is required when a specific condition is met</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -1202,32 +1269,34 @@
 	<codelist name="gmd:MD_PixelOrientationCode">
 		<entry>
 			<code>center</code>
-			<label>Centre</label>
-			<description>Centre</description>
+			<label>Center</label>
+			<description>Point halfway between the lower left and the upper right of the
+			pixel</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>lowerLeft</code>
-			<label>Bas gauche</label>
-			<description>Bas gauche</description>
+			<label>Lower left</label>
+			<description>The corner in the pixel closest to the origin of the SRS; if two are at the
+				same distance from the origin, the one with the smallest x-value</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>lowerRight</code>
-			<label>Bas droit</label>
-			<description>Bas droit</description>
+			<label>Lower right</label>
+			<description>Next corner counterclockwise from the lower left</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>upperRight</code>
-			<label>Haut droit</label>
-			<description>Haut droit</description>
+			<label>Upper right</label>
+			<description>Next corner counterclockwise from the lower right</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>upperLeft</code>
-			<label>Haut gauche</label>
-			<description>Haut gauche</description>
+			<label>Upper left</label>
+			<description>Next corner counterclockwise from the upper right</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -1235,44 +1304,45 @@
 	<codelist name="gmd:MD_ProgressCode">
 		<entry>
 			<code>completed</code>
-			<label>Finalisé</label>
-			<description>Production de la ressource finalisée</description>
+			<label>Completed</label>
+			<description>Production of the data has been completed</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>historicalArchive</code>
-			<label>Archivé</label>
-			<description>Ressource archivée hors ligne</description>
+			<label>Historical archive</label>
+			<description>Data has been stored in an offline storage facility</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>obsolete</code>
-			<label>Obsolète</label>
-			<description>Ressource obsolète</description>
+			<label>Obsolete</label>
+			<description>Data is no longer relevant</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>onGoing</code>
-			<label>Mis à jour continue</label>
-			<description>Ressource continuellement mise à jour</description>
+			<label>On going</label>
+			<description>Data is continually being updated</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>planned</code>
-			<label>Planifié</label>
-			<description>Ressource créée ou mise à jour sur base d'une date fixée</description>
+			<label>Planned</label>
+			<description>Fixed date has been established upon or by which the data will be created or
+				updated</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>required</code>
-			<label>Création ou mise à jour requise</label>
-			<description>Ressource qui doit être générée ou mise à jour</description>
+			<label>Required</label>
+			<description>Data needs to be generated or updated</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>underDevelopment</code>
-			<label>En cours de création</label>
-			<description>Ressource en cours de création</description>
+			<label>Under development</label>
+			<description>Data is currently in the process of being created</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -1280,240 +1350,245 @@
 	<codelist name="gmd:MD_RestrictionCode">
 		<entry>
 			<code>copyright</code>
-			<label>Droit d’auteur /  Droit moral (copyright)</label>
-			<description>Restriction lié à l’exercice du droit moral</description>
+			<label>Copyright</label>
+			<description>Exclusive right to the publication, production, or sale of the rights to a
+				literary, dramatic, musical, or artistic work, or to the use of a commercial print or
+				label, granted by law for a specified period of time to an author, composer, artist,
+				distributor</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>patent</code>
-			<label>Brevet</label>
-			<description>Restriction induite par l’existence d’un brevet</description>
+			<label>Patent</label>
+			<description>Government has granted exclusive right to make, sell, use or license an
+				invention or discovery</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>patentPending</code>
-			<label>Brevet en instance</label>
-			<description>Restriction induite par le dépôt d’un brevet en cours</description>
+			<label>Pending patent</label>
+			<description>Produced or sold information awaiting a patent</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>trademark</code>
-			<label>Marque de commerce</label>
-			<description>Restriction lié à l’existence d’un dépôt de marque</description>
+			<label>Trademark</label>
+			<description>A name, symbol, or other device identifying a product, officially registered
+				and legally restricted to the use of the owner or manufacturer</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>license</code>
-			<label>Licence</label>
-			<description>Restriction induite par l’existence d’une licence</description>
+			<label>License</label>
+			<description>Formal permission to do something</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>intellectualPropertyRights</code>
-			<label>Droit de propriété intellectuelle / Droit patrimonial</label>
-			<description>Restriction lié à l’exercice du droit patrimonial</description>
+			<label>Intellectual property rights</label>
+			<description>Rights to financial benefit from and control of distribution of non-tangible
+				property that is a result of creativity</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>restricted</code>
-			<label>Restreint</label>
-			<description>Cette valeur n’a pas d’application identifiée en France</description>
+			<label>Restricted</label>
+			<description>Withheld from general circulation or disclosure</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>otherRestrictions</code>
-			<label>Autres restrictions</label>
-			<description>Restrictions non prévues</description>
+			<label>Other restrictions</label>
+			<description>Limitation not listed</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
 	<!-- ==================================================== -->
-	<codelist name="gmd:MD_ScopeCode" editorMode="radio">
-		<entry hideInEditMode="true">
+	<codelist name="gmd:MD_ScopeCode">
+		<entry>
 			<code>attribute</code>
-			<label>Attribut</label>
-			<description>Informations appliquées aux caractéristiques de l’attribut</description>
+			<label>Attribute</label>
+			<description>Information applies to the attribute class</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry hideInEditMode="true">
+		<entry>
 			<code>attributeType</code>
-			<label>Type d'attribut</label>
-			<description>Informations appliquées aux caractéristiques de l’entité</description>
+			<label>Attribute type</label>
+			<description>Information applies to the characteristic of a feature</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry hideInEditMode="true">
+		<entry>
 			<code>collectionHardware</code>
-			<label>Collection matérielle</label>
-			<description>Informations appliquées aux caractéristiques d’une collection matérielle</description>
+			<label>Collection hardware</label>
+			<description>Information applies to the collection hardware class</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry hideInEditMode="true">
+		<entry>
 			<code>collectionSession</code>
-			<label>Collection de session</label>
-			<description>Informations appliquées aux caractéristiques d’une collection de session</description>
+			<label>Collection session</label>
+			<description>Information applies to the collection session</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>dataset</code>
-			<label>Série de données</label>
-			<description>Informations appliquées aux caractéristiques de jeu de données</description>
+			<label>Dataset</label>
+			<description>Information applies to the dataset</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>series</code>
-			<label>Ensemble de séries de données</label>
-			<description>Informations appliquées aux caractéristiques de la collection de données</description>
+			<label>Series</label>
+			<description>Information applies to the series</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry hideInEditMode="true">
+		<entry>
 			<code>nonGeographicDataset</code>
-			<label>Jeux de données non géographiques</label>
-			<description>Informations appliquées aux caractéristiques de jeux de données non géographiques</description>
+			<label>Non geographic dataset</label>
+			<description>Information applies to non-geographic data</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry hideInEditMode="true">
+		<entry>
 			<code>dimensionGroup</code>
-			<label>Dimension d'un groupe</label>
-			<description>Informations appliquées à un groupe</description>
+			<label>Dimension group</label>
+			<description>Information applies to a dimension group</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry hideInEditMode="true">
+		<entry>
 			<code>feature</code>
-			<label>Entité</label>
-			<description>Informations appliquées à une entité</description>
+			<label>Feature</label>
+			<description>Information applies to a feature</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry hideInEditMode="true">
+		<entry>
 			<code>featureType</code>
-			<label>Type d’entité</label>
-			<description>Informations appliquées à un type d’entité</description>
+			<label>Feature type</label>
+			<description>Information applies to a feature type</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry hideInEditMode="true">
+		<entry>
 			<code>propertyType</code>
-			<label>Type de propriété</label>
-			<description>Informations appliquées à un type de propriété</description>
+			<label>Property type</label>
+			<description>Information applies to a property type</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry hideInEditMode="true">
+		<entry>
 			<code>fieldSession</code>
-			<label>Champ de session</label>
-			<description>Informations appliquées aux caractéristiques d’un champ de session</description>
+			<label>Field session</label>
+			<description>Information applies to a field session</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry hideInEditMode="true">
+		<entry>
 			<code>software</code>
-			<label>Logiciel</label>
-			<description>Informations appliquées à programme ou à une routine</description>
+			<label>Software</label>
+			<description>Information applies to a computer program or routine</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry hideInEditMode="true">
+		<entry>
 			<code>service</code>
 			<label>Service</label>
-			<description>Informations appliquées à un service Internet</description>
+			<description>Information applies to a capability which a service provider entity makes
+				available to a service user entity through a set of interfaces that define a behaviour,
+				such as a use case</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry hideInEditMode="true">
+		<entry>
 			<code>model</code>
-			<label>Modèle</label>
-			<description>Informations appliquées à modèle décrivant les objets ou un ensemble d'objets</description>
+			<label>Model</label>
+			<description>Information applies to a copy or imitation of an existing or hypothetical
+				object</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry hideInEditMode="true">
+		<entry>
 			<code>tile</code>
-			<label>Tuile</label>
-			<description>Tuile</description>
+			<label>Tile</label>
+			<description>Information applies to a tile, a spatial subset of geographic
+			data</description>
 		</entry>
 		<!-- ISO PROFIL CHE ONLY
 		<entry>
 			<code>project</code>
-			<label>Projet</label>
-			<description>Le projet décrit le cadre organisationnel défini pour l'accomplissement d'une tâche: il intègre la description des tenants et des aboutissants du problème, les objectifs, les activités prévues, les étapes de réalisation, les délais, les ressources...</description>
+			<label>Project</label>
+			<description></description>
 		</entry>
 		<entry>
 			<code>stationSite</code>
-			<label>Station</label>
-			<description>Cet élément décrit les activités d'acquisition de données des stations de mesure ; il ne décrit pas les données mais la manière dont elles ont été saisies (paramètres de saisie, méthodes, instruments)</description>
+			<label>Station site</label>
+			<description></description>
 		</entry>
 		<entry>
 			<code>publication</code>
 			<label>Publication</label>
-			<description>Ce sont des produits finis tels que les ouvrages, brochures, articles, rapports, matériel audiovisuel...</description>
+			<description>Publication</description>
 		</entry>-->
-
-
+		
 		<!-- Used for facet translation only and not displayed in editor -->
 		<entry hideInEditMode="true">
 			<code>map</code>
-			<label>Carte</label>
+			<label>Map</label>
 			<description></description>
 		</entry>
 		<entry hideInEditMode="true">
 			<code>staticMap</code>
-			<label>Carte statique</label>
+			<label>Static map</label>
 			<description></description>
 		</entry>
 		<entry hideInEditMode="true">
 			<code>interactiveMap</code>
-			<label>Carte interactive</label>
+			<label>Interactive map</label>
 			<description></description>
 		</entry>
-    <entry hideInEditMode="true">
-      <code>featureCatalog</code>
-      <label>Catalogue d'attributs</label>
-      <description></description>
-    </entry>
 	</codelist>
-<!--
-	Example to customize scope code codelist for a service metadata record.-->
 	<codelist name="gmd:MD_ScopeCode" displayIf="/ancestor::node()[name()='gmd:MD_Metadata']/gmd:identificationInfo/srv:SV_ServiceIdentification">
 		<entry>
 			<code>service</code>
 			<label>Service</label>
-			<description>Informations appliquées à un service Internet</description>
+			<description>Information applies to a capability which a service provider entity makes
+				available to a service user entity through a set of interfaces that define a behaviour,
+				such as a use case</description>
 		</entry>
 	</codelist>
 	<!-- ==================================================== -->
 	<codelist name="gmd:MD_SpatialRepresentationTypeCode">
 		<entry>
 			<code>vector</code>
-			<label>Vecteur</label>
-			<description>Donnée vecteur (point, ligne, polygone)</description>
+			<label>Vector</label>
+			<description>Vector data is used to represent geographic data</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>grid</code>
-			<label>Raster</label>
-			<description>Donnée raster ou matricielle</description>
+			<label>Grid</label>
+			<description>Grid data is used to represent geographic data</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>textTable</code>
-			<label>Tabulaire</label>
-			<description>Fichier texte ou table</description>
+			<label>Text, table</label>
+			<description>Textual or tabular data is used to represent geographic data</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>tin</code>
 			<label>TIN</label>
-			<description>Réseau de triangle irrégulier (Triangulated Irregular Network)</description>
+			<description>Triangulated irregular network</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>stereoModel</code>
-			<label>Modèle stéréoscopique</label>
-			<description>Vue tridimensionnelle formée par l'intersection des rayons homologues d'une paire d'images se recouvrant</description>
+			<label>Stereo model</label>
+			<description>Three-dimensional view formed by the intersecting homologous rays of an
+				overlapping pair of images</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>video</code>
-			<label>Vidéo</label>
-			<description>Enregistrement vidéo</description>
+			<label>Video</label>
+			<description>Scene from a video recording</description>
 		</entry>
 		<!-- ISO PROFIL CHE ONLY
 		<entry>
 			<code>paperMap</code>
-			<label>Carte papier</label>
+			<label>Paper map</label>
 			<description></description>
 		</entry>-->
 	</codelist>
@@ -1521,116 +1596,149 @@
 	<codelist name="gmd:MD_TopicCategoryCode">
 		<entry>
 			<code>farming</code>
-			<label>Agriculture</label>
-			<description>Elevage et/ou cultures. Exemples : agriculture, irrigation, aquaculture, plantations</description>
+			<label>Farming</label>
+			<description>Rearing of animals and/or cultivation of plants. Examples: agriculture,
+				irrigation, aquaculture, plantations, herding, pests and diseases affecting crops and
+				livestock</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>biota</code>
-			<label>Biote</label>
-			<description>Flore et faune dans un écosystème naturel. Exemples : habitat, écologie, faune sauvage, faune aquatique, sciences biologiques, zones humides, végétation, biodiversité</description>
+			<label>Biota</label>
+			<description>Flora and/or fauna in natural environment. Examples: wildlife, vegetation,
+				biological sciences, ecology, wilderness, sealife, wetlands, habitat</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>boundaries</code>
-			<label>Limites</label>
-			<description>Exemples : limites de pays, de provinces, de départements, de communes</description>
+			<label>Boundaries</label>
+			<description>Legal land descriptions. Examples: political and administrative
+			boundaries</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>climatologyMeteorologyAtmosphere</code>
-			<label>Climatologie/Météorologie/Atmosphère</label>
-			<description>Processus et phénomènes atmosphériques. Exemples : climat, météorologie, conditions atmosphériques, changements climatiques, couverture nuageuse</description>
+			<label>Climatology, meteorology, atmosphere</label>
+			<description>Processes and phenomena of the atmosphere. Examples: cloud cover, weather,
+				climate, atmospheric conditions, climate change, precipitation</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>economy</code>
-			<label>Economie</label>
-			<description>Activités économiques. Exemples : production, travail, revenu, commerce, industrie, tourisme et éco-tourisme, foresterie, pêche, chasse, exploration et exploitation des ressources minières, pétrole, gaz naturel</description>
+			<label>Economy</label>
+			<description>Economic activities, conditions and employment. Examples: production, labour,
+				revenue, commerce, industry, tourism and ecotourism, forestry, fisheries, commercial or
+				subsistence hunting, exploration and exploitation of resources such as minerals, oil and
+				gas</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>elevation</code>
-			<label>Altitude</label>
-			<description>Hauteurs au dessous et dessus du niveau de la mer. Exemples : altitude, bathymétrie, MNT, pentes et calculs dérivés de l’altitude</description>
+			<label>Elevation</label>
+			<description>Height above or below sea level. Examples: altitude, bathymetry, digital
+				elevation models, slope, derived products</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>environment</code>
-			<label>Environnement</label>
-			<description>Ressources naturelles, protection, conservation des ressources naturelles. Exemples : pollution, traitement et stockage des déchets, suivi de l’environnement, gestion du risque, réserves naturelles, paysage</description>
+			<label>Environment</label>
+			<description>Environmental resources, protection and conservation. Examples: environmental
+				pollution, waste storage and treatment, environmental impact assessment, monitoring
+				environmental risk, nature reserves, landscape</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>geoscientificInformation</code>
-			<label>Informations géoscientifiques</label>
-			<description>Informations relatives aux sciences de la terre. Exemples : composants et processus géophysiques, géologie, minéralogie, tectonique, risque sismique</description>
+			<label>Geoscientific information</label>
+			<description>Information pertaining to earth sciences. Examples: geophysical features and
+				processes, geology, minerals, sciences dealing with the composition, structure and
+				origin of the earth s rocks, risks of earthquakes, volcanic activity, landslides,
+				gravity information, soils, permafrost, hydrogeology, erosion</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>health</code>
-			<label>Santé</label>
-			<description>Santé, services de santé, épidémiologie. Exemples : maladies et épidémie, facteurs affectant la santé, santé mentale et physique, services de santé</description>
+			<label>Health</label>
+			<description>Health, health services, human ecology, and safety. Examples: disease and
+				illness, factors affecting health, hygiene, substance abuse, mental and physical health,
+				health services</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>imageryBaseMapsEarthCover</code>
-			<label>Imagerie/Cartes de base/Occupation des terres</label>
-			<description>Carte de référence. Exemples : occupation des terres, imagerie aérienne et satellitale, carte thématiques, carte topographiques</description>
+			<label>Imagery base maps earth cover</label>
+			<description>Base maps. Examples: land cover, topographic maps, imagery, unclassified
+				images, annotations</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>intelligenceMilitary</code>
-			<label>Renseignement/Secteur militaire</label>
-			<description>Bases militaires et infrastructures</description>
+			<label>Intelligence military</label>
+			<description>Military bases, structures, activities. Examples: barracks, training grounds,
+				military transportation, information collection</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>inlandWaters</code>
-			<label>Eaux intérieures</label>
-			<description>Exemples : fleuves, rivières, glaciers, lacs salés, systèmes hydrographiques, barrages, débits, qualité de l’eau</description>
+			<label>Inland waters</label>
+			<description>Inland water features, drainage systems and their characteristics. Examples:
+				rivers and glaciers, salt lakes, water utilization plans, dams, currents, floods, water
+				quality, hydrographic charts</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>location</code>
-			<label>Localisation</label>
-			<description>Exemples : zones postales, adresses, points de contrôle, réseau géodésique</description>
+			<label>Location</label>
+			<description>Positional information and services. Examples: addresses, geodetic networks,
+				control points, postal zones and services, place names</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>oceans</code>
-			<label>Océans</label>
-			<description>Composants et caractéristiques du milieu maritime. Exemples : littoral, récifs, marée, etc.</description>
+			<label>Oceans</label>
+			<description>Features and characteristics of salt water bodies (excluding inland waters).
+				Examples: tides, tidal waves, coastal information, reefs</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>planningCadastre</code>
-			<label>Planification/Cadastre</label>
-			<description>Exemples : carte d’utilisation des terres, plan d’occupation des sols, planification pour la prévention des risques</description>
+			<label>Planning cadastre</label>
+			<description>Information used for appropriate actions for future use of the land. Examples:
+				land use maps, zoning maps, cadastral surveys, land ownership</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>society</code>
-			<label>Société</label>
-			<description>Caractéristiques des sociétés et des cultures. Exemples :lois, anthropologie, éducation, données démographiques, archéologique, suivi des systèmes	sociaux, croyances, us et coutumes, crimes et justices</description>
+			<label>Society</label>
+			<description>Characteristics of society and cultures. Examples: settlements, anthropology,
+				archaeology, education, traditional beliefs, manners and customs, demographic data,
+				recreational areas and activities, social impact assessments, crime and justice, census
+				information</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>structure</code>
 			<label>Structure</label>
-			<description>Aménagements urbains. Exemples : musée, église, usines, maisons, monuments, boutiques, immeubles</description>
+			<description>Man-made construction. Examples: buildings, museums, churches, factories,
+				housing, monuments, shops, towers</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>transportation</code>
-			<label>Transport</label>
-			<description>Moyens de transports des personnes et des biens. Exemples :	routes, aéroports, tunnels, viaducs, ponts, chemin de fer</description>
+			<label>Transportation</label>
+			<description>Means and aids for conveying persons and/or goods. Examples: roads,
+				airports/airstrips, shipping routes, tunnels, nautical charts, vehicle or vessel
+				location, aeronautical charts, railways</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>utilitiesCommunication</code>
-			<label>Services d'utilité publique/Communication</label>
-			<description>Systèmes de distribution de gestion ou de stockage de l’énergie, de l’eau, des déchets. Infrastructures et services de communication. Exemples : source d’énergie solaire, hydroélectrique, nucléaire, épuration et distribution des eaux, réseau de distribution électrique, de gaz, réseau de télécommunication, radio.</description>
+			<label>Utilities communication</label>
+			<description>Energy, water and waste systems and communications infrastructure and
+				services. Examples: hydroelectricity, geothermal, solar and nuclear sources of energy,
+				water purification and distribution, sewage collection and disposal, electricity and gas
+				distribution, data communication, telecommunication, radio, communication
+			networks</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -1638,56 +1746,67 @@
 	<codelist name="gmd:MD_TopologyLevelCode">
 		<entry>
 			<code>geometryOnly</code>
-			<label>Géométrie seulement</label>
-			<description>Objets vecteurs sans aucune structure qui décrit la topologie</description>
+			<label>Geometry only</label>
+			<description>Geometry objects without any additional structure which describes
+			topology</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>topology1D</code>
-			<label>Topologie de réseau</label>
-			<description>Réseau sans surface (communément dénommée topologie réseau)</description>
+			<label>Topology 1D</label>
+			<description>1-dimensional topological complex -- commonly called chain-node
+			topology</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>planarGraph</code>
-			<label>Graphe planaire</label>
-			<description>Topologie 1D planaire</description>
+			<label>Planar graph</label>
+			<description>1-dimensional topological complex that is planar. (A planar graph is a graph
+				that can be drawn in a plane in such a way that no two edges intersect except at a
+				vertex.)</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>fullPlanarGraph</code>
-			<label>Topologie de réseau complète</label>
-			<description>Topologie 2D planaire</description>
+			<label>Full planar graph</label>
+			<description>2-dimensional topological complex that is planar. (A 2-dimensional topological
+				complex is commonly called full topology in a cartographic 2D
+			environment.)</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>surfaceGraph</code>
-			<label>Topologie de surface</label>
-			<description>Topologie 1D avec surfaces</description>
+			<label>Surface graph</label>
+			<description>1-dimensional topological complex that is isomorphic to a subset of a surface.
+				(A geometric complex is isomorphic to a topological complex if their elements are in a
+				one-to-one, dimensional-and boundry-preserving correspondence to one
+			another.)</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>fullSurfaceGraph</code>
-			<label>Topologie de surface complète</label>
-			<description>Topologie 2D avec surfaces</description>
+			<label>Full surface graph</label>
+			<description>2-dimensional topological complex that is isomorphic to a subset of a
+			surface</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>topology3D</code>
-			<label>Topologie 3D</label>
-			<description>Topologie 3D</description>
+			<label>Topology 3D</label>
+			<description>3-dimensional topological complex. (A topological complex is a collection of
+				topological primitives that are closed under the boundary operations.)</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>fullTopology3D</code>
-			<label>Topologie 3D complète</label>
-			<description>Couverture complète d’un espace Euclidien 3D</description>
+			<label>Full topology 3D</label>
+			<description>Complete coverage of a 3D Euclidean coordinate space</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>abstract</code>
-			<label>Spaghetti</label>
-			<description>Objets géométriques sans description de la topologie</description>
+			<label>Abstract</label>
+			<description>Topological complex without any specified geometric realisation</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
@@ -1695,98 +1814,102 @@
 	<codelist name="gmd:MX_ScopeCode">
 		<entry>
 			<code>attribute</code>
-			<label>Attribut</label>
-			<description>Informations appliquées aux caractéristiques de l’attribut</description>
+			<label>Attribute</label>
+			<description>Information applies to the attribute class</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>attributeType</code>
-			<label>Type d'attribut</label>
-			<description>Informations appliquées aux caractéristiques de l’entité</description>
+			<label>Attribute type</label>
+			<description>Information applies to the characteristic of a feature</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>collectionHardware</code>
-			<label>Collection matérielle</label>
-			<description>Informations appliquées aux caractéristiques d’une collection matérielle</description>
+			<label>Collection hardware</label>
+			<description>Information applies to the collection hardware class</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>collectionSession</code>
-			<label>Collection de session</label>
-			<description>Informations appliquées aux caractéristiques d’une collection de session</description>
+			<label>Collection session</label>
+			<description>Information applies to the collection session</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>dataset</code>
-			<label>Jeu de données</label>
-			<description>Informations appliquées aux caractéristiques de jeu de données</description>
+			<label>Dataset</label>
+			<description>Information applies to the dataset</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>series</code>
-			<label>Collection de données</label>
-			<description>Informations appliquées aux caractéristiques de la collection de données</description>
+			<label>Series</label>
+			<description>Information applies to the series</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>nonGeographicDataset</code>
-			<label>Jeux de données non géographiques</label>
-			<description>Informations appliquées aux caractéristiques de jeux de données non géographiques</description>
+			<label>Non geographic dataset</label>
+			<description>Information applies to non-geographic data</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>dimensionGroup</code>
-			<label>Dimension d'un groupe</label>
-			<description>Informations appliquées à un groupe</description>
+			<label>Dimension group</label>
+			<description>Information applies to a dimension group</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>feature</code>
-			<label>Entité</label>
-			<description>Informations appliquées à une entité</description>
+			<label>Feature</label>
+			<description>Information applies to a feature</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>featureType</code>
-			<label>Type d’entité</label>
-			<description>Informations appliquées à un type d’entité</description>
+			<label>Feature type</label>
+			<description>Information applies to a feature type</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>propertyType</code>
-			<label>Type de propriété</label>
-			<description>Informations appliquées à un type de propriété</description>
+			<label>Property type</label>
+			<description>Information applies to a property type</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>fieldSession</code>
-			<label>Champ de session</label>
-			<description>Informations appliquées aux caractéristiques d’un champ de session</description>
+			<label>Field session</label>
+			<description>Information applies to a field session</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>software</code>
-			<label>Logiciel</label>
-			<description>Informations appliquées à programme ou à une routine</description>
+			<label>Software</label>
+			<description>Information applies to a computer program or routine</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>service</code>
 			<label>Service</label>
-			<description>Informations appliquées à un service Internet</description>
+			<description>Information applies to a capability which a service provider entity makes
+				available to a service user entity through a set of interfaces that define a behaviour,
+				such as a use case</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>model</code>
-			<label>Modèle</label>
-			<description>Informations appliquées à modèle décrivant les objets ou un ensemble d'objets</description>
+			<label>Model</label>
+			<description>Information applies to a copy or imitation of an existing or hypothetical
+				object</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>tile</code>
 			<label>Tile</label>
-			<description>Tile</description>
+			<description>Information applies to a tile, a spatial subset of geographic
+			data</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
@@ -1798,7 +1921,7 @@
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>stereomate</code>
-			<label>Stereomate</label>
+			<label>Stereo mate</label>
 			<description>The referencing entity applies to a transfer aggregate which was originally
 				identified as a stereo mate (DS_StereoMate)</description>
 		</entry>
@@ -1812,35 +1935,35 @@
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>platformSeries</code>
-			<label>PlatformSeries</label>
+			<label>Platform series</label>
 			<description>The referencing entity applies to a transfer aggregate which was originally
 				identified as a platform series (DS_PlatformSeries)</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>sensorSeries</code>
-			<label>SensorSeries</label>
+			<label>Sensor series</label>
 			<description>The referencing entity applies to a transfer aggregate which was originally
 				identified as a sensor series (DS_SensorSeries)</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>productionSeries</code>
-			<label>ProductionSeries</label>
+			<label>Production series</label>
 			<description>The referencing entity applies to a transfer aggregate which was originally
 				identified as a production series (DS_ProductionSeries)</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>transferAggregate</code>
-			<label>TransferAggregate</label>
+			<label>Transfer aggregate</label>
 			<description>The referencing entity applies to a transfer aggregate which has no existence
 				outside of the transfer context</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
 			<code>otherAggregate</code>
-			<label>OtherAggregate</label>
+			<label>Other aggregate</label>
 			<description>The referencing entity applies to a transfer aggregate which has an existence
 				outside of the transfer context, but which does not pertains to a specific aggregate
 				type.</description>
@@ -1877,82 +2000,81 @@
 			<entry>
 					<description>DCP is WebServices</description>
 					<code>WebServices</code>
-					<label>WebServices</label>
+					<label>Web services</label>
 			</entry>
 	</codelist>
 	<!--=== CouplingType from ISO19119 ===-->
 	<codelist name="srv:SV_CouplingType">
 			<entry>
-					<description>Présence d'une donnée associée</description>
 					<code>tight</code>
-					<label>Reserré</label>
+					<label>Tight</label>
+					<description>Tightly coupled: data associated</description>
 			</entry>
 			<entry>
-					<description>Présence de plusieurs données associées</description>
 					<code>mixed</code>
-					<label>Mixte</label>
+					<label>Mixed</label>
+					<description>Mixed coupled: data associated; in addition, external data might be processed</description>
 			</entry>
 			<entry>
-					<description>Absence de donnée associée</description>
 					<code>loose</code>
-					<label>Libre</label>
+					<label>Loose</label>
+					<description>Loosely coupled: no data associated</description>
 			</entry>
 	</codelist>
-
-    <codelist name="srv:SV_ParameterDirection">
-        <entry>
-            <code>in</code>
-            <label>Entrée</label>
-        </entry>
-        <entry>
-            <code>out</code>
-            <label>Sortie</label>
-        </entry>
-        <entry>
-            <code>in/out</code>
-            <label>Entrée/Sortie</label>
-        </entry>
-    </codelist>
-
-	<codelist name="gco:nilReason">
+	<codelist name="srv:SV_ParameterDirection">
 		<entry>
-			<code>missing</code>
-			<label>Manquant</label>
+			<code>in</code>
+			<label>Input</label>
 		</entry>
 		<entry>
-			<code>inapplicable</code>
-			<label>Non appliquable</label>
+			<code>out</code>
+			<label>Output</label>
 		</entry>
 		<entry>
-			<code>template</code>
-			<label>Modèle</label>
-		</entry>
-		<entry>
-			<code>unknown</code>
-			<label>Inconnu</label>
-		</entry>
-		<entry>
-			<code>withheld</code>
-			<label>Avec autorisation</label>
+			<code>in/out</code>
+			<label>Input/output</label>
 		</entry>
 	</codelist>
 
-	<codelist name="indeterminatePosition">
-		<entry>
-			<code>now</code>
-			<label>Maintenant</label>
-		</entry>		
-		<entry>
-			<code>after</code>
-			<label>Après</label>
-		</entry>
-		<entry>
-			<code>before</code>
-			<label>Avant</label>
-		</entry>
-		<entry>
-			<code>unknown</code>
-			<label>Inconnu</label>
-		</entry>
-	</codelist>
+  <codelist name="gco:nilReason">
+    <entry>
+      <code>missing</code>
+      <label>Missing</label>
+    </entry>
+    <entry>
+      <code>inapplicable</code>
+      <label>Inapplicable</label>
+    </entry>
+    <entry>
+      <code>template</code>
+      <label>Template</label>
+    </entry>
+    <entry>
+      <code>unknown</code>
+      <label>Unknown</label>
+    </entry>
+    <entry>
+      <code>withheld</code>
+      <label>With held</label>
+    </entry>
+  </codelist>
+
+  <codelist name="indeterminatePosition">
+    <entry>
+      <code>now</code>
+      <label>Now</label>
+    </entry>
+    <entry>
+      <code>after</code>
+      <label>After</label>
+    </entry>
+    <entry>
+      <code>before</code>
+      <label>Before</label>
+    </entry>
+    <entry>
+      <code>unknown</code>
+      <label>Unknown</label>
+    </entry>
+  </codelist>
 </codelists>
