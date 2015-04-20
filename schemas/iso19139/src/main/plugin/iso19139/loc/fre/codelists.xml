@@ -1329,25 +1329,25 @@
 	</codelist>
 	<!-- ==================================================== -->
 	<codelist name="gmd:MD_ScopeCode" editorMode="radio">
-		<entry>
+		<entry hideInEditMode="true">
 			<code>attribute</code>
 			<label>Attribut</label>
 			<description>Informations appliquées aux caractéristiques de l’attribut</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>attributeType</code>
 			<label>Type d'attribut</label>
 			<description>Informations appliquées aux caractéristiques de l’entité</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>collectionHardware</code>
 			<label>Collection matérielle</label>
 			<description>Informations appliquées aux caractéristiques d’une collection matérielle</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>collectionSession</code>
 			<label>Collection de session</label>
 			<description>Informations appliquées aux caractéristiques d’une collection de session</description>
@@ -1365,61 +1365,61 @@
 			<description>Informations appliquées aux caractéristiques de la collection de données</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>nonGeographicDataset</code>
 			<label>Jeux de données non géographiques</label>
 			<description>Informations appliquées aux caractéristiques de jeux de données non géographiques</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>dimensionGroup</code>
 			<label>Dimension d'un groupe</label>
 			<description>Informations appliquées à un groupe</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>feature</code>
 			<label>Entité</label>
 			<description>Informations appliquées à une entité</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>featureType</code>
 			<label>Type d’entité</label>
 			<description>Informations appliquées à un type d’entité</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>propertyType</code>
 			<label>Type de propriété</label>
 			<description>Informations appliquées à un type de propriété</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>fieldSession</code>
 			<label>Champ de session</label>
 			<description>Informations appliquées aux caractéristiques d’un champ de session</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>software</code>
 			<label>Logiciel</label>
 			<description>Informations appliquées à programme ou à une routine</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>service</code>
 			<label>Service</label>
 			<description>Informations appliquées à un service Internet</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>model</code>
 			<label>Modèle</label>
 			<description>Informations appliquées à modèle décrivant les objets ou un ensemble d'objets</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>tile</code>
 			<label>Tuile</label>
 			<description>Tuile</description>
@@ -1440,20 +1440,20 @@
 			<label>Publication</label>
 			<description>Ce sont des produits finis tels que les ouvrages, brochures, articles, rapports, matériel audiovisuel...</description>
 		</entry>-->
-		
-		
+
+
 		<!-- Used for facet translation only and not displayed in editor -->
-		<entry>
+		<entry hideInEditMode="true">
 			<code>map</code>
 			<label>Carte</label>
 			<description></description>
 		</entry>
-		<entry>
+		<entry hideInEditMode="true">
 			<code>staticMap</code>
 			<label>Carte statique</label>
 			<description></description>
 		</entry>
-		<entry>
+		<entry hideInEditMode="true">
 			<code>interactiveMap</code>
 			<label>Carte interactive</label>
 			<description></description>
@@ -1465,14 +1465,14 @@
     </entry>
 	</codelist>
 <!--
-	Example to customize scope code codelist for a service metadata record.
+	Example to customize scope code codelist for a service metadata record.-->
 	<codelist name="gmd:MD_ScopeCode" displayIf="/ancestor::node()[name()='gmd:MD_Metadata']/gmd:identificationInfo/srv:SV_ServiceIdentification">
 		<entry>
 			<code>service</code>
 			<label>Service</label>
 			<description>Informations appliquées à un service Internet</description>
 		</entry>
-	</codelist>-->
+	</codelist>
 	<!-- ==================================================== -->
 	<codelist name="gmd:MD_SpatialRepresentationTypeCode">
 		<entry>
@@ -1898,7 +1898,7 @@
 					<label>Libre</label>
 			</entry>
 	</codelist>
-	    
+
     <codelist name="srv:SV_ParameterDirection">
         <entry>
             <code>in</code>
@@ -1913,7 +1913,7 @@
             <label>Entrée/Sortie</label>
         </entry>
     </codelist>
-	
+
 	<codelist name="gco:nilReason">
 		<entry>
 			<code>missing</code>
@@ -1936,7 +1936,7 @@
 			<label>Avec autorisation</label>
 		</entry>
 	</codelist>
-	
+
 	<codelist name="indeterminatePosition">
 		<entry>
 			<code>after</code>
