@@ -94,8 +94,8 @@
         <entry key="3.0.0">
             <list>
               <value>java:v300.SetSequenceValueToMaxOfMetadataAndStats</value>
-              <value>WEB-INF/classes/setup/sql/migrate/v300/migrate-</value>
-              <value>WEB-INF/classes/setup/sql/migrate/v300/migrate-cswservice-</value>
+              <value>WEB-INF/classes/setup/sql-geosource/migrate/v300/migrate-</value>
+              <value>WEB-INF/classes/setup/sql-geosource/migrate/v300/migrate-cswservice-</value>
             </list>
         </entry>
     </util:map>
