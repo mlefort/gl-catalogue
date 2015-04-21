@@ -659,7 +659,7 @@ INSERT INTO Settings (name, value, datatype, position, internal) VALUES
 
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('metadata/resourceIdentifierPrefix', 'http://localhost:8080/geosource/srv/', 0, 10001, 'n');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES
-  ('map/isMapViewerEnabled', 'true', 2, 9592, 'n');
+  ('map/isMapViewerEnabled', 'false', 2, 9592, 'n');
 
   
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES 
