@@ -94,7 +94,7 @@
                        var exampleText = '';
                        angular.forEach(info.help, function(helpText) {
                          if (helpText['@for'] == 'france' ||
-                           helpText['@for'] == 'inspire') {
+                         helpText['@for'] == 'inspire') {
                            inspireText += helpText['#text'];
                          } else if (helpText['@for'] == 'example') {
                            exampleText += helpText['#text'];

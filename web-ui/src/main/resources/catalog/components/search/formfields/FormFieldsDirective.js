@@ -523,7 +523,7 @@
                 if (scope.infos != null && scope.allowBlank !== undefined) {
                   scope.infos.unshift(blank);
                 }
-                
+
                 // Search default value
                 angular.forEach(scope.infos, function(h) {
                   if (h['default'] == 'true') {
@@ -539,15 +539,16 @@
                 // This will avoid to have undefined selected option
                 // on top of the list.
               };
-              
+
               var removeValueNotUsed = function() {
                 var start = scope.allowBlank !== undefined ? 1 : 0;
-                for (var i=scope.infos.length-1; i>start; i--) {
-                  if (!scope.selectedInfo || scope.infos[i].code != scope.selectedInfo) {
-                    scope.infos.splice(i,1);
+                for (var i = scope.infos.length - 1; i > start; i--) {
+                  if (!scope.selectedInfo || scope.infos[i].code !=
+                      scope.selectedInfo) {
+                    scope.infos.splice(i, 1);
                   }
                 }
-              }
+              };
 
               var init = function() {
                 var schema = gnCurrentEdit.schema || 'iso19139';
@@ -569,7 +570,8 @@
                         }
 
                         addBlankValueAndSetDefault();
-                        if (data && data[0]["@name"]=="indeterminatePosition") {
+                        if (data && data[0]['@name'] ==
+                            'indeterminatePosition') {
                           removeValueNotUsed();
                         }
                       });
