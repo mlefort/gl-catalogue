@@ -554,7 +554,7 @@ INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/site/siteId', '', 0, 120, 'n');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/site/organization', 'Mon organisation', 0, 130, 'n');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/platform/version', '3.0.0', 0, 150, 'n');
-INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/platform/subVersion', 'RC0', 0, 160, 'n');
+INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/platform/subVersion', '0', 0, 160, 'n');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/site/svnUuid', '', 0, 170, 'y');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/server/host', 'localhost', 0, 210, 'n');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/server/protocol', 'http', 0, 220, 'n');
@@ -657,7 +657,7 @@ INSERT INTO Settings (name, value, datatype, position, internal) VALUES
   ('map/proj4js', '[{"code":"EPSG:2154","value":"+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"}]', 0, 9591, 'n');
 
 
-INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('metadata/resourceIdentifierPrefix', 'http://localhost:8080/geosource/srv/', 0, 10001, 'n');
+INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('metadata/resourceIdentifierPrefix', '', 0, 10001, 'n');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES
   ('map/isMapViewerEnabled', 'false', 2, 9592, 'n');
 
