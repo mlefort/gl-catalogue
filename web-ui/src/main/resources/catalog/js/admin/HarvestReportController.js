@@ -20,9 +20,9 @@
           var obj = {};
           for (var j = 0, col; col = row.cells[j]; j++) {
             if (i == 0) {
-              names[j] = col.innerText;
+              names[j] = col.textContent;
             } else {
-              obj[names[j]] = col.innerText;
+              obj[names[j]] = col.textContent;
             }
           }
           if (i != 0) {
