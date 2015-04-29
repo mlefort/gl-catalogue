@@ -10,7 +10,15 @@
     version="2.0" exclude-result-prefixes="#all">
     
     <xsl:import href="../../iso19139/process/process-utility.xsl"/>
-    
+
+
+    <!-- Replace or not existing extent -->
+    <xsl:param name="replaceResourceId" select="'false'"/>
+
+
+    <xsl:variable name="replaceResourceIdMode"
+                  select="geonet:parseBoolean($replaceResourceId)"/>
+
     <!-- i18n information -->
     <xsl:variable name="add-resource-id-loc">
         <msg id="a" xml:lang="eng">Current record does not contain resource identifier. Add the following identifier: </msg>
@@ -31,15 +39,19 @@
       for that process -->
     <xsl:template name="analyze-add-resource-id">
         <xsl:param name="root"/>
+        <xsl:variable name="code" select="gn-fn-iso19139:resource-id-generate($root/*/gmd:fileIdentifier/gco:CharacterString)"/>
         <xsl:variable name="hasResourceId"
             select="count($root//gmd:identificationInfo/*/gmd:citation/
             gmd:CI_Citation/gmd:identifier/*/gmd:code[gco:CharacterString != '']) > 0"/>
+        <xsl:variable name="hasCatalogResourceId"
+                    select="count($root//gmd:identificationInfo/*/gmd:citation/
+            gmd:CI_Citation/gmd:identifier/*/gmd:code[gco:CharacterString = $code]) > 0"/>
 
-      <xsl:variable name="code" select="gn-fn-iso19139:resource-id-generate($root/*/gmd:fileIdentifier/gco:CharacterString)"/>
-        <xsl:if test="not($hasResourceId)">
+        <xsl:if test="not($hasResourceId) or not($hasCatalogResourceId)">
             <suggestion process="add-resource-id" id="{generate-id()}" category="identification" target="identification">
                 <name><xsl:value-of select="geonet:i18n($add-resource-id-loc, 'a', $guiLang)"/><xsl:text> </xsl:text><xsl:value-of select="$code"/>.</name>
                 <operational>true</operational>
+              <params>{replaceResourceId:{type:'boolean', defaultValue:'<xsl:value-of select="$replaceResourceId"/>'}}</params>
             </suggestion>
         </xsl:if>
         
@@ -64,7 +76,16 @@
       <!-- Create resource identifier based on metadata record identifier -->
       <xsl:variable name="urlWithoutLang" select="substring-before($catalogUrl, $nodeId)"/>
       <xsl:variable name="prefix" select="if ($resource-id-url-prefix != '') then $resource-id-url-prefix else $urlWithoutLang"/>
-      <xsl:value-of select="concat($prefix, $fileIdentifier)"/>
+
+      <xsl:choose>
+        <xsl:when test="contains($prefix, '{{uuid}}')">
+          <xsl:value-of select="replace($prefix, '\{\{uuid\}\}', $fileIdentifier)"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="concat($prefix, $fileIdentifier)"/>
+        </xsl:otherwise>
+      </xsl:choose>
+
     </xsl:function>
 
     <xsl:template
@@ -82,8 +103,11 @@
                 gmd:editionDate"/>
             
             <xsl:variable name="code" select="gn-fn-iso19139:resource-id-generate(/*/gmd:fileIdentifier/gco:CharacterString)"/>
-            <xsl:copy-of
-                select="gmd:identifier[gmd:MD_Identifier/gmd:code/gco:CharacterString != $code]"/>
+
+            <xsl:if test="not($replaceResourceIdMode)">
+              <xsl:copy-of
+                  select="gmd:identifier[gmd:MD_Identifier/gmd:code/gco:CharacterString != $code]"/>
+            </xsl:if>
             <gmd:identifier>
               <gmd:MD_Identifier>
                 <gmd:code>

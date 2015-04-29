@@ -85,6 +85,7 @@
     "makeYourMap": "Visualiser",
     "metadataPOCs": "Contact pour la fiche",
     "month": "Mois",
+    "replaceResourceId": "Remplacer les identifiants de la ressource existant",
     "msgNoCatalogInfo": "Ne peut retrouver les informations catalogue",
     "msgNoUserInfo": "Ne peut retrouver les informations utilisateurs",
     "msgUserAuthenticated": "L'utilisateur {{username}} est authentifié.",

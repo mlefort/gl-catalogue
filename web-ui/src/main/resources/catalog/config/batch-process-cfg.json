@@ -22,7 +22,7 @@
   }, {
     "key": "add-resource-id",
     "type": "fixed-params",
-    "params": []
+    "params": [{"name": "replaceResourceId", "value": "false", "type": "checkbox"}]
   }, {
     "key": "massive-content-update",
     "type": "template",

@@ -169,7 +169,8 @@
                     <textarea data-ng-switch-when="textarea" class="form-control"
                       id="batch_param_{{p.name}}" name="{{p.name}}">{{p.value}}</textarea>
                     <input data-ng-switch-default="" id="batch_param_{{p.name}}" name="{{p.name}}"
-                      type="{{p.type || 'text'}}" class="form-control"
+                      type="{{p.type || 'text'}}"
+                      data-ng-class="p.type == 'checkbox' ? '' : 'form-control'"
                       placeholder="{{p.value}}"/>
 
                     <p class="help-block"

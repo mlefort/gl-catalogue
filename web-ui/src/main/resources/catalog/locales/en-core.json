@@ -154,6 +154,7 @@
     "service": "Service",
     "serviceType": "Service type",
     "serviceTypes": "Service types",
+    "replaceResourceId": "Replace existing resource identifier",
     "signIn": "Sign in",
     "signedInAs": "Signed in as",
     "signout": "Sign out",
