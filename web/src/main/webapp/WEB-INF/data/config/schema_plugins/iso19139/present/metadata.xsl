@@ -3264,7 +3264,7 @@
                                                 <xsl:when test="contains(string($linkage),'/grandlyon')">grandlyon</xsl:when>
                                                 <xsl:when test="contains(string($linkage),'/rdata')">rdata</xsl:when>
                                                 <xsl:when test="contains(string($linkage),'/tuba')">tuba</xsl:when>
-                                                <xsl:when test="contains(string($linkage),'/capteurs')">capteurs</xsl:when>
+                                                <xsl:when test="contains(string($linkage),'/bruit')">bruit</xsl:when>
                                                 <xsl:otherwise>missingdb</xsl:otherwise>
                                         </xsl:choose>
                                 </xsl:variable>
