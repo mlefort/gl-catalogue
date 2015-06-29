@@ -631,7 +631,7 @@
                         <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'/grandlyon') ">grandlyon</xsl:when>
                         <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'/rdata') ">rdata</xsl:when>
                         <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'/tuba') ">tuba</xsl:when>
-                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'/capteurs') ">capteurs</xsl:when>
+                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'/bruit') ">bruit</xsl:when>
                         <xsl:otherwise>missingdb</xsl:otherwise>
                       </xsl:choose>
                     </xsl:variable>
