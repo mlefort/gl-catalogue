@@ -1,12 +1,12 @@
-<nav class="navbar navbar-default navbar-fixed-top gn-top-bar" role="navigation"
+<nav class="navbar navbar-default navbar-fixed-top gn-top-bar grandlyon-navbar-top" role="navigation"
      data-ng-if="!unsupportedSchema">
-  
+
 
   <p class="navbar-text gn-tooltip"
     data-ng-mouseover="getSaveStatus()" title="{{savedStatus}}">
     <span data-ng-class="saveError ? 'text-danger' : ''">{{savedStatus}}</span>
   </p>
-  
+
   <div class="pull-right">
     <!--<button type="button" class="btn btn-primary navbar-btn gn-tooltip" data-ng-click="share()"
       data-title="{{'share-help' | translate}}" data-placement="bottom">
@@ -65,7 +65,7 @@
         <i class="fa fa-save"/>&nbsp;
         <span class="visible-lg">{{(isTemplate() ? 'saveTemplate' : 'saveMetadata') | translate}}</span>
       </button>
-      <button type="button" class="btn btn-primary dropdown-toggle" 
+      <button type="button" class="btn btn-primary dropdown-toggle"
       data-toggle="dropdown" aria-expanded="false">
         <span class="caret"></span>
       </button>

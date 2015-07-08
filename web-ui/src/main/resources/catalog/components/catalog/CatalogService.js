@@ -67,7 +67,7 @@
            * @param {boolean} isChild is child of a parent metadata
            * @return {HttpPromise} Future object
            */
-        copy: function(id, groupId, withFullPrivileges, 
+        copy: function(id, groupId, withFullPrivileges,
             isTemplate, isChild) {
           var url = gnUrlUtils.append('md.create',
               gnUrlUtils.toKeyValue({
@@ -171,7 +171,7 @@
            * @param {boolean} isChild is child of a parent metadata
            * @return {HttpPromise} Future object
            */
-        create: function(id, groupId, withFullPrivileges, 
+        create: function(id, groupId, withFullPrivileges,
             isTemplate, isChild, tab) {
           return this.copy(id, groupId, withFullPrivileges,
               isTemplate, isChild).success(function(data) {
@@ -555,12 +555,12 @@
             'false' : 'true';
       },
 
-
-
       getLinks: function() {
         return this.link;
       },
+
       getLinksByType: function() {
+
         var ret = [];
 
         var types = Array.prototype.splice.call(arguments, 0);
@@ -594,6 +594,7 @@
         this.linksCache[key] = ret;
         return ret;
       },
+
       getThumbnails: function() {
         if (angular.isArray(this.image)) {
           var images = {list: []};

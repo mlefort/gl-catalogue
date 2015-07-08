@@ -1,7 +1,7 @@
-<div class="gn-related-resources"
+<div class="gn-related-resources grandlyon-related-resources"
 		 data-ng-show="relations.length > 0">
 	<h2>{{title}}</h2>
-	<div class="row list-group-item gn-related-item"
+	<div class="row list-group-item gn-related-item grandlyon-related-item"
 				data-ng-repeat="r in relations track by $index"
 				data-ng-init="mainType = config.getType(r);type = r['@type'];"
 				data-ng-if="r['@type'] !== 'thumbnail'">
@@ -72,7 +72,7 @@
 		</div>
 		<div class="col-xs-4">
       <button type="button"
-							class="btn btn-default btn-lg btn-block"
+							class="btn btn-default grandlyon-btn-gray btn-lg btn-block"
               data-ng-show="hasAction(mainType)"
 							data-ng-click="config.doAction(mainType, r, md)">
 

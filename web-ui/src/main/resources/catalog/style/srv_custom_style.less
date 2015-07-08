@@ -1,2 +1,290 @@
 /* Define custom node style here */
 .body {}
+
+/* ================ */
+/* Surchage globale */
+/* ================ */
+
+body {
+  background: rgba(0, 0, 0, 0) url("http://data.grandlyon.com/wp-content/themes/AUSY-SMARTDATA/images/background.png") repeat scroll 0 0  !important;
+  color: #252525;
+}
+h1, h2, h3, h4, h5, h6, p, ul, li {
+    /*font: normal 12px/20px Arial,Helvetica,sans-serif !important;*/
+    color: #252525;
+}
+h1 {
+    color: #2b2b2b !important;
+}
+h1, h2{
+    font-family: 'HelveticaLT-Condensed-Bold', Helvetica, Arial, sans-serif !important;
+}
+h1 {
+  font-size: 24px !important;
+  /* line-height: 25px !important; */
+  letter-spacing: 0.01em !important;
+  text-transform: uppercase !important;
+}
+h2 {
+  font-size: 19px !important;
+  text-transform: uppercase !important;
+}
+h3 {
+  font: normal 16px/20px 'HelveticaLT-Condensed-Bold', Helvetica, Arial, sans-serif;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  color: #000 !important;
+}
+h4 {
+  font-size: 14px !important;
+  font-weight: bold !important;
+}
+h5, h6 {
+  /*font-size: 25px;*/
+  font-size: 12px !important;
+  color: #006505 !important;
+}
+p {
+  font-size: 12px !important;
+  /* margin: 28px 0 0 0; */
+}
+a {
+    color: #000;
+}
+
+/* ==================== */
+/* Surchage de Boostrap */
+/* ==================== */
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background-color: #b8041b;
+    background-image:        -webkit-gradient(linear, 0 0, 0 100%, from(#b8041b), to(#de0925));
+    background-image: -webkit-linear-gradient(top, #b8041b, #de0925);
+    background-image:    -moz-linear-gradient(top, #b8041b, #de0925);
+    background-image:      -o-linear-gradient(top, #b8041b, #de0925);
+}
+.navbar-default .navbar-nav > li > a {
+    color: #fff !important;
+}
+.navbar-nav > li > a {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+.navbar-nav > li > a {
+    line-height: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.nav > li > a {
+    display: block;
+    padding: 10px 15px;
+    position: relative;
+}
+.bootstrap-tagsinput {
+    border-radius: 0;
+}
+.btn-default {
+  border-radius: 0;
+}
+.btn-primary {
+    background-color: #de0925;
+    background-image: linear-gradient(to bottom, #de0925, #b8041b);
+    background-repeat: repeat-x;
+    border: 0 none transparent;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+    text-shadow: none;
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  outline: 0 none;
+  background-color: #b8041b;
+  background-image:        -webkit-gradient(linear, 0 0, 0 100%, from(#b8041b), to(#de0925));
+  background-image: -webkit-linear-gradient(top, #b8041b, #de0925);
+  background-image:    -moz-linear-gradient(top, #b8041b, #de0925);
+  background-image:      -o-linear-gradient(top, #b8041b, #de0925);
+}
+.btn-link {
+  color: #de0925;
+}
+.badge {
+  background-color: #b8041b;
+  color: #fff;
+}
+.fa-star,
+.fa-star-o {
+    color: orange;
+}
+.form-control {
+    border-radius: 0 !important;
+}
+.thumbnail {
+    border-radius: 0px;
+}
+.thumbnail > img, .thumbnail a > img {
+}
+a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
+    border-color: #de0925;
+}
+.thumbnail .caption {
+    color: #333333;
+    padding: 9px;
+}
+.cookie-warning {
+    padding: 15px;
+    margin: 0 0 20px 0;
+    border: 1px solid transparent;
+    border-radius: 0;
+    background-color: #f3f3f3;
+    border-color: #ccc;
+}
+
+/* ============== */
+/* Surchage de GN */
+/* ============== */
+
+.gn-form-any {
+    border-radius: 0px;
+    border: 3px solid #ececec;
+}
+.gn-sort-by .btn-group > button {
+    color: #000;
+}
+.gn-pager .btn-group button {
+    border-radius: 0;
+    color: #de0925;
+    cursor: pointer;
+    font-weight: normal;
+}
+.gn-facet-breadcrumb {
+}
+.gn-facet-breadcrumb li > a,
+.gn-facet-breadcrumb li > a:hover {
+    color: #000;
+}
+.gn-sort-by .btn-group > button,
+.gn-sort-by .btn-group > button:hover,
+.gn-sort-by .btn-group > button:focus {
+    color: #000;
+}
+.gn-pager .btn-group button,
+.gn-pager .btn-group button:hover,
+.gn-pager .btn-group button:focus {
+    color: #000;
+}
+.gn-pager .pager li > a {
+    border-radius: 0;
+    font-size: 120%;
+    padding: 2px 5px;
+    background-color: #d0d0d0;
+    color: #fefefe;
+    font: bold 16px/20px Arial,Helvetica,sans-serif;
+}
+.gn-pager .pager li > a:hover {
+    background-color: #de0925;
+    color: #fff;
+}
+#gn-any-field {
+    border-radius: 0;
+}
+.gn-top-bar {
+    background-color: #000;
+}
+
+/*==================== */
+/* Classes spécifiques */
+/*==================== */
+
+.grandlyon-btn-red {
+    background-color: #de0925;
+    background-image: linear-gradient(to bottom, #de0925, #b8041b);
+    background-repeat: repeat-x;
+    border: 0 none transparent;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+    text-shadow: none;
+}
+.grandlyon-btn-red:hover,
+.grandlyon-btn-red:active,
+.grandlyon-btn-red:focus {
+  outline: 0 none;
+  background-color: #b8041b;
+  background-image:        -webkit-gradient(linear, 0 0, 0 100%, from(#b8041b), to(#de0925));
+  background-image: -webkit-linear-gradient(top, #b8041b, #de0925);
+  background-image:    -moz-linear-gradient(top, #b8041b, #de0925);
+  background-image:      -o-linear-gradient(top, #b8041b, #de0925);
+}
+.grandlyon-btn-gray {
+  background-color: #ececec;
+  background-image: linear-gradient(to bottom, #f3f3f3, #e4e4e4);
+  border: 1px solid #d7d7d7;
+  border-radius: 1px;
+  box-shadow: none;
+  color: #de0925;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 1);
+  text-align: center !important;
+  padding-left: 0 !important;
+  font-variant: small-caps !important;
+}
+.grandlyon-btn-gray:hover,
+.grandlyon-btn-gray:focus,
+.grandlyon-btn-gray.focus {
+  outline: 0 none;
+  color: #ffffff;
+  text-shadow: 1px 1px 0 rgba(116, 7, 7, 255);
+  border: 1px solid #9b0519;
+  background-color: #d00b25;
+  background-image: -moz-linear-gradient(top, #dd0925, #c10d25);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dd0925), to(#c10d25));
+  background-image: -webkit-linear-gradient(top, #dd0925, #c10d25);
+  background-image: -o-linear-gradient(top, #dd0925, #c10d25);
+  background-image: linear-gradient(to bottom, #dd0925, #c10d25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdd0925', endColorstr='#ffc10d25', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.grandlyon-btn-link {
+}
+.grandlyon-resultview-item,
+.grandlyon-resultview-item:hover {
+  background-color: #ececec;
+  background-image: linear-gradient(to bottom, #f7f7f7, #eeeeee);
+  background-repeat: repeat-x;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 0 3px 3px rgba(240, 240, 240, 1);
+  border-radius: 0 !important;
+}
+.grandlyon-facet-item,
+.grandlyon-facet-item:hover {
+  background-color: transparent;
+}
+.grandlyon-facet-item:hover {
+  color: #de0925 !important;
+}
+.grandlyon-navbar-top a {
+  color: #969696;
+}
+.grandlyon-navbar-top a:visited {
+  color: #969696 !important;
+}
+.grandlyon-navbar-top a:hover,
+.grandlyon-navbar-top a:focus,
+.grandlyon-navbar-top a:active {
+  color: #ffffff !important;
+}
+.grandlyon-noborder-well {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0;
+}
+.grandlyon-related-resources {
+}
+.grandlyon-related-item {
+  border-right: 3px solid #ececec;
+  border-left: 3px solid #ececec;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+}
