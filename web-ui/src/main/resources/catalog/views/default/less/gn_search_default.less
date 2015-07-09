@@ -13,7 +13,7 @@
   .navbar-brand {
     padding-top: 0;
     padding-bottom: 0;
-    line-height: 50px;
+    line-height: 0px;
     font-size: 16px;
   }
 }
@@ -147,7 +147,12 @@ ul.gn-resultview {
     @grid-bottom-margin: 2px;
 
     float: left;
-    border: 1px solid @list-group-border;
+    /*border: 1px solid @list-group-border;*/
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 0 3px 3px rgba(240, 240, 240, 1);
+    background-image: linear-gradient(to bottom, #f7f7f7, #eeeeee);
+    border-radius: 0;
+    //background-color: #ececec;
     min-width: 300px;
     width: calc(~"100% - 15px");
     height: 268px;
@@ -182,7 +187,7 @@ ul.gn-resultview {
           display: block;
         }
         a:hover {
-          color: #428bca;
+          color: #de0925;
           text-decoration: none;
         }
       }

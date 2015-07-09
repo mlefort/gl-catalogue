@@ -1,12 +1,7 @@
 /* Define custom node style here */
-.body {}
-
-/* ================ */
-/* Surchage globale */
-/* ================ */
 
 body {
-  background: rgba(0, 0, 0, 0) url("http://data.grandlyon.com/wp-content/themes/AUSY-SMARTDATA/images/background.png") repeat scroll 0 0  !important;
+  background: rgba(0, 0, 0, 0) url("../images/gl/background.png") repeat scroll 0 0  !important;
   color: #252525;
 }
 h1, h2, h3, h4, h5, h6, p, ul, li {
@@ -56,15 +51,19 @@ a {
 /* Surchage de Boostrap */
 /* ==================== */
 
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #fff !important;
     background-color: #b8041b;
     background-image:        -webkit-gradient(linear, 0 0, 0 100%, from(#b8041b), to(#de0925));
     background-image: -webkit-linear-gradient(top, #b8041b, #de0925);
     background-image:    -moz-linear-gradient(top, #b8041b, #de0925);
     background-image:      -o-linear-gradient(top, #b8041b, #de0925);
 }
+
 .navbar-default .navbar-nav > li > a {
-    color: #fff !important;
+    color: #999 !important;
 }
 .navbar-nav > li > a {
     padding-bottom: 15px;
@@ -99,12 +98,12 @@ a {
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:focus {
-  outline: 0 none;
-  background-color: #b8041b;
-  background-image:        -webkit-gradient(linear, 0 0, 0 100%, from(#b8041b), to(#de0925));
-  background-image: -webkit-linear-gradient(top, #b8041b, #de0925);
-  background-image:    -moz-linear-gradient(top, #b8041b, #de0925);
-  background-image:      -o-linear-gradient(top, #b8041b, #de0925);
+    outline: 0 none;
+    background-color: #b8041b;
+    background-image:        -webkit-gradient(linear, 0 0, 0 100%, from(#b8041b), to(#de0925));
+    background-image: -webkit-linear-gradient(top, #b8041b, #de0925);
+    background-image:    -moz-linear-gradient(top, #b8041b, #de0925);
+    background-image:      -o-linear-gradient(top, #b8041b, #de0925);
 }
 .btn-link {
   color: #de0925;
@@ -121,12 +120,29 @@ a {
     border-radius: 0 !important;
 }
 .thumbnail {
-    border-radius: 0px;
+    border-radius: 1px;
+    font-variant: small-caps !important;
+    background-color: #ececec;
+    background-image: linear-gradient(to bottom, #f3f3f3, #e4e4e4);
+}
+.thumbnail i{
+    background-color: transparent !important;
+    color: #999;
+    font-size: 38px;
+    height: 56px !important;
+}
+.thumbnail i:hover{
+    background-color: transparent !important;
+    color: #de0925;
+    font-size: 56px;
 }
 .thumbnail > img, .thumbnail a > img {
 }
-a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
-    border-color: #de0925;
+a.thumbnail:hover,
+a.thumbnail:focus,
+a.thumbnail.active {
+    /*color: #de0925;*/
+    border-color: transparent !important;
 }
 .thumbnail .caption {
     color: #333333;
@@ -139,6 +155,10 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
     border-radius: 0;
     background-color: #f3f3f3;
     border-color: #ccc;
+}
+.list-group-item,
+a.list-group-item {
+  background-color: transparent !important;
 }
 
 /* ============== */
@@ -191,6 +211,12 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
 }
 .gn-top-bar {
     background-color: #000;
+}
+.gn-icon-label {
+}
+.gn-icon-label:hover {
+  background-color: transparent;
+  color: #de0925;
 }
 
 /*==================== */
@@ -247,6 +273,8 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
 }
 .grandlyon-btn-link {
 }
+
+
 .grandlyon-resultview-item,
 .grandlyon-resultview-item:hover {
   background-color: #ececec;
@@ -256,6 +284,9 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
   box-shadow: 0 0 3px 3px rgba(240, 240, 240, 1);
   border-radius: 0 !important;
 }
+
+
+/*
 .grandlyon-facet-item,
 .grandlyon-facet-item:hover {
   background-color: transparent;
@@ -263,6 +294,8 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
 .grandlyon-facet-item:hover {
   color: #de0925 !important;
 }
+*/
+
 .grandlyon-navbar-top a {
   color: #969696;
 }
