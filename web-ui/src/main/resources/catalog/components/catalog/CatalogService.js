@@ -594,7 +594,50 @@
         this.linksCache[key] = ret;
         return ret;
       },
-
+      /* createWfsLink()
+       * NEOGEO 2015 pour le GrandLyon
+       * Cette fonction créé les ressources pour le KML, le GeoJSON, et le shape_zip à partir d'une ressource WFS
+       * Elle est utilisée par ResultsviewDirective.js (directive gnFixMdlinks)
+       */
+      createWfsLinks: function(){
+        var wfsLink = [];
+        var ret = [];
+        
+        // parcours toutes les ressources pour trouver une éventuelle ressource WFS
+        angular.forEach(this.link, function(link) {
+          var linkInfo = formatLink(link);
+          if (linkInfo.protocol.indexOf('OGC:WFS') >= 0) {
+            wfsLink.push(linkInfo);
+          } 
+        });
+        wfsLink = wfsLink[0]; // il pourrait théoriquement y avoir plus d'un lien WFS mais on n'a besoin que d'un seul
+        var wfsUrl = wfsLink.url; //ex : https://secure.grandlyon.webmapping.fr/wfs/grandlyon
+        var database = wfsUrl.split('/').pop(); // ex : grandlyon
+        var host = wfsUrl.split('/')[2];
+        
+        var kmlLink  = {};
+        kmlLink.url = 'https://' + host + '/kml/' + database + '?request=list&typename=' + wfsLink.name;
+        kmlLink.name = wfsLink.name;
+        kmlLink.desc = 'KML';
+        kmlLink.contentType = 'application/vnd.google-earth.kml+xml';
+        
+        var geojsonLink = {};
+        geojsonLink.url = 'https://' + host + '/wfs/' + database + '?SERVICE=WFS&VERSION=2.0.0&outputformat=GEOJSON&maxfeatures=30&request=GetFeature&typename=' + wfsLink.name;
+        geojsonLink.name = wfsLink.name;
+        geojsonLink.desc = 'GeoJSON';
+        geojsonLink.contentType = 'application/json';
+        
+        var shapezipLink = {};
+        shapezipLink.url = 'https://' + host + '/wfs/' + database + '?SERVICE=WFS&VERSION=2.0.0&outputformat=SHAPEZIP&request=GetFeature&SRSNAME=EPSG:3946&typename=' + wfsLink.name;
+        shapezipLink.name = wfsLink.name;
+        shapezipLink.desc = 'Shape-ZIP';
+        shapezipLink.contentType = 'application/zip';
+        
+        ret.push(kmlLink,geojsonLink,shapezipLink);
+        
+        return ret;
+      },
+      
       getThumbnails: function() {
         if (angular.isArray(this.image)) {
           var images = {list: []};

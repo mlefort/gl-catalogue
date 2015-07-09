@@ -165,13 +165,10 @@
         scope: false,
         link: function(scope) {
           scope.links = scope.md.getLinksByType('LINK');
-
-          scope.customLinks = [];
-
-
           scope.downloads = scope.md.getLinksByType('DOWNLOAD');
           scope.layers = scope.md.getLinksByType('OGC', 'kml');
           scope.maps = scope.md.getLinksByType('ows');
+          scope.wfsLinks = scope.md.createWfsLinks();
         }
       };
     }]);
