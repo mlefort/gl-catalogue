@@ -69,7 +69,14 @@
   <xsl:variable name="siteURL" select="/root/gui/siteURL"/>
   
   <!-- URL for webapp root -->
-  <xsl:variable name="baseURL" select="substring-before($siteURL,'/srv/')"/>
+  <!-- <xsl:variable name="baseURL" select="substring-before($siteURL,'/srv/')"/> -->
+  <xsl:variable name="dataURL" select="concat('http://','data.grandlyon.com')" />
+  <xsl:variable name="baseURL">
+    <xsl:choose>
+        <xsl:when test="/root/request/data"><xsl:value-of select="$dataURL"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="substring-before($siteURL,'/srv/')"/></xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable> 
   <!-- Full URL with protocol, host and port -->
   <xsl:variable name="fullURL" select="concat($env/system/server/protocol, '://',
     $env/system/server/host, ':',

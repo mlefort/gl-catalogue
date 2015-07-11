@@ -16,9 +16,14 @@
 				<xsl:apply-templates mode="brief" select="."/>
 			</xsl:variable>
 		  
-		  
 			<xsl:variable name="metadata" select="exslt:node-set($md)/*[1]"/>
-			<xsl:variable name="mdURL" select="normalize-space(concat($baseURL, '/', /root/gui/nodeId, '/metadata/', gn:info/uuid))"/>
+			<!--<xsl:variable name="mdURL" select="normalize-space(concat($baseURL, '/', /root/gui/nodeId, '/metadata/', gn:info/uuid))"/>-->
+			<xsl:variable name="mdURL">
+               <xsl:choose>
+				  <xsl:when test="/root/request/data"><xsl:value-of select="normalize-space(concat($baseURL,'/','single','/',gn:info/uuid))"/></xsl:when>
+				  <xsl:otherwise><xsl:value-of select="normalize-space(concat($baseURL, '?uuid=', gn:info/uuid))"/></xsl:otherwise>
+			   </xsl:choose>
+			</xsl:variable>
 			<xsl:variable name="thumbnailLink" select="normalize-space($metadata/image[@type='thumbnail'])"/>
 			<xsl:variable name="bDynamic" select="gn:info/dynamic" />
 			<xsl:variable name="bDownload" select="gn:info/download" />
