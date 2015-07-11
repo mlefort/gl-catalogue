@@ -50,10 +50,33 @@
                              data.relation
                            ];
                          } else {
+                           var wfs_relation = {};
                            for (var i = 0; i < data.relation.length; i++) {
                              scope.relations.push(data.relation[i]);
+                             // si la ressource est du WFS, on la met de côté pour la suite
+                             if (data.relation[i].protocol == 'OGC:WFS') {
+                               wfs_relation = JSON.parse(JSON.stringify(data.relation[i]));
+                             }
                            }
                          }
+                       }
+                       // Si une ressource WFS a été trouvé, on crée dynamiquement 3 nouvelles relations
+                       if (wfs_relation && wfs_relation.name) {
+                          wfs_relation.protocol = 'LINK';
+                          
+                          var kmlLink = JSON.parse(JSON.stringify(wfs_relation));
+                          kmlLink.url = kmlLink.url.replace('wfs','kml') + '?request=list&typename=' + kmlLink.name;
+                          kmlLink.abstract = kmlLink.abstract.replace('(OGC:WFS)',' au format KML');
+                          
+                          var geojsonLink = JSON.parse(JSON.stringify(wfs_relation));
+                          geojsonLink.url = geojsonLink.url + '?SERVICE=WFS&VERSION=2.0.0&outputformat=GEOJSON&maxfeatures=30&request=GetFeature&typename=' + geojsonLink.name;
+                          geojsonLink.abstract = geojsonLink.abstract.replace('(OGC:WFS)',' au format GeoJSON');
+                          
+                          var shapezipLink = JSON.parse(JSON.stringify(wfs_relation));
+                          shapezipLink.url = shapezipLink.url + '?SERVICE=WFS&VERSION=2.0.0&outputformat=SHAPEZIP&request=GetFeature&SRSNAME=EPSG:3946&typename=' + shapezipLink.name;
+                          shapezipLink.abstract = shapezipLink.abstract.replace('(OGC:WFS)',' au format Shape-ZIP');
+                          
+                          scope.relations.push(kmlLink,geojsonLink,shapezipLink);
                        }
                      });
                 }

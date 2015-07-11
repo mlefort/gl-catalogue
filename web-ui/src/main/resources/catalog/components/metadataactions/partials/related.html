@@ -4,7 +4,7 @@
 	<div class="row list-group-item gn-related-item grandlyon-related-item"
 				data-ng-repeat="r in relations track by $index"
 				data-ng-init="mainType = config.getType(r);type = r['@type'];"
-				data-ng-if="r['@type'] !== 'thumbnail'">
+				data-ng-if="r['@type'] !== 'thumbnail' && r['protocol'] !== 'DB:POSTGIS'">
 
 		<div class="col-xs-1">
 			<strong>
