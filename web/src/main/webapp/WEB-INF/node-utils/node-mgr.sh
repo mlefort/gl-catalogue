@@ -75,7 +75,6 @@ echo "      DB user  : $gnusername"
 
 echo "Register node in web.xml ..."
 
-mv $WEB_FILE $WEB_FILE.bak
 java -classpath $GNLIB/xalan-2.7.1.jar:$GNLIB/serializer-2.7.1.jar org.apache.xalan.xslt.Process \
         -PARAM user $gnusername \
         -PARAM password $gnpassword \
@@ -83,8 +82,10 @@ java -classpath $GNLIB/xalan-2.7.1.jar:$GNLIB/serializer-2.7.1.jar org.apache.xa
         -PARAM dbDriver $gndbdriver \
         -PARAM dbUrl $gndburl \
         -PARAM poolSize $gnpoolsize \
-        -IN $WEB_FILE.bak -XSL register-node.xsl \
+        -IN $WEB_FILE -XSL register-node.xsl \
         -OUT $WEB_FILE_OUT
+mv $WEB_FILE $WEB_FILE.bak
+mv $WEB_FILE_OUT $WEB_FILE
 
 echo "Setting db connection and SPRING configuration ..."
 java -classpath $GNLIB/xalan-2.7.1.jar:$GNLIB/serializer-2.7.1.jar org.apache.xalan.xslt.Process \
