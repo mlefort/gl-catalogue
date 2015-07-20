@@ -80,6 +80,9 @@
         <facet name="subTemplateType" indexKey="_root" label="subTemplateTypes"/>
         <facet name="groupOwner" indexKey="_groupOwner" label="groupOwners"/>
         <facet name="publishedForGroup" indexKey="_groupPublished" label="publishedForGroup" />
+        <facet name="maintenanceAndUpdateFrequency"
+               indexKey="cl_maintenanceAndUpdateFrequency"
+               label="maintenanceAndUpdateFrequencies"/>
     </facets>
 
     <summaryTypes>
@@ -97,6 +100,8 @@
             <item facet="serviceType"/>
             <item facet="denominator" sortBy="numValue" sortOrder="desc"/>
             <item facet="resolution" sortBy="numValue" sortOrder="desc"/>
+            <item facet="maintenanceAndUpdateFrequency"
+                  translator="codelist:gmd:MD_MaintenanceFrequencyCode"/>
             <!--<item facet="metadataPOC" max="15"/>-->
         </summaryType>
         <summaryType name="subtemplates">
