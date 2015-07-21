@@ -3,14 +3,15 @@
                         version="0.3.1" id="ows-context-ex-1-v3">
   <ows-context:General>
     <ows:BoundingBox crs="EPSG:3857">
-      <ows:LowerCorner>-8604130.477526832 -320097.07393612247</ows:LowerCorner>
-      <ows:UpperCorner>8948257.201654762 8720263.135408245</ows:UpperCorner>
+      <ows:LowerCorner>506152.54635871394 5723882.479836286</ows:LowerCorner>
+      <ows:UpperCorner>575060.5273578003 5755833.157659491</ows:UpperCorner>
     </ows:BoundingBox>
   </ows-context:General>
   <ows-context:ResourceList>
+    <!--
     <ows-context:Layer name="{type=mapquest}"
                        group="Background layers"
-                       hidden="false"
+                       hidden="true"
                        opacity="1">
       <ows:Title>MapQuest</ows:Title>
     </ows-context:Layer>
@@ -21,11 +22,20 @@
       <ows:Title>OpenStreetMap
       </ows:Title>
     </ows-context:Layer>
+    -->
     <ows-context:Layer name="{type=bing_aerial}"
                        group="Background layers"
-                       hidden="true"
+                       hidden="false"
                        opacity="1">
       <ows:Title>Bing Aerial</ows:Title>
+    </ows-context:Layer>
+    <ows-context:Layer name="osm_grandlyon"
+                       hidden="false"
+                       opacity="1">
+      <ows:Title>OSM GrandLyon</ows:Title>
+      <ows-context:Server service="urn:ogc:serviceType:WMS">
+        <ows-context:OnlineResource xlink:href="http://openstreetmap.data.grandlyon.com/?" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+      </ows-context:Server>
     </ows-context:Layer>
   </ows-context:ResourceList>
 </ows-context:OWSContext>
