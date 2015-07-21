@@ -413,9 +413,10 @@
           <Field name="{$fieldPrefix}OtherConstraints"
                  string="{string(.)}" store="true" index="true"/>
         </xsl:for-each>
-        <xsl:for-each select="gmd:useLimitation/gco:CharacterString">
-          <Field name="{$fieldPrefix}UseLimitation"
-                 string="{string(.)}" store="true" index="true"/>
+        <!--<xsl:for-each select="gmd:useLimitation/gco:CharacterString">-->
+		<xsl:for-each select="gmd:useLimitation/gco:CharacterString[not(starts-with(., 'http'))]">
+				<Field name="{$fieldPrefix}UseLimitation"
+					string="{string(.)}" store="true" index="true"/>
         </xsl:for-each>
       </xsl:for-each>
 

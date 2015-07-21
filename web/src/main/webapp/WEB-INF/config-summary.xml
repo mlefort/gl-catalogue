@@ -83,6 +83,7 @@
         <facet name="maintenanceAndUpdateFrequency"
                indexKey="cl_maintenanceAndUpdateFrequency"
                label="maintenanceAndUpdateFrequencies"/>
+        <facet name="useLimitation" indexKey="MD_LegalConstraintsUseLimitation" label="licence"/>
     </facets>
 
     <summaryTypes>
@@ -102,6 +103,7 @@
             <item facet="resolution" sortBy="numValue" sortOrder="desc"/>
             <item facet="maintenanceAndUpdateFrequency"
                   translator="codelist:gmd:MD_MaintenanceFrequencyCode"/>
+            <item facet="useLimitation"/>
             <!--<item facet="metadataPOC" max="15"/>-->
         </summaryType>
         <summaryType name="subtemplates">
