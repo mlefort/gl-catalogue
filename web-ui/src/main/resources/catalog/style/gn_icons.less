@@ -63,6 +63,37 @@
 /* SURCHARGE PICTO GRANDLYON */
 /* ========================= */
 
+@opendata-categories: accessibilite, citoyennete, culture, demographie, economie, environnement, equipements, imagerie, limitesadministratives, localisation, occupationdusol, transport, urbanisme, services;
+
+.loop(@index) when (@index > 0){
+    @theme: extract(@opendata-categories, @index);
+
+    .gn-icon-@{theme} {
+        background-image: url("../images/gl/off/@{theme}.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        width: 55px;
+        height: 56px;
+    }
+    .gn-icon-@{theme}:before {
+        content: ''
+    }
+    .gn-icon-@{theme}:hover {
+        background-image: url("../images/gl/on/@{theme}.png");
+        background-color: transparent !important;
+    }
+    .gn-icon-@{theme}-mini:before {content: ''}
+    .gn-icon-@{theme}-mini {
+        background-image: url("../images/gl/mini/@{theme}.png");
+        background-repeat: no-repeat;
+        width: 19px;
+        height: 19px
+    }
+    .loop(@index - 1);
+}
+.loop(length(@opendata-categories));
+
+/*
 .gn-icon-boundaries {
     background-image: url("../images/gl/off/limites-administratives.png");
     background-repeat: no-repeat;
@@ -107,28 +138,6 @@
     height: 19px
 }
 
-.gn-icon-localisation {
-    background-image: url("../images/gl/off/localisation.png");
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 55px;
-    height: 56px;
-}
-.gn-icon-localisation:before {
-    content: ''
-}
-.gn-icon-localisation:hover {
-    background-image: url("../images/gl/on/localisation.png");
-    background-color: transparent !important;
-}
-.gn-icon-localisation-mini:before {content: ''}
-.gn-icon-localisation-mini {
-    background-image: url("../images/gl/mini/localisation.png");
-    background-repeat: no-repeat;
-    width: 19px;
-    height: 19px
-}
-
 .gn-icon-imageryBaseMapsEarthCover {
     background-image: url("../images/gl/off/imagerie.png");
     background-repeat: no-repeat;
@@ -143,7 +152,6 @@
     background-image: url("../images/gl/on/imagerie.png");
     background-color: transparent !important;
 }
-
 .gn-icon-imageryBaseMapsEarthCover-mini:before {content: ''}
 .gn-icon-imageryBaseMapsEarthCover-mini {
     background-image: url("../images/gl/mini/imagerie.png");
@@ -217,3 +225,4 @@
     width: 19px;
     height: 19px
 }
+*/
