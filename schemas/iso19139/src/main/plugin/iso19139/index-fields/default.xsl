@@ -133,7 +133,7 @@
 				</xsl:for-each>
 
                 <xsl:for-each select="gmd:identifier/gmd:RS_Identifier/gmd:code/gco:CharacterString">
-                	<Field name="identifier" string="{string(.)}" store="false" index="true"/>
+                	<Field name="identifier" string="{string(.)}" store="true" index="true"/>
 				</xsl:for-each>
 
 	
@@ -340,12 +340,21 @@
             <xsl:variable name="email" select="/gmd:MD_Metadata/gmd:contact[1]/gmd:CI_ResponsibleParty[1]/gmd:contactInfo[1]/gmd:CI_Contact[1]/gmd:address[1]/gmd:CI_Address[1]/gmd:electronicMailAddress[1]/gco:CharacterString[1]"/>
 			<xsl:for-each select="gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString|gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:organisationName/gmx:Anchor">
 				<Field name="orgName" string="{string(.)}" store="true" index="true"/>
-				
-				<xsl:variable name="role" select="../../gmd:role/*/@codeListValue"/>
-				<xsl:variable name="logo" select="../..//gmx:FileName/@src"/>
-			
-				<Field name="responsibleParty" string="{concat($role, '|resource|', ., '|', $logo, '|', $email)}" store="true" index="false"/>
-				
+
+        <xsl:variable name="role" select="../../gmd:role/*/@codeListValue"/>
+        <xsl:variable name="roleTranslation" select="util:getCodelistTranslation('gmd:CI_RoleCode', string($role), string($isoLangId))"/>
+        <xsl:variable name="logo" select="../..//gmx:FileName/@src"/>
+        <xsl:variable name="email" select="../../gmd:contactInfo/*/gmd:address/*/gmd:electronicMailAddress/gco:CharacterString"/>
+        <xsl:variable name="phone" select="../../gmd:contactInfo/*/gmd:phone/*/gmd:voice[normalize-space(.) != '']/*/text()"/>
+        <xsl:variable name="individualName" select="../../gmd:individualName/*/text()"/>
+        <xsl:variable name="positionName" select="../../gmd:positionName/*/text()"/>
+        <xsl:variable name="address" select="string-join(../../gmd:contactInfo/*/gmd:address/*/(
+                                          gmd:deliveryPoint|gmd:postalCode|gmd:city|
+                                          gmd:administrativeArea|gmd:country)/*/text(), ', ')"/>
+
+        <Field name="responsibleParty"
+               string="{concat($roleTranslation, '|resource|', ., '|', $logo, '|', $email, '|', $individualName, '|', $positionName, '|', $address, '|', $phone)}"
+               store="true" index="false"/>
 			</xsl:for-each>
 
 			<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->		
@@ -391,7 +400,11 @@
 				</xsl:for-each>
 
         <xsl:for-each select="gmd:distance/gco:Distance">
-          <Field name="resolution" string="{concat(string(.), ' ', @uom)}" store="true" index="true"/>
+          <!-- Units may be encoded as
+          http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/uom/ML_gmxUom.xml#m
+          in such case retrieve the unit acronym only. -->
+          <xsl:variable name="unit" select="if (contains(@uom, '#')) then substring-after(@uom, '#') else @uom"/>
+          <Field name="resolution" string="{concat(string(.), ' ', $unit)}" store="true" index="true"/>
         </xsl:for-each>
 			</xsl:for-each>
 
@@ -749,9 +762,19 @@
 			<Field name="metadataPOC" string="{string(.)}" store="true" index="true"/>
 			
 			<xsl:variable name="role" select="../../gmd:role/*/@codeListValue"/>
+			<xsl:variable name="roleTranslation" select="util:getCodelistTranslation('gmd:CI_RoleCode', string($role), string($isoLangId))"/>
 			<xsl:variable name="logo" select="../..//gmx:FileName/@src"/>
-			
-			<Field name="responsibleParty" string="{concat($role, '|metadata|', ., '|', $logo)}" store="true" index="false"/>			
+			<xsl:variable name="email" select="../../gmd:contactInfo/*/gmd:address/*/gmd:electronicMailAddress/gco:CharacterString"/>
+			<xsl:variable name="phone" select="../../gmd:contactInfo/*/gmd:phone/*/gmd:voice[normalize-space(.) != '']/*/text()"/>
+			<xsl:variable name="individualName" select="../../gmd:individualName/*/text()"/>
+			<xsl:variable name="positionName" select="../../gmd:positionName/*/text()"/>
+			<xsl:variable name="address" select="string-join(../../gmd:contactInfo/*/gmd:address/*/(
+                                          gmd:deliveryPoint|gmd:postalCode|gmd:city|
+                                          gmd:administrativeArea|gmd:country)/*/text(), ', ')"/>
+
+			<Field name="responsibleParty"
+             string="{concat($roleTranslation, '|metadata|', ., '|', $logo, '|', $email, '|', $individualName, '|', $positionName, '|', $address, '|', $phone)}"
+             store="true" index="false"/>
 		</xsl:for-each>
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->		
@@ -762,7 +785,7 @@
 				<xsl:variable name="crs" select="concat(string(gmd:codeSpace/gco:CharacterString),'::',string(gmd:code/gco:CharacterString))"/>
 
 				<xsl:if test="$crs != '::'">
-					<Field name="crs" string="{$crs}" store="false" index="true"/>
+					<Field name="crs" string="{$crs}" store="true" index="true"/>
 				</xsl:if>
 			</xsl:for-each>
 		</xsl:for-each>
@@ -821,6 +844,27 @@
     </xsl:for-each>
   </xsl:template>
 
+  <!--<xsl:template name="indexContact">
+    <xsl:param name="contact"/>
+    <xsl:param name="fieldName"/>
+
+    <Field name="metadataPOC" string="{string(.)}" store="true" index="true"/>
+
+    <xsl:variable name="role" select="../../gmd:role/*/@codeListValue"/>
+    <xsl:variable name="roleTranslation" select="util:getCodelistTranslation('gmd:CI_RoleCode', string($role), string($isoLangId))"/>
+    <xsl:variable name="logo" select="../..//gmx:FileName/@src"/>
+    <xsl:variable name="email" select="../../gmd:contactInfo/*/gmd:address/*/gmd:electronicMailAddress/gco:CharacterString"/>
+    <xsl:variable name="phone" select="../../gmd:contactInfo/*/gmd:phone/*/gmd:voice[normalize-space(.) != '']/*/text()"/>
+    <xsl:variable name="individualName" select="../../gmd:individualName/*/text()"/>
+    <xsl:variable name="positionName" select="../../gmd:positionName/*/text()"/>
+    <xsl:variable name="address" select="string-join(../../gmd:contactInfo/*/gmd:address/*/(
+                                          gmd:deliveryPoint|gmd:postalCode|gmd:city|
+                                          gmd:administrativeArea|gmd:country)/*/text(), ', ')"/>
+
+    <Field name="{$fieldName}"
+           string="{concat($roleTranslation, '|metadata|', ., '|', $logo, '|', $email, '|', $individualName, '|', $positionName, '|', $address, '|', $phone)}"
+           store="true" index="false"/>
+  </xsl:template>-->
 
 	<!-- ========================================================================================= -->
 
