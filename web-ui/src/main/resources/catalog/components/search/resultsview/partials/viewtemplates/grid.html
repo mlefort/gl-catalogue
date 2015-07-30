@@ -53,6 +53,7 @@
         <!-- Thumbnail -->
         <div class="gn-md-thumbnail">
           <img class="gn-img-thumbnail"
+               title="Aperçu"
                data-ng-src="{{md.getThumbnails().list[0].url}}"
                data-ng-if="md.getThumbnails().list[0].url"/>
 
@@ -116,6 +117,7 @@
             <ul class="dropdown-menu" role="menu">
               <li ng-repeat="link in ::links">
                 <a href="{{::link.url}}"
+                   title="{{::link.name}}"
                    target="_blank">{{::link.desc}}</a>
               </li>
             </ul>
@@ -133,7 +135,7 @@
             <ul class="dropdown-menu" role="menu">
               <li ng-repeat="link in ::downloads">
                 <a href="{{::link.url}}"
-                   title="{{::link.desc}}">
+                   title="{{::link.name}}">
                   <span class="fa fa-file-zip-o"
                         data-ng-if="link.contentType=='application/zip'"></span>
                   {{link.desc || (link.name + ' - ' + link.contentType) }}</a>
@@ -147,13 +149,16 @@
             <button type="button"
                     class="btn btn-default dropdown-toggle"
                     data-toggle="dropdown"
-                    title="{{'layers' | translate}}">
+                    title="{{'visualize' | translate}}">
               <span class="fa fa-globe"></span>
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
               <li ng-repeat="layer in ::layers">
-                <a href="" data-ng-click="resultviewFns.addMdLayerToMap(layer, md)">
+                <a href=""
+                   title="{{::layer.name}}"
+                   data-ng-click="resultviewFns.addMdLayerToMap(layer, md)">
+                  
                   <span class="fa fa-google"
                         data-ng-if="layer.contentType=='application/vnd.google-earth.kml+xml'"></span>
                   <span class="fa fa-globe"
@@ -163,7 +168,8 @@
                   class="divider"></li>
               <li data-ng-show="layers.length > 1">
                 <a href=""
-                     data-ng-click="resultviewFns.addAllMdLayersToMap(layers, md)">
+                   title=""
+                   data-ng-click="resultviewFns.addAllMdLayersToMap(layers, md)">
                   <i class="fa fa-plus"></i>&nbsp;
                   <span data-translate=""
                       data-translate-values="{number: '{{layers.length}}'}">
@@ -185,7 +191,9 @@
             </button>
             <ul class="dropdown-menu" role="menu">
               <li ng-repeat="map in ::maps">
-                <a href="" data-ng-click="resultviewFns.loadMap(map, md)">
+                <a href=""
+                   title="{{::map.name}}"
+                   data-ng-click="resultviewFns.loadMap(map, md)">
                 <span class="fa fa-map-marker"></span>
                   &nbsp;{{map.desc || map.name}}</a></li>
             </ul>
@@ -203,7 +211,7 @@
             <ul class="dropdown-menu" role="menu">
               <li ng-repeat="link in ::wfsLinks">
                 <a href="{{::link.url}}"
-                   title="{{::link.desc}}"
+                   title="{{::link.name}}"
                    target="blank">
                   <span class="fa fa-file-zip-o"
                         data-ng-if="link.contentType=='application/zip'"></span>
