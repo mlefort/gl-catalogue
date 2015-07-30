@@ -43,14 +43,15 @@
             <input type="radio" name="browse" value="inspire" data-ng-model="browse"/>
             <span data-translate="">inspireThemes</span>
           </label>
-          <label data-ng-show="searchInfo.facet['topicCats'].length > 0">
+          <!--<label data-ng-show="searchInfo.facet['topicCats'].length > 0">
             <input type="radio" name="browse" value="topics" data-ng-model="browse"/>
             <span data-translate="">topics</span>
           </label>
-          <!--<label data-ng-show="searchInfo.facet['categories'].length > 0">
+          -->
+          <label data-ng-show="searchInfo.facet['categories'].length > 0">
             <input type="radio" name="browse" value="cat" data-ng-model="browse"/>
             <span data-translate="">categories</span>
-          </label>-->
+          </label>
         </div>
         <div class="panel-body">
             <!-- Here is a facet with icon to do a first level
@@ -62,7 +63,7 @@
             a pattern matching a URL resolving to an image.
             -->
           <div class="row">
-            <div data-ng-repeat="(key, facet) in searchInfo.facet['topicCats']"
+            <!--<div data-ng-repeat="(key, facet) in searchInfo.facet['topicCats']"
                  class="col-xs-6 col-sm-4 col-lg-3"
                  data-ng-show="browse === 'topics'">
               <a class="thumbnail gn-icon-bg" data-ng-href="#/search?topicCat={{facet['@name']}}">
@@ -70,16 +71,17 @@
                 <span class="gn-icon-label">{{facet['@label']}}</span>
                 <span class="badge">{{facet['@count']}}</span>
               </a>
-            </div>
-            <!--<div data-ng-repeat="(key, facet) in searchInfo.facet['categories']"
+            </div>-->
+            <div data-ng-repeat="(key, facet) in searchInfo.facet['categories']"
                  class="col-xs-6 col-sm-4 col-lg-3"
                  data-ng-show="browse === 'cat'">
               <a class="thumbnail gn-icon-bg"
                  data-ng-href="#/search?_cat={{facet['@name']}}">
+                <i class="fa gn-icon-{{facet['@name']}}"></i><br/>
                 <span class="gn-icon-label">{{facet['@label']}}</span>
                 <span class="badge">{{facet['@count']}}</span>
               </a>
-            </div>-->
+            </div>
             <div data-ng-repeat="(key, facet) in searchInfo.facet['inspireThemesWithAc'] track by $index"
                  class="col-xs-6 col-sm-4 col-lg-3"
                  data-ng-show="browse === 'inspire'">
