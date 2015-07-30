@@ -26,7 +26,7 @@
           <a data-ng-repeat="cat in ::md.category"
              data-ng-href="#/search?_cat={{cat}}">
             <i class="fa" title="{{cat | translate}}">
-                <span class="fa gn-icon-{{cat}}"></span>
+                <span class="fa gn-icon-{{cat}}-mini"></span>
             </i>
           </a>
           <a data-ng-repeat="t in md.inspirethemewithac"
@@ -35,12 +35,14 @@
               <span class="fa iti-{{t.split('|')[0]}}"></span>
             </i>
           </a>
+          <!--
           <a data-ng-repeat="t in md.topicCat"
              data-ng-href="#/search?topicCat={{t}}">
             <i class="fa" title="{{t | translate}}">
-              <span class="fa gn-icon-{{t}}-mini"></span>
+              <span class="fa gn-icon-{{t}}"></span>
             </i>
           </a>
+          -->
         </div>
         <div data-gn-metadata-rate="md"
              data-readonly="true"
