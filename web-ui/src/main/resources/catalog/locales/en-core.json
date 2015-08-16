@@ -46,6 +46,8 @@
     "comments": "Comment",
     "contactDetailsSentTo": "An email has been sent to ",
     "country": "Country",
+    "regions": "Regions",
+    "gemetKeywords": "GEMET keywords",
     "createAnAccount": "Create an account",
     "createDateYear": "Creation year",
     "createDateYears": "Years",
@@ -76,6 +78,7 @@
     "forgetDetails": "Forgotten your details?",
     "forgetDetailsInfo": "Use password recovery to reset it.",
     "from": "From",
+    "collapseAllFacet": "Show/hide facets",
     "ger": "Deutsch",
     "groupOwners": "Groups",
     "hour": "Hour",
@@ -166,6 +169,7 @@
     "south": "South",
     "siblings": "Other resources",
     "sourceDatasets": "Source datasets",
+    "isSourceOfDatasets": "Is source dataset of",
     "spa": "Español",
     "spatialRepresentationTypes": "Representation types",
     "spatialRepresentationType": "Representation type",
@@ -249,5 +253,6 @@
     "valueCode": "Code",
     "addRecord": "Add new record",
     "ImportRecord": "Import new records",
-    "directoryManager": "Manage directory"
+    "directoryManager": "Manage directory",
+    "typeOfRecord": "Type of record"
 }
