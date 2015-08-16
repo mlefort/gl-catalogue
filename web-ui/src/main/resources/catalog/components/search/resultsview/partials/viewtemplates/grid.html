@@ -132,7 +132,6 @@
           </div>
 
           <div class="btn-group"
-<<<<<<< HEAD
                data-ng-class="::downloads.length > 0 ? '' : 'invisible'">
             <button type="button"
                     class="btn btn-default dropdown-toggle"
@@ -153,8 +152,6 @@
           </div>
 
           <div class="btn-group"
-=======
->>>>>>> geosource/geosource-3.x
                data-ng-if="isMapViewerEnabled"
                data-ng-class="layers.length > 0 ? '' : 'hidden'">
             <button type="button"
@@ -209,20 +206,13 @@
                   &nbsp;{{map.desc || map.name}}</a></li>
             </ul>
           </div>
-<<<<<<< HEAD
-          
-          <div class="btn-group"
-               data-ng-class="::wfsLinks.length > 0 ? '' : 'invisible'">
-=======
 
           <div class="btn-group"
                data-ng-class="::downloads.length > 0 ? '' : 'hidden'">
->>>>>>> geosource/geosource-3.x
             <button type="button"
                     class="btn btn-default dropdown-toggle"
                     data-toggle="dropdown"
                     title="{{'downloads' | translate}}">
-<<<<<<< HEAD
               <span class="fa fa-file"></span>
               <span class="caret"></span>
             </button>
@@ -237,25 +227,10 @@
                         data-ng-if="link.contentType=='application/json'"></span>
                   <span class="fa fa-google"
                         data-ng-if="link.contentType=='application/vnd.google-earth.kml+xml'"></span>
-=======
-              <span class="fa fa-download"></span>
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li ng-repeat="link in ::downloads">
-                <a href="{{::link.url}}"
-                   title="{{::link.desc}}">
-                  <span class="fa fa-file-zip-o"
-                        data-ng-if="link.contentType=='application/zip'"></span>
->>>>>>> geosource/geosource-3.x
                   {{link.desc || (link.name + ' - ' + link.contentType) }}</a>
               </li>
             </ul>
           </div>
-<<<<<<< HEAD
-          
-=======
->>>>>>> geosource/geosource-3.x
         </div>
       </div>
     </div>
