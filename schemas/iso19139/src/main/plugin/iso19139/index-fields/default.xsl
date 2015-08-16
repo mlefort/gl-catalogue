@@ -358,7 +358,7 @@
                                           gmd:administrativeArea|gmd:country)/gco:CharacterString/text(), ', ')"/>
 
         <Field name="responsibleParty"
-               string="{concat($roleTranslation, '|resource|', ., '|', $logo, '|',  string-join($email, ','), '|', $individualName, '|', $positionName, '|', $address, '|', $phone)}"
+               string="{concat($roleTranslation, '|resource|', ., '|', $logo, '|',  string-join($email, ','), '|', $individualName, '|', $positionName, '|', $address, '|', string-join($phone, ','))}"
                store="true" index="false"/>
 			</xsl:for-each>
 
@@ -790,7 +790,7 @@
                                           gmd:administrativeArea|gmd:country)/gco:CharacterString/text(), ', ')"/>
 
 			<Field name="responsibleParty"
-             string="{concat($roleTranslation, '|metadata|', ., '|', $logo, '|', string-join($email, ','), '|', $individualName, '|', $positionName, '|', $address, '|', $phone)}"
+             string="{concat($roleTranslation, '|metadata|', ., '|', $logo, '|', string-join($email, ','), '|', $individualName, '|', $positionName, '|', $address, '|', string-join($phone, ','))}"
              store="true" index="false"/>
 		</xsl:for-each>
 
