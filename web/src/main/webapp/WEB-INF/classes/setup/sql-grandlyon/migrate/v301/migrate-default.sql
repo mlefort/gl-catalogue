@@ -34,6 +34,7 @@ INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/metadata/prefergrouplogo', 'true', 2, 9111, 'y');
 
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('map/isMapViewerEnabled', 'true', 2, 9592, 'n');
+
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/metadata/allThesaurus', 'false', 2, 9160, 'n');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/ui/defaultView', 'default', 0, 10100, 'n');
 
@@ -47,5 +48,8 @@ INSERT INTO Settings (name, value, datatype, position, internal) VALUES
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES
   ('map/isSaveMapInCatalogAllowed', 'true', 2, 9594, 'n');
 
-UPDATE Settings SET value='3.0.1' WHERE name='system/platform/version';
+
+INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('metadata/workflow/draftWhenInGroup', '', 0, 100002, 'n');
+
+UPDATE Settings SET value='3.0.2' WHERE name='system/platform/version';
 UPDATE Settings SET value='SNAPSHOT' WHERE name='system/platform/subVersion';
