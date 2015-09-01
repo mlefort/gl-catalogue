@@ -39,8 +39,10 @@
   <!-- Field separator:
 		To use tab instead of semicolon, use "&#009;".
 		Default is comma.
-	-->
+	
   <xsl:variable name="sep" select="','"/>
+  -->
+  <xsl:variable name="sep" select="'&#124;'"/>
 
   <!-- Intra field separator -->
   <xsl:variable name="internalSep" select="'###'"/>
@@ -91,6 +93,7 @@
       </xsl:for-each>
     </xsl:variable>
 
+    <!--
     <xsl:variable name="columns">
       <xsl:for-each-group select="$sortedResults/*" group-by="geonet:info/schema">
         <schema name="{current-grouping-key()}">
@@ -98,6 +101,15 @@
             <column name="{name(.)}">"<xsl:value-of select="name(.)"/>"</column>
           </xsl:for-each-group>
         </schema>
+      </xsl:for-each-group>
+    </xsl:variable>
+	-->
+	
+    <xsl:variable name="columns">
+	  <xsl:for-each-group select="$sortedResults/*" group-by="name(.)">
+          <xsl:for-each-group select="current-group()/*[name(.)!='geonet:info']" group-by="name(.)">
+              <column name="{name(.)}">"<xsl:value-of select="name(.)"/>"</column>
+          </xsl:for-each-group>
       </xsl:for-each-group>
     </xsl:variable>
 
@@ -109,7 +121,7 @@
       <xsl:variable name="currentSchema" select="geonet:info/schema"/>
       <xsl:choose>
         <xsl:when
-          test="position()!=1 and $currentSchema=preceding-sibling::node()/geonet:info/schema"/>
+          test="position()!=1" /> <!-- and $currentSchema=preceding-sibling::node()/geonet:info/schema"/>-->
         <xsl:otherwise>
           <!-- CSV header, schema and id first, then from schema column list -->
           <xsl:text>"schema"</xsl:text>
@@ -119,16 +131,21 @@
           <xsl:text>"id"</xsl:text>
           <xsl:value-of select="$sep"/>
 
-          <xsl:value-of
+          <!--
+		  <xsl:value-of
             select="string-join($columns/schema[@name=$currentSchema]/column, 
 														$sep)"/>
-
+		  -->
+		  <xsl:value-of
+            select="string-join($columns/column, $sep)"/>
+		  
           <xsl:call-template name="newLine"/>
         </xsl:otherwise>
       </xsl:choose>
 
       <xsl:call-template name="csvLine">
-        <xsl:with-param name="columns" select="$columns/schema[@name=$currentSchema]/column"/>
+        <!--<xsl:with-param name="columns" select="$columns/schema[@name=$currentSchema]/column"/>-->
+		<xsl:with-param name="columns" select="$columns/column"/>
         <xsl:with-param name="metadata" select="."/>
       </xsl:call-template>
     </xsl:for-each>
