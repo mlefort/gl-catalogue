@@ -234,7 +234,7 @@
     "layerNotfoundInCapability": "La couche '{{layer}}' n'a pas été identifiée dans <a href='{{url}}'>le GetCapabilities du WMS</a>. La couche peut ne pas s'afficher correctement.",
     "layerNotAvailableInMapProj": "Le service WMS ne fournit pas la couche dans la projection de la carte. La couche a été ajoutée à la carte mais peut ne pas s'afficher correctement.",
     "layerCRSNotFound": "Le système de projection de la couche WMS n'a pas été identifié. Cela peut être lié à la version du service inférieure à WMS 1.3.0.",
-    "layerTileLoadError": "Oups, il y a eu un problème lors du chargement d'une image <a href='{{url}}'>'{{url | limitTo: 30}} ...'</a> pour la couche '{{layer}}'.",
+    "layerTileLoadError": "Oups, il y a eu un problème lors du chargement d'une image <a href='{{url}}'>'{{url | limitTo: 30}} ...'</a> pour la couche '{{layer}}'. Le service appelé supporte-t-il bien la projection EPSG:3857 ?",
     "getCapFailure": "Les demandes getCapabilities du WMS ont échouées",
     "standards": "Standards",
     "metadataTypes": "Type de fiche",
