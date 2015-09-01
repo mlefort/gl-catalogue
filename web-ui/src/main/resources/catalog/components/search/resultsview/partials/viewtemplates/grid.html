@@ -63,7 +63,8 @@
       <div title="{{(md.abstract || md.defaultAbstract) | striptags}}"
            data-ng-click="openRecord($index, md, searchResults.records)">
         <!-- Thumbnail -->
-        <div class="gn-md-thumbnail">
+        <div data-ng-if="md.type[0] == 'dataset'"
+             class="gn-md-thumbnail">
           <img class="gn-img-thumbnail"
                title="Aperçu"
                data-ng-src="{{md.getThumbnails().list[0].url}}"
@@ -74,7 +75,10 @@
                title="{{md.status_text[0]}}"
                class="gn-status gn-status-{{md.status[0]}}">{{md.status_text[0]}}</div>
         </div>
-        
+        <div data-ng-if="md.type[0] == 'nonGeographicDataset'"
+             class="gn-dc-thumbnail">
+        </div>
+                
         <div style="float:left; display:block; width: calc(100% - 162px)">
 
           <div class="text-justify gn-md-abstract ellipsis">
