@@ -677,7 +677,7 @@
             } else if (s[0] === 'overview') {
               images.big = s[1];
             }
-            images.list[insertFn]({url: s[1], label: s[2]});
+            images.list[insertFn]({url: s[1], label: s[2], size: s[0]});
           }
         }
         return images;
