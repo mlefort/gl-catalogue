@@ -62,7 +62,7 @@ layouts:
     mainPage:
       rotation: true
       pageSize: A4
-      backgroundPdf: '${configDir}/template.pdf'
+#     backgroundPdf: '${configDir}/template.pdf'
       header:
         height: 1
       items:
@@ -71,16 +71,20 @@ layouts:
           absoluteY: 832
           width: 575
           items:
+            - !image
+              maxHeight: 40
+              maxWidth: 200
+              url: 'file://${configDir}/logo_GL.jpeg'
             - !text
               font: Helvetica
-              fontSize: 24
+              fontSize: 20
               text: '${title}'
         - !map
           spacingAfter: 10
           width: 575
-          height: 680
+          height: 670
           absoluteX:10
-          absoluteY:790
+          absoluteY:780
         - !columns
           absoluteX: 15
           absoluteY: 130
@@ -116,7 +120,7 @@ layouts:
           width: 575
           items:
             - !text
-              text: '- ${now yyyy/MM/dd HH:mm} -'
+              text: '${now dd/MM/yyyy} - Catalogue du Grand Lyon'
               align: right
               fontEncoding: Cp1252
-              fontSize: 8
+              fontSize: 10
