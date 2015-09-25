@@ -38,7 +38,54 @@
           <xsl:value-of select="dc:description"/>
         </abstract>
       </xsl:if>
-
+      
+      <!-- NEOGEO 2015 : quelques champs ajoutés pour l'export CSV du GrandLyon -->
+      <xsl:if test="dc:source">
+        <lineage>
+          <xsl:value-of select="dc:source"/>
+        </lineage>
+      </xsl:if>
+      <xsl:if test="dct:isPartOf">
+        <parentId>
+          <xsl:value-of select="dct:isPartOf"/>
+        </parentId>
+      </xsl:if>
+      <xsl:for-each select="dc:subject[text()]">
+        <xsl:if test="position()=1">
+          <category>
+            <xsl:value-of select="."/>
+          </category>
+        </xsl:if>
+      </xsl:for-each>
+      <xsl:if test="dct:dateSubmitted">
+        <dateSubmitted>
+          <xsl:value-of select="dct:dateSubmitted"/>
+        </dateSubmitted>
+      </xsl:if>
+      <xsl:if test="dct:accrualPeriodicity">
+        <maintenanceAndUpdateFrequency>
+          <xsl:value-of select="dct:accrualPeriodicity"/>
+        </maintenanceAndUpdateFrequency>
+      </xsl:if>
+      <xsl:if test="dc:type">
+        <type>
+          <xsl:value-of select="dc:type"/>
+        </type>
+      </xsl:if>
+      <xsl:if test="dc:creator">
+        <responsibleParty>
+          <xsl:value-of select="dc:creator"/>
+        </responsibleParty>
+      </xsl:if>
+      <xsl:for-each select="dc:rights">
+        <xsl:if test="position()=1">
+          <legalConstraints>
+            <xsl:value-of select="."/>
+          </legalConstraints>
+        </xsl:if>
+      </xsl:for-each>
+      <!-- fin ajout NEOGEO-->
+      
       <xsl:for-each select="dc:subject[text()]">
         <keyword>
           <xsl:value-of select="."/>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:gmd="http://www.isotc211.org/2005/gmd"
+  xmlns:gts="http://www.isotc211.org/2005/gts"
   xmlns:gco="http://www.isotc211.org/2005/gco"
   xmlns:srv="http://www.isotc211.org/2005/srv"
   xmlns:gmx="http://www.isotc211.org/2005/gmx"
@@ -170,10 +171,21 @@
         </responsibleParty>
       </xsl:if>
     </xsl:for-each>
-
+    
+    <xsl:for-each select="gmd:dataQualityInfo/*/gmd:lineage/gmd:LI_Lineage/gmd:statement/gco:CharacterString">
+      <lineage>
+        <xsl:value-of select="."/>
+      </lineage>
+    </xsl:for-each>
+        
     <metadatacreationdate>
       <xsl:value-of select="gmd:dateStamp/*"/>
     </metadatacreationdate>
+    
+    <type>
+      <xsl:value-of select="gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue"/>
+    </type>
+    
     <gn:info>
       <xsl:copy-of select="gn:info/*[name(.)!='edit']"/>
       <xsl:choose>
@@ -224,6 +236,12 @@
       </datasetcreationdate>
     </xsl:if>
 
+    <xsl:if test="gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode/@codeListValue[. = 'publication']">
+      <dateSubmitted>
+        <xsl:value-of select="gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date/gco:Date"/>
+      </dateSubmitted>
+    </xsl:if>
+    
     <xsl:if test="gmd:abstract">
       <abstract>
         <xsl:apply-templates mode="localised" select="gmd:abstract">
@@ -232,7 +250,33 @@
       </abstract>
     </xsl:if>
 
+    <xsl:for-each select="gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/
+                          gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode/@codeListValue[. != '']">
+      <maintenanceAndUpdateFrequency>
+          <xsl:value-of select="."/>
+      </maintenanceAndUpdateFrequency>
+    </xsl:for-each>
+    <xsl:if test="gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/
+                  gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode/@codeListValue[. = 'continual']">
+      <maintenanceAndUpdateFrequency>      
+        <xsl:value-of select="gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:userDefinedMaintenanceFrequency/gts:TM_PeriodDuration"/>
+      </maintenanceAndUpdateFrequency>
+    </xsl:if>
+    
+    <xsl:for-each select="gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation/gco:CharacterString">
+      <xsl:if test="position()=1">
+        <legalConstraints>
+          <xsl:value-of select="."/>
+        </legalConstraints>
+      </xsl:if>
+    </xsl:for-each>
+
     <xsl:for-each select=".//gmd:keyword[not(@gco:nilReason)]">
+      <xsl:if test="position()=1">
+        <category>
+          <xsl:value-of select="gco:CharacterString"/>
+        </category>
+      </xsl:if>
       <keyword>
         <xsl:apply-templates mode="localised" select=".">
           <xsl:with-param name="langId" select="$langId"/>
@@ -395,6 +439,6 @@
         </responsibleParty>
       </xsl:if>
     </xsl:for-each>
-
+    
   </xsl:template>
 </xsl:stylesheet>

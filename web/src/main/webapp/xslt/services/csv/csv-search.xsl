@@ -93,7 +93,7 @@
       </xsl:for-each>
     </xsl:variable>
 
-    <!--
+    <!-- CODE ORIGINE
     <xsl:variable name="columns">
       <xsl:for-each-group select="$sortedResults/*" group-by="geonet:info/schema">
         <schema name="{current-grouping-key()}">
@@ -105,6 +105,7 @@
     </xsl:variable>
 	-->
 	
+	<!-- CODE NEOGEO
     <xsl:variable name="columns">
 	  <xsl:for-each-group select="$sortedResults/*" group-by="name(.)">
           <xsl:for-each-group select="current-group()/*[name(.)!='geonet:info']" group-by="name(.)">
@@ -112,7 +113,23 @@
           </xsl:for-each-group>
       </xsl:for-each-group>
     </xsl:variable>
-
+    -->
+	<xsl:variable name="columns">
+	  <column name="title">"Titre/Title"</column>
+	  <column name="abstract">"Description"</column>
+	  <column name="lineage">"Provenance/Lineage"</column>
+	  <column name="parentId">"Parent"</column>
+	  <column name="category">"Catégorie/Category"</column>
+	  <column name="keyword">"Mot-clé/Keyword"</column>
+	  <column name="dateSubmitted">"Date de publication/Date submitted"</column>
+	  <column name="maintenanceAndUpdateFrequency">"Fréquence de mise à jour/Update frequency"</column>
+	  <column name="geoBox">"Couverture territoriale/Geo Box"</column>
+	  <column name="type">"Type"</column>
+	  <column name="responsibleParty">"Organisation/Responsible Party"</column>
+	  <column name="legalConstraints">"Licence/Legal constraints"</column>
+	</xsl:variable>
+	
+	
     <!-- Display results
 				* header first (once)
 				* content then.
@@ -124,13 +141,13 @@
           test="position()!=1" /> <!-- and $currentSchema=preceding-sibling::node()/geonet:info/schema"/>-->
         <xsl:otherwise>
           <!-- CSV header, schema and id first, then from schema column list -->
-          <xsl:text>"schema"</xsl:text>
+          <xsl:text>"Norme/Schema"</xsl:text>
           <xsl:value-of select="$sep"/>
-          <xsl:text>"uuid"</xsl:text>
+          <xsl:text>"Identifiant unique/UUID"</xsl:text>
           <xsl:value-of select="$sep"/>
-          <xsl:text>"id"</xsl:text>
+          <!--<xsl:text>"id"</xsl:text>
           <xsl:value-of select="$sep"/>
-
+                                                                 -->
           <!--
 		  <xsl:value-of
             select="string-join($columns/schema[@name=$currentSchema]/column, 
@@ -159,9 +176,9 @@
 
     <xsl:value-of
       select="concat('&quot;', $metadata/geonet:info/schema, '&quot;', $sep, 
-									'&quot;', $metadata/geonet:info/uuid, '&quot;', $sep, 
-									'&quot;', $metadata/geonet:info/id, '&quot;', $sep)"/>
-
+					 '&quot;', $metadata/geonet:info/uuid, '&quot;', $sep)"/> 
+<!--				 '&quot;', $metadata/geonet:info/id, '&quot;', $sep)"/>
+-->
     <xsl:for-each select="$columns">
       <xsl:variable name="currentColumn" select="@name"/>
       <xsl:text>"</xsl:text>
