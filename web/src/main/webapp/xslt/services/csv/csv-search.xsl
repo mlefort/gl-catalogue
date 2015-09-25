@@ -125,7 +125,7 @@
 	  <column name="maintenanceAndUpdateFrequency">"Fréquence de mise à jour/Update frequency"</column>
 	  <column name="geoBox">"Couverture territoriale/Geo Box"</column>
 	  <column name="type">"Type"</column>
-	  <column name="responsibleParty">"Organisation/Responsible Party"</column>
+	  <column name="publisher">"Organisation/Responsible Party"</column>
 	  <column name="legalConstraints">"Licence/Legal constraints"</column>
 	</xsl:variable>
 	

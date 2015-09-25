@@ -263,6 +263,12 @@
       </maintenanceAndUpdateFrequency>
     </xsl:if>
     
+    <xsl:for-each select="gmd:pointOfContact/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString">
+      <publisher>
+          <xsl:value-of select="."/>
+      </publisher>
+    </xsl:for-each>
+        
     <xsl:for-each select="gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation/gco:CharacterString">
       <xsl:if test="position()=1">
         <legalConstraints>

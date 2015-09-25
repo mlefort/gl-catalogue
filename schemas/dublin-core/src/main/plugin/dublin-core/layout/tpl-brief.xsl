@@ -72,10 +72,10 @@
           <xsl:value-of select="dc:type"/>
         </type>
       </xsl:if>
-      <xsl:if test="dc:creator">
-        <responsibleParty>
-          <xsl:value-of select="dc:creator"/>
-        </responsibleParty>
+      <xsl:if test="dc:publisher">
+        <publisher>
+          <xsl:value-of select="dc:publisher"/>
+        </publisher>
       </xsl:if>
       <xsl:for-each select="dc:rights">
         <xsl:if test="position()=1">
