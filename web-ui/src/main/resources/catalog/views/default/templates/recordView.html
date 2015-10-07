@@ -513,8 +513,13 @@
             <i class="fa fa-fw fa-cog"></i>
             <span data-translate="">sourceCatalog</span>
           </h4>
+          <!--
           <img ng-src="../../images/logos/{{mdView.current.record.source}}.png"
                class="gn-source-logo"/>
+          -->
+          <img data-ng-if="mdView.current.record.getAllContacts().resource"
+             data-ng-src="{{::mdView.current.record.getAllContacts().resource[0].logo}}"
+             class="gn-source-logo"/>
         </section></br>
 
         <section>

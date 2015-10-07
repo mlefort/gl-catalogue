@@ -12,12 +12,16 @@
                data-ng-change="change()"/>
                
         <!--Source catalog Logo-->
+        <img data-ng-if="md.getAllContacts().resource"
+             data-ng-src="{{::md.getAllContacts().resource[0].logo}}"
+             class="gn-source-logo"/>
+<!--        
         <a data-ng-if="md.groupWebsite" href="{{md.groupWebsite}}" target="_blank">
             <img ng-src="../..{{md.logo}}" class="gn-source-logo"/>
         </a>
         <img data-ng-if="!md.groupWebsite"
              data-ng-src="../..{{md.logo}}" class="gn-source-logo"/>
-
+-->
         <div class="gn-md-category"
              data-ng-class="md.category.length > 0 ||
                             md.topicCat.length > 0 ? '' : 'invisible'">
