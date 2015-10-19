@@ -20,6 +20,8 @@
             TODO : less compilation
             <link href="style/app.css" rel="stylesheet" media="screen" />
 -->
+    <link href="{/root/gui/url}/catalog/style/grandlyon-nologin.css" rel="stylesheet" media="screen" />
+
     <xsl:if test="$withD3">
       <link href="{/root/gui/url}/static/nv.d3.css{$minimizedParam}" rel="stylesheet" media="screen" />
     </xsl:if>
