@@ -211,7 +211,7 @@
                     {{c.role | translate}}
                   </h3>
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                       <address>
                         <strong>
                           {{c.org}}<br/>
@@ -232,6 +232,10 @@
                           <span data-translate="">call</span> {{c.phone}}
                         </a>
                       </address>
+                    </div>
+                    <div class="col-md-4">
+                      <img data-ng-if="c.logo"
+                           data-ng-src="{{::c.logo}}"/>
                     </div>
                   </div>
                 </div>
@@ -512,19 +516,6 @@
         </section></br>-->
 
 
-        <section>
-          <h4>
-            <i class="fa fa-fw fa-cog"></i>
-            <span data-translate="">sourceCatalog</span>
-          </h4>
-          <!--
-          <img ng-src="../../images/logos/{{mdView.current.record.source}}.png"
-               class="gn-source-logo"/>
-          -->
-          <img data-ng-if="mdView.current.record.getAllContacts().resource"
-             data-ng-src="{{::mdView.current.record.getAllContacts().resource[0].logo}}"
-             class="gn-source-logo"/>
-        </section></br>
 
         <section>
           <h4>
