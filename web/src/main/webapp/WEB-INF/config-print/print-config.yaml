@@ -46,6 +46,7 @@ hosts:
 layouts:
   #===========================================================================
   Thumbnail:
+  #===========================================================================
     mainPage:
       rotation: false
       pageSize: LEGAL
@@ -60,6 +61,7 @@ layouts:
           absoluteY: 612
   #===========================================================================
   A4 portrait:
+  #===========================================================================
     mainPage:
       rotation: true
       pageSize: A4
@@ -125,3 +127,77 @@ layouts:
               align: right
               fontEncoding: Cp1252
               fontSize: 10
+              
+  #===========================================================================
+  A4 paysage:
+  #===========================================================================
+    mainPage:
+      rotation: true
+      pageSize: 842 595
+      header:
+        height: 50
+        items:
+          - !text
+            font: Helvetica
+            fontSize: 30
+            align: right
+#            text: '${mapTitle}'
+      items:
+        - !columns
+          absoluteX: 57 
+          absoluteY: 570
+          width: 350
+          items:
+            - !image
+              maxHeight: 40
+              maxWidth: 220
+              url: 'file://${configDir}/logo_GL.jpeg'
+        - !columns
+          config:
+            borderWidth: 2 
+            borderColor: black
+          absoluteX:58
+          absoluteY:520
+          width: 727
+          spacingAfter: 30
+          items: 
+            - !map
+              width: 727
+              height: 380
+        - !columns
+          absoluteX: 57
+          absoluteY: 130
+          width: 160
+          items:
+            - !scalebar
+              align: left
+              maxSize: 160
+              type: 'bar sub'
+              intervals: 5
+              units: km
+        - !columns
+          absoluteX: 730
+          absoluteY: 190
+          width: 30
+          items:
+            - !image
+              maxWidth: 30
+              maxHeight: 30
+              url: 'file://${configDir}/Arrow_North_CFCF.svg'
+              rotation: '${rotation}'
+        - !columns
+          absoluteX: 57
+          absoluteY: 110
+          width: 500
+          items:
+            - !text
+                text: '${comment}'
+        - !columns
+          absoluteX: 57
+          absoluteY: 40
+          width: 300
+          items:
+            - !text
+                text: '${now dd/MM/yyyy} - Catalogue du Grand Lyon'
+                fontEncoding: Cp1252
+                fontSize: 10
