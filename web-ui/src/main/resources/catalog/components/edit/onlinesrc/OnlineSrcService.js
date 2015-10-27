@@ -670,6 +670,39 @@
                   this.buildOnLineResource(node[key], protocols[p].label,
                   layerName, title + ' (' + protocols[p].label + ')') +
                   '&&&';
+
+              // Specific to GrandLyon
+              // Data accessible using WFS are also
+              if (protocols[p].label === 'OGC:WFS') {
+                /*
+                 https://redmine.neogeo-online.net/issues/2479
+                 xml +=
+                  this.buildOnLineResource(node[key] + 'SERVICE=WFS&amp;amp;' +
+                    'REQUEST=GetFeature&amp;amp;' +
+                    'typename=' + layerName + '&amp;amp;' +
+                    'outputformat=SHAPEZIP&amp;amp;' +
+                    'VERSION=2.0.0&amp;amp;' +
+                    'SRSNAME=EPSG:3946', protocols[p].label,
+                    layerName, title + ' (' + protocols[p].label + ')(shape-zip)')
+                    + '&&&';*/
+
+                /*
+                A URL like https://download.data.grandlyon.com/wfs/grandlyon?
+                get converted to
+                 https://download.data.grandlyon.com/ws/grandlyon/<layerName>/all.json
+                */
+                var token = node[key].split('/');
+                var baseUrl = (node[key].indexOf("mapserver.middle.grandlyon.webmapping.fr") > -1) ? 'https://secure.grandlyon.webmapping.fr' : 'https://download.data.grandlyon.com';
+                  xml +=
+                  this.buildOnLineResource(baseUrl +
+                    '/ws/' + token.pop().replace('?', '') +
+                    '/' + layerName + '/all.json', 'WWW:LINK-1.0-http--link',
+                    layerName + '/all.json',
+                    'Description des données dans le format texte JSON')
+                    + '&&&';
+              }
+
+
             }
           }
           return xml;
