@@ -148,7 +148,8 @@
             <ul class="dropdown-menu" role="menu">
               <li ng-repeat="link in ::downloads">
                 <a href="{{::link.url}}"
-                   title="{{::link.name}}">
+                   title="{{::link.name}}"
+                   target="_blank">
                   <span class="fa fa-file-zip-o"
                         data-ng-if="link.contentType=='application/zip'"></span>
                   {{link.desc || (link.name + ' - ' + link.contentType) }}</a>
