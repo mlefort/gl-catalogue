@@ -14,7 +14,7 @@
     <for name="gmd:abstract" use="textarea"/>
     <for name="gmd:checkPointDescription" use="textarea"/>
     <for name="gmd:credit" use="textarea"/>
-    <for name="gmd:description" use="textarea"/>
+    <!--<for name="gmd:description" use="textarea"/>-->
     <for name="gmd:evaluationMethodDescription" use="textarea"/>
     <for name="gmd:explanation" use="textarea"/>
     <for name="gmd:handlingDescription" use="textarea"/>
@@ -1216,7 +1216,7 @@
       </tab>
     </view>
     <view name="default">
-      <tab id="default" default="true" mode="flat">
+      <tab id="default" mode="flat">
         <section xpath="/gmd:MD_Metadata/gmd:identificationInfo"/>
         <section xpath="/gmd:MD_Metadata/gmd:referenceSystemInfo"/>
         <section xpath="/gmd:MD_Metadata/gmd:spatialRepresentationInfo"/>
@@ -1255,7 +1255,7 @@
         <for name="gmd:distributor"/>
         <for name="gmd:contact"/>
         <for name="gmd:processor"/>
-        <for name="gmd:citedResponsibleParty"/>
+        <!--<for name="gmd:citedResponsibleParty"/>-->
         <for name="gmd:topicCategory"/>
       </flatModeExceptions>
 
@@ -1269,9 +1269,62 @@
       <thesaurusList>
         <thesaurus key="external.theme.inspire-theme"
                    maxtags="2"
-                   transformations="to-iso19139-keyword-with-anchor"/>
+                   transformations="to-iso19139-keyword"/>
       </thesaurusList>
       -->
+    </view>
+    <view name="grandlyon">
+      <tab id="gl-main" default="true" mode="flat">
+        <section name="glidentification">
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/*/gmd:title"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:abstract"/>
+          <field xpath="/gmd:MD_Metadata/gmd:hierarchyLevel"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:spatialRepresentationType"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:spatialResolution"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/*/gmd:date"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:resourceMaintenance/*/gmd:maintenanceAndUpdateFrequency"/>
+        </section>
+        <section name="glcategory">
+          <text ref="glcategory-help"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:topicCategory"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords"
+                 or="descriptiveKeywords" in="/gmd:MD_Metadata/gmd:identificationInfo/*"/>
+        </section>
+        <section xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:extent"/>
+        <section xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:pointOfContact"
+               or="pointOfContact" in="/gmd:MD_Metadata/gmd:identificationInfo/*"/>
+        <section name="gmd:resourceConstraints">
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:resourceConstraints"/>
+        </section>
+        <section xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/*/gmd:lineage"/>
+        <section xpath="/gmd:MD_Metadata/gmd:referenceSystemInfo" or="referenceSystemInfo" in="/gmd:MD_Metadata"/>
+        <section name="gmd:distributionInfo">
+          <section xpath="/gmd:MD_Metadata/gmd:distributionInfo/*/gmd:transferOptions"/>
+        </section>
+        <section name="gmd:MD_Metadata">
+          <field xpath="/gmd:MD_Metadata/gmd:contact" or="contact" in="/gmd:MD_Metadata"/>
+        </section>
+      </tab>
+
+      <!-- Elements that should not use the "flat" mode -->
+      <flatModeExceptions>
+        <for name="gmd:descriptiveKeywords" />
+        <for name="gmd:keyword"/>
+        <for name="gmd:spatialResolution"/>
+        <for name="gmd:referenceSystemInfo"/>
+        <for name="gmd:pointOfContact"/>
+        <for name="gmd:distributor"/>
+        <for name="gmd:contact"/>
+        <for name="gmd:processor"/>
+        <for name="gmd:topicCategory"/>
+      </flatModeExceptions>
+
+      <thesaurusList>
+        <thesaurus key="external.theme.inspire-theme"
+                   transformations="to-iso19139-keyword"/>
+        <thesaurus key="external.theme.gemet"
+                   transformations="to-iso19139-keyword"/>
+      </thesaurusList>
     </view>
     <view name="advanced">
       <tab id="identificationInfo" default="true">

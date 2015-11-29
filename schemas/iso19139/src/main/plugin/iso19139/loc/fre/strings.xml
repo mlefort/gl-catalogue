@@ -85,4 +85,18 @@
   <add-resource-idHelp>Construit un identifiant en utilisant le préfixe défini dans les paramètres du catalogue ou l'URL du catalogue et l'identifiant de la fiche (eg. http://www.organization.org/catalogue/5391bf69-44bc-4ea0-8cc0-6cf6c3bc81ae).</add-resource-idHelp>
   <add-extent-from-geokeywords>Calculer les emprises à partir des mots clés</add-extent-from-geokeywords>
   <add-extent-from-geokeywordsHelp>Analyse les mots clés de type géographique et ajoute les emprises correspondantes.</add-extent-from-geokeywordsHelp>
+
+  <grandlyon>GrandLyon</grandlyon>
+  <glidentification>Caractétistiques principales</glidentification>
+  <glcategory>Classification</glcategory>
+  <glcategory-help>
+    <div class="row">
+      <div class="col-xs-offset-2 col-xs-8">
+        <p class="help-block">
+          Assignez une catégorie ISO, un thème INSPIRE, un ou plusieurs mots clés du thésaurus
+          GEMET et n'oubliez pas d'assigner la catégorie GrandLyon via le menu <i class="fa fa-tag"/>.
+        </p>
+      </div>
+    </div>
+  </glcategory-help>
 </strings>
