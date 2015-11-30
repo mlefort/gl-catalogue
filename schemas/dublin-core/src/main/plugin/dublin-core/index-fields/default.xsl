@@ -19,7 +19,9 @@
 	<!-- ========================================================================================= -->
 	
 	<xsl:template match="/">
-		<xsl:variable name="langCode" select="string(dc:language)"/>
+		<xsl:variable name="langCode"
+									select="if (normalize-space(dc:language) != '')
+											then string(dc:language) else 'fre'"/>
 		<Document locale="{$langCode}">
 
 			<!-- locale information -->	
@@ -41,7 +43,12 @@
 			<xsl:choose>
 					<xsl:when test="/simpledc/dct:accrualPeriodicity">
 							<xsl:for-each select="/simpledc/dct:accrualPeriodicity">
-									<Field name="updateFrequency" string="{string(.)}" store="true" index="true"/>
+								<Field name="updateFrequency" string="{string(.)}" store="true" index="true"/>
+								<Field name="cl_maintenanceAndUpdateFrequency_text"
+											 string="{java:getCodelistTranslation('gmd:MD_MaintenanceFrequencyCode',
+											 													string(.),
+											 													string($langCode))}"
+											 store="true" index="true"/>
 							</xsl:for-each>
 					</xsl:when>
 					<xsl:otherwise>
