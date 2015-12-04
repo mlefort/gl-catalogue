@@ -163,9 +163,23 @@ form.gn-editor {
   
   /* text danger takes priority above colors
    */
+  /*
   .text-danger label,
   .text-danger legend {
     .text-danger();
+  }
+  */
+  div.form-group.gn-field.text-danger,
+  fieldset.text-danger{
+    background-color: #dadada;
+  }
+  
+  .text-danger label,
+  .text-danger legend,
+  .text-danger input,
+  .text-danger textarea,
+  .text-danger select {
+    color:#de0925;
   }
   
   .gn-has-xlink {
