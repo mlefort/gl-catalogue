@@ -1,0 +1,3 @@
+button[rel="#print"], button[rel="#draw"] {
+    display:none;
+}
