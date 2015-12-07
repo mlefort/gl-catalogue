@@ -209,9 +209,12 @@
                   category.isSelected =
                       angular.isUndefined(scope.params['facet.q']) ?
                       false :
-                      $.inArray(
-                      encodeURIComponent(category['@value']),
-                      scope.params['facet.q'].split(/&|\//)) !== -1;
+                        ($.inArray(
+                          encodeURIComponent(category['@value']),
+                          scope.params['facet.q'].split(/&|\//)) !== -1 ||
+                        $.inArray(
+                          category['@value'],
+                          scope.params['facet.q'].split(/&|\//)) !== -1);
                   return category.isSelected;
                 };
 
@@ -232,9 +235,12 @@
                     var dimensionFilter = dimensionList[i].split('/');
                     if (dimensionFilter[0] ==
                         scope.facetConfig.map[scope.categoryKey] &&
-                        $.inArray(
+                      ($.inArray(
                         encodeURIComponent(category['@value']),
-                        dimensionFilter) !== -1) {
+                        scope.params['facet.q'].split(/&|\//)) !== -1 ||
+                      $.inArray(
+                        category['@value'],
+                        scope.params['facet.q'].split(/&|\//)) !== -1)) {
                       return true;
                     }
                   }

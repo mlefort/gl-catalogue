@@ -86,7 +86,7 @@
             <div data-ng-repeat="(key, facet) in searchInfo.facet['inspireThemesWithAc'] track by $index"
                  class="col-xs-6 col-sm-4 col-lg-3"
                  data-ng-show="browse === 'inspire'">
-              <a class="thumbnail gn-icon-bg" data-ng-href="#/search?facet.q=inspiretheme%2F{{facet['@name'].split('|')[1]}}">
+              <a class="thumbnail gn-icon-bg" data-ng-href="#/search?facet.q=inspireTheme%2F{{facet['@name'].split('|')[1]}}">
                 <i class="fa fa-3x gn-icon iti-{{facet['@name'].split('|')[0]}}"></i><br/>
                 <span class="gn-icon-label">{{facet['@name'].split('|')[1]}}</span>
                 <span class="badge">{{facet['@count']}}</span>
