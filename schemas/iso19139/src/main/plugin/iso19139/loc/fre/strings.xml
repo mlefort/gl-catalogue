@@ -80,7 +80,9 @@
   <spatialDistance>Résolution spatiale (distance)</spatialDistance>
   <accessConstraints>Limitations d'accès public</accessConstraints>
   <useLimitation>Conditions applicables à l'accès et à l'utilisation</useLimitation>
-
+  <isINSPIREConform>Indiquer que la ressource est conforme à INSPIRE</isINSPIREConform>
+  <isNotINSPIREConform>ou ne l'est pas</isNotINSPIREConform>
+  <conformityInpire>Conformité INSPIRE</conformityInpire>
   <add-resource-id>Générer un identifiant</add-resource-id>
   <add-resource-idHelp>Construit un identifiant en utilisant le préfixe défini dans les paramètres du catalogue ou l'URL du catalogue et l'identifiant de la fiche (eg. http://www.organization.org/catalogue/5391bf69-44bc-4ea0-8cc0-6cf6c3bc81ae).</add-resource-idHelp>
   <add-extent-from-geokeywords>Calculer les emprises à partir des mots clés</add-extent-from-geokeywords>
@@ -99,4 +101,6 @@
       </div>
     </div>
   </glcategory-help>
+  <keywordINSPIREtheme>Thèmes INSPIRE</keywordINSPIREtheme>
+  <keywordGEMET>Mots clés GEMET</keywordGEMET>
 </strings>

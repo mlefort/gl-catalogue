@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <editor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:noNamespaceSchemaLocation="../../config-editor.xsd"
+  xsi:noNamespaceSchemaLocation="../../../../../../config-editor.xsd"
   xmlns:gn="http://www.fao.org/geonetwork"
   xmlns:gco="http://www.isotc211.org/2005/gco"
   xmlns:gmd="http://www.isotc211.org/2005/gmd"
@@ -14,7 +14,7 @@
     <for name="gmd:abstract" use="textarea"/>
     <for name="gmd:checkPointDescription" use="textarea"/>
     <for name="gmd:credit" use="textarea"/>
-    <!--<for name="gmd:description" use="textarea"/>-->
+    <for name="gmd:description" use="textarea"/>
     <for name="gmd:evaluationMethodDescription" use="textarea"/>
     <for name="gmd:explanation" use="textarea"/>
     <for name="gmd:handlingDescription" use="textarea"/>
@@ -103,7 +103,7 @@
       To restrict the list of thesaurus allowed, set the include attribute
       for the directive.
       <directiveAttributes data-include="external.theme.inspire-theme,external.place.regions"/>
-      -->
+    -->
     </for>
   </fields>
 
@@ -130,6 +130,7 @@
     <name>gmd:onLine</name>
     <name>gmd:address</name>
     <name>gmd:projection</name>
+    <name>gmd:topicCategory</name>
     <name>gmd:ellipsoid</name>
     <name>gmd:attributes</name>
     <name>gmd:verticalCRS</name>
@@ -230,14 +231,181 @@
 
   <!-- View configuration -->
   <views>
-    <!--Turn off INSPIRE view by default -->
-    <view name="inspire" default="true" upAndDownControlHidden="true">
+    <view name="grandlyon">
+      <tab id="gl-main" default="true" mode="flat">
+        <section name="glidentification">
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/*/gmd:title"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:abstract"/>
+          <field xpath="/gmd:MD_Metadata/gmd:hierarchyLevel"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:spatialRepresentationType"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:spatialResolution"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/*/gmd:date"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:resourceMaintenance/*/gmd:maintenanceAndUpdateFrequency"/>
+        </section>
+        <section name="glcategory">
+          <text ref="glcategory-help"/>
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:topicCategory"
+                 or="topicCategory"
+                 in="/gmd:MD_Metadata/gmd:identificationInfo/*"/>
+
+
+          <field name="keywordINSPIREtheme"
+                 xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[
+                          contains(*/gmd:thesaurusName/*/gmd:title/gco:CharacterString,
+                                       'INSPIRE')]"/>
+          <field name="keywordGEMET"
+                 xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[
+                          contains(*/gmd:thesaurusName/*/gmd:title/gco:CharacterString,
+                                       'GEMET - Concepts, version 2.4')]"/>
+
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords[
+                          not(contains(*/gmd:thesaurusName/*/gmd:title/gco:CharacterString,
+                                       'INSPIRE')) and
+                          not(contains(*/gmd:thesaurusName/*/gmd:title/gco:CharacterString,
+                                       'GEMET - Concepts, version 2.4'))]"
+                 or="descriptiveKeywords"
+                 in="/gmd:MD_Metadata/gmd:identificationInfo/*"/>
+        </section>
+        <section xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:extent"/>
+        <section xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:pointOfContact"
+                 or="pointOfContact"
+                 in="/gmd:MD_Metadata/gmd:identificationInfo/*"/>
+        <section name="gmd:resourceConstraints">
+          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:resourceConstraints"/>
+        </section>
+        <section name="conformityInpire">
+          <field xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/*/gmd:report[
+                              .//gmd:specification/*/gmd:title/gco:CharacterString[contains(text(), '1089/2010')]
+                              ]" />
+
+          <action type="add"
+                  btnLabel="isINSPIREConform"
+                  btnClass="fa fa-thumbs-o-up text-success"
+                  or="report"
+                  in="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality"
+                  if="count(gmd:MD_Metadata/gmd:dataQualityInfo//gmd:DQ_DomainConsistency[
+                              .//gmd:specification/*/gmd:title/gco:CharacterString[contains(text(), '1089/2010')]
+                              ]) = 0">
+            <template>
+              <snippet>
+                <gmd:report>
+                  <gmd:DQ_DomainConsistency>
+                    <gmd:result>
+                      <gmd:DQ_ConformanceResult>
+                        <gmd:specification>
+                          <gmd:CI_Citation>
+                            <gmd:title>
+                              <gco:CharacterString>COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services</gco:CharacterString>
+                            </gmd:title>
+                            <gmd:date>
+                              <gmd:CI_Date>
+                                <gmd:date>
+                                  <gco:Date>2010-11-23</gco:Date>
+                                </gmd:date>
+                                <gmd:dateType>
+                                  <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                                       codeListValue="publication"/>
+                                </gmd:dateType>
+                              </gmd:CI_Date>
+                            </gmd:date>
+                          </gmd:CI_Citation>
+                        </gmd:specification>
+                        <gmd:explanation>
+                          <gco:CharacterString>Conforme à la spécification Inspire</gco:CharacterString>
+                        </gmd:explanation>
+                        <gmd:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </gmd:pass>
+                      </gmd:DQ_ConformanceResult>
+                    </gmd:result>
+                  </gmd:DQ_DomainConsistency>
+                </gmd:report>
+              </snippet>
+            </template>
+          </action>
+
+          <action type="add"
+                  btnLabel="isNotINSPIREConform"
+                  btnClass="fa fa-thumbs-o-down text-danger"
+                  or="report"
+                  in="/gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality"
+                  if="count(gmd:MD_Metadata/gmd:dataQualityInfo//gmd:DQ_DomainConsistency[
+                              .//gmd:specification/*/gmd:title/gco:CharacterString[contains(text(), '1089/2010')]
+                              ]) = 0">
+            <template>
+              <snippet>
+
+                <gmd:report>
+                  <gmd:DQ_DomainConsistency>
+                    <gmd:result>
+                      <gmd:DQ_ConformanceResult>
+                        <gmd:specification>
+                          <gmd:CI_Citation>
+                            <gmd:title>
+                              <gco:CharacterString>COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services</gco:CharacterString>
+                            </gmd:title>
+                            <gmd:date>
+                              <gmd:CI_Date>
+                                <gmd:date>
+                                  <gco:Date>2010-11-23</gco:Date>
+                                </gmd:date>
+                                <gmd:dateType>
+                                  <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                                       codeListValue="publication"/>
+                                </gmd:dateType>
+                              </gmd:CI_Date>
+                            </gmd:date>
+                          </gmd:CI_Citation>
+                        </gmd:specification>
+                        <gmd:explanation>
+                          <gco:CharacterString>Non conforme à la spécification Inspire</gco:CharacterString>
+                        </gmd:explanation>
+                        <gmd:pass>
+                          <gco:Boolean>false</gco:Boolean>
+                        </gmd:pass>
+                      </gmd:DQ_ConformanceResult>
+                    </gmd:result>
+                  </gmd:DQ_DomainConsistency>
+                </gmd:report>
+              </snippet>
+            </template>
+          </action>
+        </section>
+        <section xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/*/gmd:lineage"/>
+        <section xpath="/gmd:MD_Metadata/gmd:referenceSystemInfo" or="referenceSystemInfo" in="/gmd:MD_Metadata"/>
+        <section name="gmd:distributionInfo">
+          <section xpath="/gmd:MD_Metadata/gmd:distributionInfo/*/gmd:transferOptions"/>
+        </section>
+        <section name="gmd:MD_Metadata">
+          <field xpath="/gmd:MD_Metadata/gmd:contact" or="contact" in="/gmd:MD_Metadata"/>
+        </section>
+      </tab>
+
+      <!-- Elements that should not use the "flat" mode -->
+      <flatModeExceptions>
+        <for name="gmd:descriptiveKeywords" />
+        <for name="gmd:keyword"/>
+        <for name="gmd:spatialResolution"/>
+        <for name="gmd:referenceSystemInfo"/>
+        <for name="gmd:pointOfContact"/>
+        <for name="gmd:distributor"/>
+        <for name="gmd:contact"/>
+        <for name="gmd:processor"/>
+        <for name="gmd:topicCategory"/>
+      </flatModeExceptions>
 
       <thesaurusList>
         <thesaurus key="external.theme.inspire-theme"
-                   maxtags="1"
+                   transformations="to-iso19139-keyword"/>
+        <thesaurus key="external.theme.gemet"
+                   transformations="to-iso19139-keyword"/>
+        <thesaurus key="local.place.EmprisesGL"
                    transformations="to-iso19139-keyword"/>
       </thesaurusList>
+    </view>
+
+    <!--Turn off INSPIRE view by default -->
+    <view name="inspire" upAndDownControlHidden="true" disabled="true">
       <tab id="inspire" default="true" mode="flat">
         <section name="resource">
           <field
@@ -437,7 +605,7 @@
 
           <field
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
-            gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:keyword[not(../gmd:thesaurusName)]"
+            gmd:descriptiveKeywords/gmd:MD_Keywords[not(gmd:thesaurusName)]/gmd:keyword"
             or="keyword"
             in="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/
             gmd:descriptiveKeywords/gmd:MD_Keywords[not(gmd:thesaurusName)]"/>
@@ -639,7 +807,7 @@
 
           <field name="temporalRangeSection" templateModeOnly="true"
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement"
-            if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification) > 0">
+            if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement) > 0">
             <template>
               <values>
                 <!-- -Need a * for gml:TimePeriodTypeCHOICE_ELEMENT2 added by editor enumerated tree -->
@@ -676,7 +844,7 @@
 
           <field name="temporalRangeSection" templateModeOnly="true"
             xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement"
-            if="count(gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification) > 0">
+            if="count(gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:extent/gmd:EX_Extent/gmd:temporalElement) > 0">
             <template>
               <values>
                 <key label="beginPosition"
@@ -1210,13 +1378,12 @@
                     data-variables="gmd:role/gmd:CI_RoleCode/@codeListValue~{role}"/>
           </action>
 
-
           <field xpath="/gmd:MD_Metadata/gmd:dateStamp"/>
         </section>
       </tab>
     </view>
     <view name="default">
-      <tab id="default" mode="flat">
+      <tab id="default" default="true" mode="flat">
         <section xpath="/gmd:MD_Metadata/gmd:identificationInfo"/>
         <section xpath="/gmd:MD_Metadata/gmd:referenceSystemInfo"/>
         <section xpath="/gmd:MD_Metadata/gmd:spatialRepresentationInfo"/>
@@ -1255,7 +1422,6 @@
         <for name="gmd:distributor"/>
         <for name="gmd:contact"/>
         <for name="gmd:processor"/>
-        <!--<for name="gmd:citedResponsibleParty"/>-->
         <for name="gmd:topicCategory"/>
       </flatModeExceptions>
 
@@ -1269,62 +1435,9 @@
       <thesaurusList>
         <thesaurus key="external.theme.inspire-theme"
                    maxtags="2"
-                   transformations="to-iso19139-keyword"/>
+                   transformations="to-iso19139-keyword-with-anchor"/>
       </thesaurusList>
       -->
-    </view>
-    <view name="grandlyon">
-      <tab id="gl-main" default="true" mode="flat">
-        <section name="glidentification">
-          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/*/gmd:title"/>
-          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:abstract"/>
-          <field xpath="/gmd:MD_Metadata/gmd:hierarchyLevel"/>
-          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:spatialRepresentationType"/>
-          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:spatialResolution"/>
-          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/*/gmd:date"/>
-          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:resourceMaintenance/*/gmd:maintenanceAndUpdateFrequency"/>
-        </section>
-        <section name="glcategory">
-          <text ref="glcategory-help"/>
-          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:topicCategory"/>
-          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:descriptiveKeywords"
-                 or="descriptiveKeywords" in="/gmd:MD_Metadata/gmd:identificationInfo/*"/>
-        </section>
-        <section xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:extent"/>
-        <section xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:pointOfContact"
-               or="pointOfContact" in="/gmd:MD_Metadata/gmd:identificationInfo/*"/>
-        <section name="gmd:resourceConstraints">
-          <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:resourceConstraints"/>
-        </section>
-        <section xpath="/gmd:MD_Metadata/gmd:dataQualityInfo/*/gmd:lineage"/>
-        <section xpath="/gmd:MD_Metadata/gmd:referenceSystemInfo" or="referenceSystemInfo" in="/gmd:MD_Metadata"/>
-        <section name="gmd:distributionInfo">
-          <section xpath="/gmd:MD_Metadata/gmd:distributionInfo/*/gmd:transferOptions"/>
-        </section>
-        <section name="gmd:MD_Metadata">
-          <field xpath="/gmd:MD_Metadata/gmd:contact" or="contact" in="/gmd:MD_Metadata"/>
-        </section>
-      </tab>
-
-      <!-- Elements that should not use the "flat" mode -->
-      <flatModeExceptions>
-        <for name="gmd:descriptiveKeywords" />
-        <for name="gmd:keyword"/>
-        <for name="gmd:spatialResolution"/>
-        <for name="gmd:referenceSystemInfo"/>
-        <for name="gmd:pointOfContact"/>
-        <for name="gmd:distributor"/>
-        <for name="gmd:contact"/>
-        <for name="gmd:processor"/>
-        <for name="gmd:topicCategory"/>
-      </flatModeExceptions>
-
-      <thesaurusList>
-        <thesaurus key="external.theme.inspire-theme"
-                   transformations="to-iso19139-keyword"/>
-        <thesaurus key="external.theme.gemet"
-                   transformations="to-iso19139-keyword"/>
-      </thesaurusList>
     </view>
     <view name="advanced">
       <tab id="identificationInfo" default="true">
