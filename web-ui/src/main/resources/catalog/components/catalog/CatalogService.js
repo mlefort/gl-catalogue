@@ -523,7 +523,7 @@
   module.factory('Metadata', function() {
     function Metadata(k) {
       $.extend(true, this, k);
-      var listOfArrayFields = ['topicCat', 'category',
+      var listOfArrayFields = ['topicCat', 'category', 'keyword',
         'securityConstraints', 'resourceConstraints', 'legalConstraints',
         'denominator', 'resolution', 'geoDesc', 'geoBox', 'inspirethemewithac',
         'status', 'status_text', 'crs', 'identifier', 'responsibleParty',
