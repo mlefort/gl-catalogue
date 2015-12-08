@@ -619,6 +619,53 @@
                     <a href="#" class="md-mn addLayer"
                        onclick="app.switchMode('1', true);app.getIMap().addWMC('{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}');">&#160;</a>
                   </xsl:if>
+                
+                  <!-- Display json picto for JSON format -->
+                  <xsl:if test="(contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'download.data.grandlyon.com/ws') or contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'secure.grandlyon.webmapping.fr/ws')) and contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'.json')">
+                    &#160;
+                    <a href="{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}" target="blank" class="md-mn md-mn-json" title="Format JSON">&#160;</a>
+                  </xsl:if>
+
+                  <!-- Display ZIP for WFS shape-zip -->
+                  <!--
+                  <xsl:if test="contains(current-grouping-key(), 'WFS') and contains(gmd:CI_OnlineResource/gmd:description/gco:CharacterString, 'shape-zip')">
+                    &#160;
+                    <a href="{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}" class="md-mn md-mn-zip" title="Télécharger">&#160;</a>
+                  </xsl:if>
+                  -->
+
+                  <!-- Display open KML and GEOJSON for WFS -->
+                  <xsl:if test="contains(current-grouping-key(), 'WFS') and not(contains(gmd:CI_OnlineResource/gmd:description/gco:CharacterString, 'shape-zip'))">
+                    &#160;
+                    <xsl:variable name="database">
+                      <xsl:choose>
+                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'/grandlyon') ">grandlyon</xsl:when>
+                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'/rdata') ">rdata</xsl:when>
+                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'/tuba') ">tuba</xsl:when>
+                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'/bruit') ">bruit</xsl:when>
+                        <xsl:otherwise>missingdb</xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:variable>
+                    
+                    <!-- ServerName different si recette ou production -->
+                    <xsl:variable name="servername">
+                      <xsl:choose>
+                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'secure.grandlyon.webmapping.fr') or contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'46.105.245.177')">secure.grandlyon.webmapping.fr</xsl:when>
+                        <xsl:otherwise>download.data.grandlyon.com</xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:variable>
+                    
+                    <a href="https://{$servername}/wfs/{$database}?SERVICE=WFS&amp;VERSION=2.0.0&amp;outputformat=SHAPEZIP&amp;request=GetFeature&amp;SRSNAME=EPSG:3946&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-zip" title="Format SHAPEZIP" target="blank">&#160;</a>
+                    &#160;                    
+                    <a href="https://{$servername}/kml/{$database}?request=list&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-kml" title="Visualiser avec GoogleEarth">&#160;</a>
+                    &#160;
+                    <a href="https://{$servername}/wfs/{$database}?SERVICE=WFS&amp;VERSION=2.0.0&amp;outputformat=GEOJSON&amp;maxfeatures=30&amp;request=GetFeature&amp;typename={gmd:CI_OnlineResource/gmd:name/gco:CharacterString}" class="md-mn md-mn-geojson" title="Format GEOJSON" target="blank">&#160;</a>
+                  </xsl:if>
+                  <xsl:if test="contains(current-grouping-key(), 'WMC')">
+                    &#160;
+                    <a href="#" class="md-mn addLayer"
+                       onclick="app.switchMode('1', true);app.getIMap().addWMC('{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}');">&#160;</a>
+                  </xsl:if>
                 </li>
               </xsl:for-each>
             </ul>
