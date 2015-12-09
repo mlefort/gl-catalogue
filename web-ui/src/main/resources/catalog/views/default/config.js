@@ -147,9 +147,9 @@
             //  label: 'inspire',
             //  url: 'md.format.xml?xsl=xsl-view' + '&view=inspire&id='
             //}, {
-              label: 'grandlyon',
-              url: 'md.format.xml?xsl=xsl-view&view=grandlyon&uuid='
-            }, {
+            //  label: 'grandlyon',
+            //  url: 'md.format.xml?xsl=xsl-view&view=grandlyon&uuid='
+            //}, {
               label: 'full',
               url: 'md.format.xml?xsl=full_view&uuid='
               /*
