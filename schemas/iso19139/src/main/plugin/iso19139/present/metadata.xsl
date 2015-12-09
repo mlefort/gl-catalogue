@@ -3230,8 +3230,7 @@
 				</xsl:for-each>
 			</xsl:variable>
 
-			<xsl:if test="string($linkage)!=''">
-
+			<xsl:if test="string($linkage)!='' and not(contains(string($linkage),'download.data.grandlyon.com/ws')) and not(contains(string($linkage),'.json'))">
 				<xsl:element name="link">
 					<xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
 					<xsl:attribute name="href"><xsl:value-of select="$linkage"/></xsl:attribute>
@@ -3242,17 +3241,80 @@
 
 			</xsl:if>
 
-			<!-- Generate a KML output link for a WMS service -->
-			<xsl:if test="string($linkage)!='' and starts-with($protocol,'OGC:WMS-') and contains($protocol,'-get-map') and string($name)!=''">
+			<!-- Generate a JSON output link for a json url -->
+			<xsl:if test="string($linkage)!='' and (contains(string($linkage),'download.data.grandlyon.com/ws') or contains(string($linkage),'secure.grandlyon.webmapping.fr/ws')) and contains(string($linkage),'.json')">
+					<xsl:element name="link">
+							<xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
+							<xsl:attribute name="href"><xsl:value-of select="$linkage"/></xsl:attribute>
+							<xsl:attribute name="name"><xsl:value-of select="$name"/></xsl:attribute>
+							<xsl:attribute name="protocol"><xsl:value-of select="$protocol"/></xsl:attribute>
+							<xsl:attribute name="type">application/json</xsl:attribute>
+					</xsl:element>
+			</xsl:if>
 
-				<xsl:element name="link">
-					<xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
-					<xsl:attribute name="href">
-						<xsl:value-of select="concat(/root/gui/env/server/protocol,'://',/root/gui/env/server/host,':',/root/gui/env/server/port,/root/gui/locService,'/google.kml?uuid=',$uuid,'&amp;layers=',$name)"/>
-					</xsl:attribute>
-					<xsl:attribute name="name"><xsl:value-of select="$name"/></xsl:attribute>
-					<xsl:attribute name="type">application/vnd.google-earth.kml+xml</xsl:attribute>
-				</xsl:element>
+
+			<!-- Generate KML and GeoJSON output links for a WFS service -->
+			<xsl:if test="string($linkage)!='' and starts-with($protocol,'OGC:WFS') and not(contains(string($desc),'shape-zip')) and string($name)!=''">
+					<xsl:variable name="database">
+							<xsl:choose>
+									<xsl:when test="contains(string($linkage),'/grandlyon')">grandlyon</xsl:when>
+									<xsl:when test="contains(string($linkage),'/rdata')">rdata</xsl:when>
+									<xsl:when test="contains(string($linkage),'/tuba')">tuba</xsl:when>
+									<xsl:when test="contains(string($linkage),'/bruit')">bruit</xsl:when>
+									<xsl:otherwise>missingdb</xsl:otherwise>
+							</xsl:choose>
+					</xsl:variable>
+
+					<!-- ServerName different si recette ou production -->
+					<xsl:variable name="servername">
+						   <xsl:choose>
+								   <xsl:when test="contains($linkage,'secure.grandlyon.webmapping.fr') or contains($linkage,'46.105.245.177')">secure.grandlyon.webmapping.fr</xsl:when>
+								   <xsl:otherwise>download.data.grandlyon.com</xsl:otherwise>
+						   </xsl:choose>
+					</xsl:variable>
+					
+					<!-- KML output link -->
+					<xsl:element name="link">
+							<xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
+							<xsl:attribute name="href">
+									<xsl:value-of select="concat('https','://',$servername,'/kml/',$database,'?request=list&amp;typename=',$name)"/>
+							</xsl:attribute>
+							<xsl:attribute name="name"><xsl:value-of select="$name"/></xsl:attribute>
+							<xsl:attribute name="type">application/vnd.google-earth.kml+xml</xsl:attribute>
+					</xsl:element>
+
+					<!-- GeoJSON output link  -->
+					<xsl:element name="link">
+							<xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
+							<xsl:attribute name="href">
+									<xsl:value-of select="concat('https','://',$servername,'/wfs/',$database,'?SERVICE=WFS&amp;VERSION=2.0.0&amp;outputformat=GEOJSON&amp;maxfeatures=30&amp;request=GetFeature&amp;typename=',$name)"/>
+							</xsl:attribute>
+							<xsl:attribute name="name"><xsl:value-of select="$name"/></xsl:attribute>
+							<xsl:attribute name="type">application/json</xsl:attribute>
+					</xsl:element>
+					
+					<!-- ShapeZIP output link  -->
+					<xsl:element name="link">
+							<xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
+							<xsl:attribute name="href">
+									<xsl:value-of select="concat('https','://',$servername,'/wfs/',$database,'?SERVICE=WFS&amp;VERSION=2.0.0&amp;outputformat=SHAPEZIP&amp;request=GetFeature&amp;SRSNAME=EPSG:3946&amp;typename=',$name)"/>
+							</xsl:attribute>
+							<xsl:attribute name="name"><xsl:value-of select="$name"/></xsl:attribute>
+							<xsl:attribute name="type">application/zip</xsl:attribute>
+					</xsl:element>
+			</xsl:if>
+			
+
+			<!-- Generate a ZIP output link for a WFS shape-zip service -->
+			<xsl:if test="string($linkage)!='' and starts-with($protocol,'OGC:WFS') and contains(string($desc),'shape-zip') and string($name)!=''">
+
+					<xsl:element name="link">
+							<xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
+							<xsl:attribute name="href"><xsl:value-of select="$linkage"/></xsl:attribute>
+							<xsl:attribute name="name"><xsl:value-of select="$name"/></xsl:attribute>
+							<xsl:attribute name="protocol"><xsl:value-of select="$protocol"/></xsl:attribute>
+							<xsl:attribute name="type">application/zip</xsl:attribute>
+					</xsl:element>
 			</xsl:if>
 
 			<!-- The old links still in use by some systems. Deprecated -->
