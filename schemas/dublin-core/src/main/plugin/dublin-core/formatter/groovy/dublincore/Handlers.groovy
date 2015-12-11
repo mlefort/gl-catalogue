@@ -61,10 +61,6 @@ public class Handlers {
             Link link;
             try {
                 def href = linkEl.text()
-                if (href.contains("://")) {
-                    href = "window.open('${new URI(linkEl.text())}', 'link')"
-                }
-
                 link = new Link(href, href);
 
             } catch (URISyntaxException e) {
