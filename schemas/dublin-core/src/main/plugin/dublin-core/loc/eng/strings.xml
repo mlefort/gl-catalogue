@@ -6,4 +6,19 @@
   <xml>XML</xml>
   <default>Simple</default>
   <advanced>Full</advanced>
+
+
+  <grandlyon>GrandLyon</grandlyon>
+  <glidentification>Caractétistiques principales</glidentification>
+  <glcategory>Classification</glcategory>
+  <glcategory-help>
+    <div class="row">
+      <div class="col-xs-offset-2 col-xs-8">
+        <p class="help-block">
+          Assignez une catégorie ISO, un thème INSPIRE, un ou plusieurs mots clés du thésaurus
+          GEMET et n'oubliez pas d'assigner la catégorie GrandLyon via le menu <i class="fa fa-tag"/>.
+        </p>
+      </div>
+    </div>
+  </glcategory-help>
 </strings>
