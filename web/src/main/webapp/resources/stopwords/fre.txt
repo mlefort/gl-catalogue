@@ -75,6 +75,7 @@ n              |  n'
 s              |  s'
 t              |  t'
 y              |  there
+v              | used in velo'v
 
                | forms of être (not including the infinitive):
 été

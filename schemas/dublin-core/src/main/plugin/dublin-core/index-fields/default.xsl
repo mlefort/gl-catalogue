@@ -61,6 +61,12 @@
 
       <xsl:for-each select="/simpledc/dc:type">
         <Field name="type" string="{string(.)}" store="true" index="true"/>
+        <Field name="cl_spatialRepresentationType_text"
+               string="{java:getCodelistTranslation('gmd:MD_ScopeCode',
+                                                 string(.),
+                                                 string($langCode))}"
+               store="true"
+               index="true"/>
       </xsl:for-each>
 
       <xsl:for-each select="/simpledc/dc:source">
