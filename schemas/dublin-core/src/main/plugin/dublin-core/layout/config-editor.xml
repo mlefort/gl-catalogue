@@ -48,17 +48,21 @@
           <field xpath="/simpledc//dc:subject"/>
         </section>
         <section xpath="/simpledc//dc:coverage"/>
-        <section xpath="/simpledc//dc:publisher"/>
+        <section name="contact">
+          <field xpath="/simpledc//dc:creator"/>
+          <field xpath="/simpledc//dc:publisher"/>
+        </section>
         <section name="dc:rights">
           <field xpath="/simpledc//dc:rights"/>
           <field xpath="/simpledc//dct:accessRights"/>
         </section>
-        <section xpath="/simpledc//dc:source"/>
-        <section name="dc:format">
-          <section xpath="/simpledc//dc:format"/>
+        <section name="dc:source">
+          <field xpath="/simpledc//dc:source"/>
         </section>
-        <section name="metadata">
-          <field xpath="/simpledc//dc:creator"/>
+        <section name="relatedResources">
+          <section xpath="/simpledc//dc:format"/>
+          <section xpath="/simpledc//dc:references"/>
+          <section xpath="/simpledc//dc:relation"/>
         </section>
       </tab>
     </view>

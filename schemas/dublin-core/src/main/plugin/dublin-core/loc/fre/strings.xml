@@ -9,7 +9,7 @@
 
 
   <grandlyon>GrandLyon</grandlyon>
-  <glidentification>Caractétistiques principales</glidentification>
+  <glidentification>Caractéristiques principales</glidentification>
   <glcategory>Classification</glcategory>
   <glcategory-help>
     <div class="row">
@@ -21,4 +21,6 @@
       </div>
     </div>
   </glcategory-help>
+  <relatedResources>Resources associées</relatedResources>
+  <contact>Contacts</contact>
 </strings>
