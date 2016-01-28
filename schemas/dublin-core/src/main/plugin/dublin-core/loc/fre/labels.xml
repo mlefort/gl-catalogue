@@ -123,6 +123,21 @@
     <description>Droits de propriété intellectuelle, Copyright, droits de propriété
       divers.</description>
     <example/>
+    <helper>
+      <option value="Licence Ouverte">Licence Ouverte (accès libre et gratuit)</option>
+      <option value="Licence Engagée">Licence Engagée (accès gratuit après authentification)</option>
+      <option value="Licence Associée">Licence Associée (souscription requise)</option>
+    </helper>
+  </element>
+
+  <element name="dct:accessRights">
+    <label>Droits d'accès</label>
+    <description>Droits d'accès correspondant au type de licence</description>
+    <example/>
+    <helper>
+      <option value="Free access with registration">Gratuit après authentification (Licence Engagée)</option>
+      <option value="Available by subscription">Souscription requise (Licence Associée)</option>
+    </helper>
   </element>
 
   <element name="dct:modified">
@@ -137,7 +152,16 @@
 
   <element name="dct:spatial">
     <label>Caractéristiques spatiales</label>
-    <description>Spatial characteristics of the intellectual content of the resource.</description>
+    <description>Système de référence spatiale de la resource.</description>
+    <example/>
+    <helper>
+      <option value="RGF93 / CC46 (EPSG:3946)">RGF93 / CC46 (EPSG:3946)</option>
+      <option value="RGF93 / Lambert-93 (EPSG:2154)">RGF93 / Lambert-93 (EPSG:2154)</option>
+      <option value="RGF93 (EPSG:4171)">RGF93 géographique (EPSG:4171) (Lat/Long)</option>
+      <option value="WGS 84 (EPSG:4326)">WGS 84 (EPSG:4326) (Lat/Long)</option>
+      <option value="NTF (Paris) / Lambert Centre France (EPSG:27562)">NTF (Paris) / Lambert 2 (EPSG:27562)</option>
+      <option value="NTF (Paris) / Lambert zone II (EPSG:27572)">NTF (Paris) / Lambert 2 étendu ou carto (EPSG:27572)</option>
+    </helper>
   </element>
 
   <element name="dct:audience">
@@ -209,11 +233,6 @@
   <element name="dct:references">
     <label>Related resource</label>
     <description>A related resource that is referenced, cited, or otherwise pointed to by the described resource.</description>
-  </element>
-  <!-- ==================================================== -->
-  <element name="dct:accessRights">
-    <label>Access Rights</label>
-    <description>Information about who can access the resource or an indication of its security status.</description>
   </element>
   <!-- ==================================================== -->
   <element name="dct:alternative">
