@@ -186,6 +186,7 @@
         <Field name="responsibleParty"
                string="{concat($role, '|resource|', ., '|')}" store="true" index="false"/>
         <Field name="publisher" string="{string(.)}" store="true" index="true"/>
+        <Field name="orgName" string="{string(.)}" store="true" index="true"/>
       </xsl:for-each>
 
       <xsl:for-each select="/simpledc/dc:creator">
