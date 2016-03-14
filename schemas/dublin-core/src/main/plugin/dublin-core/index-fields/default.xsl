@@ -55,10 +55,10 @@
         <!--<Field name="createDateYear" string="{substring(., 0, 5)}" store="true" index="true"/>-->
       </xsl:for-each>
 
-      <xsl:for-each select="/simpledc/dct:modified">
-        <Field name="changeDate" string="{string(.)}" store="true" index="true"/>
-        <!--<Field name="createDateYear" string="{substring(., 0, 5)}" store="true" index="true"/>-->
+      <xsl:for-each select="/simpledc/dct:dateSubmitted">
+        <Field name="publicationDate" string="{string(.)}" store="true" index="true"/>
       </xsl:for-each>
+      
       <xsl:for-each select="/simpledc/dc:format">
         <Field name="format" string="{string(.)}" store="true" index="true"/>
       </xsl:for-each>
