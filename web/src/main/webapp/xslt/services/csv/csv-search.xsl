@@ -41,9 +41,10 @@
 		Default is comma.
 	
   <xsl:variable name="sep" select="','"/>
-  -->
   <xsl:variable name="sep" select="'&#124;'"/>
-
+  -->
+  <xsl:variable name="sep" select="';'"/>
+  
   <!-- Intra field separator -->
   <xsl:variable name="internalSep" select="'###'"/>
 
