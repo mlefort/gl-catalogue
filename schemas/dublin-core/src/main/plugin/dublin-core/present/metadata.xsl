@@ -220,7 +220,22 @@
 			<xsl:if test="dc:description">
 				<abstract><xsl:value-of select="dc:description"/></abstract>
 			</xsl:if>
-
+                        
+                        <!-- NEOGEO 2016 : redmine 3426 -->
+                        <xsl:if test="dc:publisher">
+                                <publisher><xsl:value-of select="dc:publisher"/></publisher>
+                        </xsl:if>
+                        <xsl:for-each select="dc:rights[text()]">
+                                <rights><xsl:value-of select="."/></rights>
+                        </xsl:for-each>
+                        <xsl:for-each select="dc:format[text()]">
+                                <format><xsl:value-of select="."/></format>
+                        </xsl:for-each>
+                        <xsl:for-each select="dct:accessRights[text()]">
+                                <accessRights><xsl:value-of select="."/></accessRights>
+                        </xsl:for-each>
+                        <!-- -->
+                       
 			<xsl:for-each select="dc:subject[text()]">
 				<keyword><xsl:value-of select="."/></keyword>
 			</xsl:for-each>
