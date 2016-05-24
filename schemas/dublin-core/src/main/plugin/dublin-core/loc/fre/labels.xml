@@ -66,6 +66,7 @@
     <example/>
     <helper>
       <option value="text/plain">Fichier texte (text/plain)</option>
+      <option value="text/csv">Fichier CSV (text/csv)</option>
       <option value="application/vnd.ms-excel">Fichier Excel (application/vnd.ms-excel)</option>
       <option value="text/xml">XML (text/xml)</option>
       <option value="application/pdf">PDF (application/pdf)</option>
