@@ -75,6 +75,7 @@
       <option value="application/vnd.google-earth.kml+xml">Fichier KML
         (application/vnd.google-earth.kml+xml)</option>
       <option value="application/zip">Fichier ZIP (application/zip)</option>
+      <option value="text/html">Page web (text/html)</option>
       <option value="image/tiff">Image TIFF (image/tiff)</option>
     </helper>
   </element>
