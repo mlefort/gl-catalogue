@@ -91,13 +91,14 @@
 
 
   <!-- Hide from the editor the dct:references pointing to uploaded files -->
+  <!-- REDMINE #3303
   <xsl:template mode="mode-dublin-core" priority="101"
                 match="*[(name(.) = 'dct:references' or
                           name(.) = 'dc:relation') and
                          (starts-with(., 'http') or
                           contains(. , 'resources.get') or
                           contains(., 'file.disclaimer'))]" />
-
+  -->
 
   <!-- the other elements in DC. -->
   <xsl:template mode="mode-dublin-core" priority="100" match="dc:*|dct:*">
