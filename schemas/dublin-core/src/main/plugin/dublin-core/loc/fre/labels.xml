@@ -103,7 +103,7 @@
   </element>
 
   <element name="dc:relation">
-    <label>Ressource associée</label>
+    <label>Ressource associée (obsolete)</label>
     <description>Lien avec d'autres ressources. De nombreux raffinements permettent d'établir des
       liens précis, par exemple de version, de chapitres, de standard, etc.</description>
     <example/>
@@ -233,8 +233,10 @@
   </element>
   <!-- ==================================================== -->
   <element name="dct:references">
-    <label>Related resource</label>
-    <description>A related resource that is referenced, cited, or otherwise pointed to by the described resource.</description>
+    <label>Ressource associée</label>
+    <description>Lien avec d'autres ressources. De nombreux raffinements permettent d'établir des
+      liens précis, par exemple de version, de chapitres, de standard, etc.</description>
+    <example/>
   </element>
   <!-- ==================================================== -->
   <element name="dct:alternative">
