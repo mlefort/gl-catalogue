@@ -64,7 +64,7 @@
       <div title="{{(md.abstract || md.defaultAbstract) | striptags}}"
            data-ng-click="openRecord($index, md, searchResults.records)">
         <!-- Thumbnail -->
-        <div data-ng-if="md.type[0] == 'dataset'"
+        <div data-ng-if="md.type[0] == 'dataset' || md.type[0] == 'service'"
              class="gn-md-thumbnail">
           <img class="gn-img-thumbnail"
                title="Aperçu"
