@@ -29,6 +29,7 @@ import jeeves.server.sources.http.JeevesServlet;
 import jeeves.services.ReadWriteController;
 import org.fao.geonet.constants.Params;
 import org.fao.geonet.domain.Profile;
+import org.fao.geonet.domain.User;
 import org.fao.geonet.domain.UserGroupId_;
 import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.repository.UserGroupRepository;
