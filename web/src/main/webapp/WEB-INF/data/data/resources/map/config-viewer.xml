@@ -34,7 +34,7 @@
                        opacity="1">
       <ows:Title>OSM GrandLyon</ows:Title>
       <ows-context:Server service="urn:ogc:serviceType:WMS">
-        <ows-context:OnlineResource xlink:href="http://openstreetmap.data.grandlyon.com/?" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+        <ows-context:OnlineResource xlink:href="https://openstreetmap.data.grandlyon.com/?" xmlns:xlink="http://www.w3.org/1999/xlink"/>
       </ows-context:Server>
     </ows-context:Layer>
   </ows-context:ResourceList>
