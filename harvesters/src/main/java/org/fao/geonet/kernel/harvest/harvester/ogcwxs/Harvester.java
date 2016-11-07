@@ -27,6 +27,7 @@ import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 
 import jeeves.server.context.ServiceContext;
+
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.fao.geonet.GeonetContext;
@@ -605,6 +606,11 @@ class Harvester extends BaseAligner implements IHarvester<HarvestResult>
             Element onLineSrc = null;
             XPath mdUrlXpath = null;
             mdXml = null;
+	    
+            log.info(String.format("  - params.ogctype : '%s'", params.ogctype));
+            log.info(String.format("  - dummyNsPrefix : '%s'", dummyNsPrefix));
+            log.info(String.format("  - layer.getNamespace().getURI() : '%s'", layer.getNamespace().getURI()));
+	    
             if (params.ogctype.startsWith("WFS1")) {
                 mdUrlXpath = XPath.newInstance(
                         "./" + dummyNsPrefix + "MetadataURL[" +
@@ -635,6 +641,8 @@ class Harvester extends BaseAligner implements IHarvester<HarvestResult>
                 }
             }
 
+            log.info(String.format("  - onLineSrc : '%s'", onLineSrc));
+	    
             if (mdXml != null) {	// No metadataUrl attribute for that layer
                 try {
                     xml = Xml.loadFile (new URL(mdXml));
