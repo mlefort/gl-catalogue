@@ -607,10 +607,6 @@ class Harvester extends BaseAligner implements IHarvester<HarvestResult>
             XPath mdUrlXpath = null;
             mdXml = null;
 	    
-            log.info(String.format("  - params.ogctype : '%s'", params.ogctype));
-            log.info(String.format("  - dummyNsPrefix : '%s'", dummyNsPrefix));
-            log.info(String.format("  - layer.getNamespace().getURI() : '%s'", layer.getNamespace().getURI()));
-	    
             if (params.ogctype.startsWith("WFS1")) {
                 mdUrlXpath = XPath.newInstance(
                         "./" + dummyNsPrefix + "MetadataURL[" +
@@ -640,8 +636,6 @@ class Harvester extends BaseAligner implements IHarvester<HarvestResult>
                     }
                 }
             }
-
-            log.info(String.format("  - onLineSrc : '%s'", onLineSrc));
 	    
             if (mdXml != null) {	// No metadataUrl attribute for that layer
                 try {
