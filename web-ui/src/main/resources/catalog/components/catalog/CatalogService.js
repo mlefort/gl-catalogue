@@ -633,8 +633,8 @@
             wfsLink.push(linkInfo);
           } 
         });
-        
-        if (wfsLink.length > 0) {
+        // ajout des liens kml, geojson et shapezip uniquement pour les fiches du catalogue GrandLyon
+        if (wfsLink.length > 0 && this.source == "233d066a-3045-481f-850a-038e3afc4a44") {
 
           wfsLink = wfsLink[0]; // il pourrait théoriquement y avoir plus d'un lien WFS mais on n'a besoin que d'un seul
           var wfsUrl = wfsLink.url; //ex : https://secure.grandlyon.webmapping.fr/wfs/grandlyon
