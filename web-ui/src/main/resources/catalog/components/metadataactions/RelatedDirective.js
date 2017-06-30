@@ -60,8 +60,8 @@
                            }
                          }
                        }
-                       // Si une ressource WFS a été trouvé, on crée dynamiquement 3 nouvelles relations
-                       if (wfs_relation && wfs_relation.name) {
+                       // Si une ressource WFS a été trouvé, on crée dynamiquement 3 nouvelles relations (uniquement pour les fiches du catalogue GrandLyon)
+                       if (scope.md.source == '233d066a-3045-481f-850a-038e3afc4a44' && wfs_relation && wfs_relation.name) {
                           wfs_relation.protocol = 'LINK';
                           
                           var kmlLink = JSON.parse(JSON.stringify(wfs_relation));
