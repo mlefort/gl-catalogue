@@ -3202,6 +3202,10 @@
 			<xsl:with-param name="info" select="$info"/>
 		</xsl:apply-templates>
 
+		<xsl:for-each select="gmd:dataQualityInfo/*/gmd:lineage/*/gmd:statement/gco:CharacterString">
+			<xsl:element name="lineage"><xsl:value-of select="."/></xsl:element>
+		</xsl:for-each>
+		
 		<xsl:for-each select="gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource">
 			<xsl:variable name="protocol" select="gmd:protocol[1]/gco:CharacterString"/>
 			<xsl:variable name="linkage"  select="normalize-space(gmd:linkage/gmd:URL)"/>
@@ -3440,6 +3444,19 @@
 			</keyword>
 		</xsl:for-each>
 
+		<xsl:choose>
+			<xsl:when test="gmd:resourceMaintenance">
+				<xsl:for-each select="gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode/@codeListValue">
+					<updateFrequency>
+							<xsl:value-of select="."/>
+					</updateFrequency>		
+				</xsl:for-each>
+			</xsl:when>
+			<xsl:otherwise>
+					<updateFrequency>other</updateFrequency>
+			</xsl:otherwise>
+		</xsl:choose>
+		
 		<xsl:for-each select="gmd:extent/*/gmd:geographicElement/gmd:EX_GeographicBoundingBox">
 			<geoBox>
 				<westBL><xsl:value-of select="gmd:westBoundLongitude"/></westBL>
