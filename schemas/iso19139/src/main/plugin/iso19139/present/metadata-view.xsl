@@ -621,7 +621,7 @@
                   </xsl:if>
                 
                   <!-- Display json picto for JSON format -->
-                  <xsl:if test="(contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'download.data.grandlyon.com/ws') or contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'secure.grandlyon.webmapping.fr/ws')) and contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'.json')">
+                  <xsl:if test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'.data.grandlyon.com/ws') and contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'.json')">
                     &#160;
                     <a href="{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}" target="blank" class="md-mn md-mn-json" title="Format JSON">&#160;</a>
                   </xsl:if>
@@ -650,7 +650,7 @@
                     <!-- ServerName different si recette ou production -->
                     <xsl:variable name="servername">
                       <xsl:choose>
-                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'secure.grandlyon.webmapping.fr') or contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'46.105.245.177')">secure.grandlyon.webmapping.fr</xsl:when>
+                        <xsl:when test="contains(gmd:CI_OnlineResource/gmd:linkage/gmd:URL,'download.recette')">download.recette.data.grandlyon.com</xsl:when>
                         <xsl:otherwise>download.data.grandlyon.com</xsl:otherwise>
                       </xsl:choose>
                     </xsl:variable>

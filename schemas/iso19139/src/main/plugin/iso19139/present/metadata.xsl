@@ -3205,7 +3205,7 @@
 		<xsl:for-each select="gmd:dataQualityInfo/*/gmd:lineage/*/gmd:statement/gco:CharacterString">
 			<xsl:element name="lineage"><xsl:value-of select="."/></xsl:element>
 		</xsl:for-each>
-		
+
 		<xsl:for-each select="gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource">
 			<xsl:variable name="protocol" select="gmd:protocol[1]/gco:CharacterString"/>
 			<xsl:variable name="linkage"  select="normalize-space(gmd:linkage/gmd:URL)"/>
@@ -3234,7 +3234,7 @@
 				</xsl:for-each>
 			</xsl:variable>
 
-			<xsl:if test="string($linkage)!='' and not(contains(string($linkage),'download.data.grandlyon.com/ws')) and not(contains(string($linkage),'.json'))">
+			<xsl:if test="string($linkage)!='' and not(contains(string($linkage),'.data.grandlyon.com/ws')) and not(contains(string($linkage),'.json'))">
 				<xsl:element name="link">
 					<xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
 					<xsl:attribute name="href"><xsl:value-of select="$linkage"/></xsl:attribute>
@@ -3246,7 +3246,7 @@
 			</xsl:if>
 
 			<!-- Generate a JSON output link for a json url -->
-			<xsl:if test="string($linkage)!='' and (contains(string($linkage),'download.data.grandlyon.com/ws') or contains(string($linkage),'secure.grandlyon.webmapping.fr/ws')) and contains(string($linkage),'.json')">
+			<xsl:if test="string($linkage)!='' and contains(string($linkage),'.data.grandlyon.com/ws') and contains(string($linkage),'.json')">
 					<xsl:element name="link">
 							<xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
 							<xsl:attribute name="href"><xsl:value-of select="$linkage"/></xsl:attribute>
@@ -3272,7 +3272,7 @@
 					<!-- ServerName different si recette ou production -->
 					<xsl:variable name="servername">
 						   <xsl:choose>
-								   <xsl:when test="contains($linkage,'secure.grandlyon.webmapping.fr') or contains($linkage,'46.105.245.177')">secure.grandlyon.webmapping.fr</xsl:when>
+								   <xsl:when test="contains($linkage,'download.recette')">download.recette.data.grandlyon.com</xsl:when>
 								   <xsl:otherwise>download.data.grandlyon.com</xsl:otherwise>
 						   </xsl:choose>
 					</xsl:variable>
@@ -3448,15 +3448,15 @@
 			<xsl:when test="gmd:resourceMaintenance">
 				<xsl:for-each select="gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode/@codeListValue">
 					<updateFrequency>
-							<xsl:value-of select="."/>
-					</updateFrequency>		
+						<xsl:value-of select="."/>
+					</updateFrequency>
 				</xsl:for-each>
 			</xsl:when>
 			<xsl:otherwise>
-					<updateFrequency>other</updateFrequency>
+				<updateFrequency>other</updateFrequency>
 			</xsl:otherwise>
 		</xsl:choose>
-		
+				
 		<xsl:for-each select="gmd:extent/*/gmd:geographicElement/gmd:EX_GeographicBoundingBox">
 			<geoBox>
 				<westBL><xsl:value-of select="gmd:westBoundLongitude"/></westBL>
