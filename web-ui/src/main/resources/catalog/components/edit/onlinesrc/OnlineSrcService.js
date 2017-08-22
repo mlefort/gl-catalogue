@@ -692,7 +692,7 @@
                  https://download.data.grandlyon.com/ws/grandlyon/<layerName>/all.json
                 */
                 var token = node[key].split('/');
-                var baseUrl = (node[key].indexOf("mapserver.middle.grandlyon.webmapping.fr") > -1) ? 'https://secure.grandlyon.webmapping.fr' : 'https://download.data.grandlyon.com';
+                var baseUrl = (node[key].indexOf("mapserver.middle.recette.data.grandlyon.com") > -1) ? 'https://download.recette.data.grandlyon.com' : 'https://download.data.grandlyon.com';
                   xml +=
                   this.buildOnLineResource(baseUrl +
                     '/ws/' + token.pop().replace('?', '') +
