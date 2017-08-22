@@ -637,7 +637,7 @@
         if (wfsLink.length > 0 && this.source == "233d066a-3045-481f-850a-038e3afc4a44") {
 
           wfsLink = wfsLink[0]; // il pourrait théoriquement y avoir plus d'un lien WFS mais on n'a besoin que d'un seul
-          var wfsUrl = wfsLink.url; //ex : https://secure.grandlyon.webmapping.fr/wfs/grandlyon
+          var wfsUrl = wfsLink.url; //ex : https://download.recette.data.grandlyon.com/wfs/grandlyon
           var database = wfsUrl.split('/').pop(); // ex : grandlyon
           var host = wfsUrl.split('/')[2];
           
