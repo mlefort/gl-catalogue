@@ -71,7 +71,7 @@
   
   <!-- URL for webapp root -->
   <!-- <xsl:variable name="baseURL" select="substring-before($siteURL,'/srv/')"/> -->
-  <xsl:variable name="dataURL" select="concat('http://','data.grandlyon.com')" />
+  <xsl:variable name="dataURL" select="concat('https://','data.beta.grandlyon.com','/fr')" />
   <xsl:variable name="baseURL">
     <xsl:choose>
         <xsl:when test="/root/request/data"><xsl:value-of select="$dataURL"/></xsl:when>
