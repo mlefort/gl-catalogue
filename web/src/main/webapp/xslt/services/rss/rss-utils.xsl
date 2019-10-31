@@ -20,7 +20,7 @@
 			<!--<xsl:variable name="mdURL" select="normalize-space(concat($baseURL, '/', /root/gui/nodeId, '/metadata/', gn:info/uuid))"/>-->
 			<xsl:variable name="mdURL">
                <xsl:choose>
-				  <xsl:when test="/root/request/data"><xsl:value-of select="normalize-space(concat($dataURL,'/','single','/',gn:info/uuid))"/></xsl:when>
+				  <xsl:when test="/root/request/data"><xsl:value-of select="normalize-space(concat($dataURL,'/','jeux-de-donnees','/',gn:info/uuid))"/></xsl:when>
 				  <xsl:otherwise><xsl:value-of select="normalize-space(concat($baseURL, '?uuid=', gn:info/uuid))"/></xsl:otherwise>
 			   </xsl:choose>
 			</xsl:variable>
